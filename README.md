@@ -47,3 +47,4 @@ dotnet add package IrisDanded.Pulumi.Squadcast
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/squadcast/api-docs/).
+

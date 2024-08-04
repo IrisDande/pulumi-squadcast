@@ -1,3 +1,5 @@
+version: 2
+
 archives:
   - id: archive
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
@@ -21,7 +23,11 @@ builds:
       - -X github.com/IrisDande/pulumi-squadcast/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-squadcast/
 changelog:
-  skip: true
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
 release:
   disable: false
   prerelease: auto

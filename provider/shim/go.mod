@@ -5,6 +5,7 @@ go 1.22
 replace github.com/squadcast/terraform-provider-squadcast => github.com/SquadcastHub/terraform-provider-squadcast v1.8.0
 
 require (
+	github.com/IrisDande/pulumi-squadcast/provider v0.0.0-20240804094131-6e8678c2998f
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.0
 	github.com/squadcast/terraform-provider-squadcast v1.8.0
 )

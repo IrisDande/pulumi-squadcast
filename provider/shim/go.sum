@@ -1,3 +1,5 @@
+github.com/IrisDande/pulumi-squadcast/provider v0.0.0-20240804094131-6e8678c2998f h1:rsSKhmgm7Gx4wwPDGy3rXJflkXNJOBhwBksU6UiFr0I=
+github.com/IrisDande/pulumi-squadcast/provider v0.0.0-20240804094131-6e8678c2998f/go.mod h1:nZDR0B6ZgwVTyU0Ao456iz+3XS+kqSjgN7h7kdHpz3g=
 github.com/SquadcastHub/terraform-provider-squadcast v1.8.0 h1:kgyB5CcW/Q1aGIIavY8xBik4tOR0F7KbjdRJ43ULbqY=
 github.com/SquadcastHub/terraform-provider-squadcast v1.8.0/go.mod h1:9Us0rY8N6yVk+nrXYZiZ/+mnRy0F/wp17vdRHEdlhIs=
 github.com/agext/levenshtein v1.2.3 h1:YB2fHEn0UJagG8T1rrWknE3ZQzWM06O8AMAatNn7lmo=

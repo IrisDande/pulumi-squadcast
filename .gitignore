@@ -30,3 +30,4 @@ sdk/java/gradle
 sdk/java/gradlew
 sdk/java/gradlew.bat
 upstream
+dist/

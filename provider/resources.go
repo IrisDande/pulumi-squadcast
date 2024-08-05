@@ -192,7 +192,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "irisdaned_squadcast_pulumi",
+			PackageName: "irisdanded_squadcast_pulumi",
 
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{

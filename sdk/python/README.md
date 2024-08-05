@@ -25,7 +25,7 @@ yarn add @irisdanded/pulumi-squadcast
 To use from Python, install using `pip`:
 
 ```bash
-pip install irisdadded_squadcast_pulumi
+pip install irisdanded_squadcast_pulumi
 ```
 
 ### Go
@@ -47,3 +47,4 @@ dotnet add package IrisDanded.Pulumi.Squadcast
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/squadcast/api-docs/).
+

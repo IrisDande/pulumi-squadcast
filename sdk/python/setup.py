@@ -17,7 +17,7 @@ def readme():
         return "squadcast Pulumi Package - Development Version"
 
 
-setup(name='irisdadded_squadcast_pulumi',
+setup(name='irisdanded_squadcast_pulumi',
       python_requires='>=3.8',
       version=VERSION,
       description="A Pulumi package for creating and managing Squadcast resources",
@@ -31,7 +31,7 @@ setup(name='irisdadded_squadcast_pulumi',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'irisdadded_squadcast_pulumi': [
+          'irisdanded_squadcast_pulumi': [
               'py.typed',
               'pulumi-plugin.json',
           ]

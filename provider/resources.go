@@ -21,15 +21,15 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/IrisDande/pulumi-squadcast/provider/pkg/version"
 	"github.com/ettle/strcase"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	shimprovider "github.com/squadcast/terraform-provider-squadcast/shim"
-	"github.com/IrisDande/pulumi-squadcast/provider/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-squadcast/bridge-metadata.json
@@ -135,7 +135,7 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{
+		Keywords: []string{
 			"pulumi",
 			"squadcast",
 			"category/cloud",
@@ -145,12 +145,12 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/IrisDande/pulumi-squadcast",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		Version:   version.Version,
-		GitHubOrg: "SquadcastHub",
-		MetadataInfo: tfbridge.NewProviderMetadata(bridgeMetadata),
+		Version:           version.Version,
+		GitHubOrg:         "SquadcastHub",
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 		TFProviderVersion: "1.8.0",
-		UpstreamRepoPath: "./upstream",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		UpstreamRepoPath:  "./upstream",
+		Config:            map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -166,7 +166,7 @@ func Provider() tfbridge.ProviderInfo {
 			//
 			// "aws_iam_role": {
 			//   Tok: makeResource(mainMod, "aws_iam_role"),
-		  // },
+			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.

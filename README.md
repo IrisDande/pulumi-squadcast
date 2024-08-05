@@ -25,7 +25,7 @@ yarn add @irisdanded/pulumi-squadcast
 To use from Python, install using `pip`:
 
 ```bash
-pip install irisdadded_squadcast_pulumi
+pip install irisdanded_squadcast_pulumi
 ```
 
 ### Go

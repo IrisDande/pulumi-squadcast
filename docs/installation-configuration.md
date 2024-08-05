@@ -9,7 +9,7 @@ layout: installation
 The Pulumi Squadcast provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@irisdanded/pulumi-squadcast`](https://www.npmjs.com/package/@irisdanded/pulumi-squadcast)
-* Python: [`irisdadded_squadcast_pulumi`](https://pypi.org/project/irisdadded_squadcast_pulumi/)
+* Python: [`irisdanded_squadcast_pulumi`](https://pypi.org/project/irisdanded_squadcast_pulumi/)
 * Go: [`github.com/IrisDande/pulumi-squadcast/sdk/go/squadcast`](https://pkg.go.dev/github.com/IrisDande/pulumi-squadcast/sdk/go/squadcast)
 * .NET: [`IrisDanded.Pulumi.Squadcast`](https://www.nuget.org/packages/IrisDanded.Pulumi.Squadcast)
 

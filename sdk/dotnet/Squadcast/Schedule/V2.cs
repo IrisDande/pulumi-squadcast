@@ -69,10 +69,10 @@ namespace IrisDanded.Pulumi.Squadcast.Schedule
     /// Use 'Get All Teams' API to get the id of the team
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
+    /// $ pulumi import squadcast:Schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:schedule/v2:V2")]
+    [SquadcastResourceType("squadcast:Schedule/v2:V2")]
     public partial class V2 : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -120,12 +120,12 @@ namespace IrisDanded.Pulumi.Squadcast.Schedule
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public V2(string name, V2Args args, CustomResourceOptions? options = null)
-            : base("squadcast:schedule/v2:V2", name, args ?? new V2Args(), MakeResourceOptions(options, ""))
+            : base("squadcast:Schedule/v2:V2", name, args ?? new V2Args(), MakeResourceOptions(options, ""))
         {
         }
 
         private V2(string name, Input<string> id, V2State? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:schedule/v2:V2", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Schedule/v2:V2", name, state, MakeResourceOptions(options, id))
         {
         }
 

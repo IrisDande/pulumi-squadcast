@@ -13,7 +13,7 @@ namespace IrisDanded.Pulumi.Squadcast.Workflow
     /// <summary>
     /// ## Example Usage
     /// </summary>
-    [SquadcastResourceType("squadcast:workflow/action:Action")]
+    [SquadcastResourceType("squadcast:Workflow/action:Action")]
     public partial class Action : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -205,12 +205,12 @@ namespace IrisDanded.Pulumi.Squadcast.Workflow
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Action(string name, ActionArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:workflow/action:Action", name, args ?? new ActionArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Workflow/action:Action", name, args ?? new ActionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Action(string name, Input<string> id, ActionState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:workflow/action:Action", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Workflow/action:Action", name, state, MakeResourceOptions(options, id))
         {
         }
 

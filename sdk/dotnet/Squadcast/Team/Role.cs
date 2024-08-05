@@ -50,10 +50,10 @@ namespace IrisDanded.Pulumi.Squadcast.Team
     /// Use 'Get All Teams' API to get the id of the team
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
+    /// $ pulumi import squadcast:Team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:team/role:Role")]
+    [SquadcastResourceType("squadcast:Team/role:Role")]
     public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -91,12 +91,12 @@ namespace IrisDanded.Pulumi.Squadcast.Team
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:team/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Team/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Role(string name, Input<string> id, RoleState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:team/role:Role", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Team/role:Role", name, state, MakeResourceOptions(options, id))
         {
         }
 

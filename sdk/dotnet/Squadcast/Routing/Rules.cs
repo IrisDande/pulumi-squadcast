@@ -56,7 +56,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         RoutingRules = new[]
     ///         {
     ///             new Squadcast.Routing.Inputs.RulesRuleArgs
     ///             {
@@ -99,7 +99,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     public partial class Rules : global::Pulumi.CustomResource
     {
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.RulesRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesRule>> RoutingRules { get; private set; } = null!;
 
         /// <summary>
         /// Service id.
@@ -162,7 +162,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     {
         [Input("rules", required: true)]
         private InputList<Inputs.RulesRuleArgs>? _rules;
-        public InputList<Inputs.RulesRuleArgs> Rules
+        public InputList<Inputs.RulesRuleArgs> RoutingRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleArgs>());
             set => _rules = value;
@@ -190,7 +190,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     {
         [Input("rules")]
         private InputList<Inputs.RulesRuleGetArgs>? _rules;
-        public InputList<Inputs.RulesRuleGetArgs> Rules
+        public InputList<Inputs.RulesRuleGetArgs> RoutingRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleGetArgs>());
             set => _rules = value;

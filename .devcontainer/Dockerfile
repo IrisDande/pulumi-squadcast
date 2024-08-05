@@ -60,7 +60,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-p
 RUN apt-get update && \
     apt-get install -y apt-transport-https && \
     apt-get update && \
-    apt-get install -y dotnet-sdk-6.0
+    apt-get install -y dotnet-sdk-8.0
 
 # Install Pulumi
 RUN curl -fsSL https://get.pulumi.com | sh

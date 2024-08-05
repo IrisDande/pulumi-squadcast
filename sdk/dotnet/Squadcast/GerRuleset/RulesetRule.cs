@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace IrisDanded.Pulumi.Squadcast.Ger
+namespace IrisDanded.Pulumi.Squadcast.GerRuleset
 {
     /// <summary>
-    /// GER Ruleset is a set of rules and configurations in Squadcast. It allows users to define how alerts are routed to services without the need to set up individual webhooks for each alert source.
+    /// GER Ruleset Rules are a set of conditions defined within a Global Event Ruleset. These rules have expressions, whose evaluation will determine the destination service for the incoming events.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         Name = "Example Team",
     ///     });
     /// 
-    ///     var user = Squadcast.GetUser.Invoke(new()
+    ///     var exampleUser = Squadcast.GetUser.Invoke(new()
     ///     {
     ///         Email = "john@example.com",
     ///     });
@@ -46,7 +46,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         EntityOwner = new Squadcast.Inputs.GerEntityOwnerArgs
     ///         {
-    ///             Id = user.Apply(getUserResult =&gt; getUserResult.Id),
+    ///             Id = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
     ///             Type = "user",
     ///         },
     ///     });
@@ -61,20 +61,38 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         },
     ///     });
     /// 
+    ///     var exampleGerRulesetRule = new Squadcast.GerRuleset.RulesetRule("exampleGerRulesetRule", new()
+    ///     {
+    ///         GerId = exampleGer.Id,
+    ///         AlertSource = exampleGerRuleset.AlertSource,
+    ///         Expression = "alertname == \"DeploymentReplicasNotUpdated\"",
+    ///         Description = "Example GER Ruleset Rule",
+    ///         Action = 
+    ///         {
+    ///             { "route_to", exampleService.Apply(getServiceResult =&gt; getServiceResult.Id) },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// gerID:alertSourceName
+    /// gerID:alertSourceName:ruleID
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:Ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
+    /// $ pulumi import squadcast:GerRuleset/rulesetRule:RulesetRule ger_ruleset_rule_import "50:Grafana:100"
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:Ger/ruleset:Ruleset")]
-    public partial class Ruleset : global::Pulumi.CustomResource
+    [SquadcastResourceType("squadcast:GerRuleset/rulesetRule:RulesetRule")]
+    public partial class RulesetRule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Rule Action refers to the designated destination service to which an event should be directed towards, whenever a rule expression is true.
+        /// </summary>
+        [Output("action")]
+        public Output<ImmutableDictionary<string, string>> Action { get; private set; } = null!;
+
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
         /// </summary>
@@ -94,10 +112,16 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         public Output<string> AlertSourceVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
+        /// GER Ruleset Rule description.
         /// </summary>
-        [Output("catchAllAction")]
-        public Output<ImmutableDictionary<string, string>?> CatchAllAction { get; private set; } = null!;
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// An expression is a single condition or a set of conditions that must be met for the rule to take action, such as routing the incoming event to a specific service.
+        /// </summary>
+        [Output("expression")]
+        public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
         /// GER id.
@@ -107,19 +131,19 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
 
 
         /// <summary>
-        /// Create a Ruleset resource with the given unique name, arguments, and options.
+        /// Create a RulesetRule resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Ruleset(string name, RulesetArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:Ger/ruleset:Ruleset", name, args ?? new RulesetArgs(), MakeResourceOptions(options, ""))
+        public RulesetRule(string name, RulesetRuleArgs args, CustomResourceOptions? options = null)
+            : base("squadcast:GerRuleset/rulesetRule:RulesetRule", name, args ?? new RulesetRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Ruleset(string name, Input<string> id, RulesetState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:Ger/ruleset:Ruleset", name, state, MakeResourceOptions(options, id))
+        private RulesetRule(string name, Input<string> id, RulesetRuleState? state = null, CustomResourceOptions? options = null)
+            : base("squadcast:GerRuleset/rulesetRule:RulesetRule", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -136,7 +160,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
             return merged;
         }
         /// <summary>
-        /// Get an existing Ruleset resource's state with the given name, ID, and optional extra
+        /// Get an existing RulesetRule resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -144,31 +168,43 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Ruleset Get(string name, Input<string> id, RulesetState? state = null, CustomResourceOptions? options = null)
+        public static RulesetRule Get(string name, Input<string> id, RulesetRuleState? state = null, CustomResourceOptions? options = null)
         {
-            return new Ruleset(name, id, state, options);
+            return new RulesetRule(name, id, state, options);
         }
     }
 
-    public sealed class RulesetArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesetRuleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("action", required: true)]
+        private InputMap<string>? _action;
+
+        /// <summary>
+        /// Rule Action refers to the designated destination service to which an event should be directed towards, whenever a rule expression is true.
+        /// </summary>
+        public InputMap<string> Action
+        {
+            get => _action ?? (_action = new InputMap<string>());
+            set => _action = value;
+        }
+
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
         /// </summary>
         [Input("alertSource", required: true)]
         public Input<string> AlertSource { get; set; } = null!;
 
-        [Input("catchAllAction")]
-        private InputMap<string>? _catchAllAction;
+        /// <summary>
+        /// GER Ruleset Rule description.
+        /// </summary>
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
+        /// An expression is a single condition or a set of conditions that must be met for the rule to take action, such as routing the incoming event to a specific service.
         /// </summary>
-        public InputMap<string> CatchAllAction
-        {
-            get => _catchAllAction ?? (_catchAllAction = new InputMap<string>());
-            set => _catchAllAction = value;
-        }
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
         /// GER id.
@@ -176,14 +212,26 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         [Input("gerId", required: true)]
         public Input<string> GerId { get; set; } = null!;
 
-        public RulesetArgs()
+        public RulesetRuleArgs()
         {
         }
-        public static new RulesetArgs Empty => new RulesetArgs();
+        public static new RulesetRuleArgs Empty => new RulesetRuleArgs();
     }
 
-    public sealed class RulesetState : global::Pulumi.ResourceArgs
+    public sealed class RulesetRuleState : global::Pulumi.ResourceArgs
     {
+        [Input("action")]
+        private InputMap<string>? _action;
+
+        /// <summary>
+        /// Rule Action refers to the designated destination service to which an event should be directed towards, whenever a rule expression is true.
+        /// </summary>
+        public InputMap<string> Action
+        {
+            get => _action ?? (_action = new InputMap<string>());
+            set => _action = value;
+        }
+
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
         /// </summary>
@@ -202,17 +250,17 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         [Input("alertSourceVersion")]
         public Input<string>? AlertSourceVersion { get; set; }
 
-        [Input("catchAllAction")]
-        private InputMap<string>? _catchAllAction;
+        /// <summary>
+        /// GER Ruleset Rule description.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
+        /// An expression is a single condition or a set of conditions that must be met for the rule to take action, such as routing the incoming event to a specific service.
         /// </summary>
-        public InputMap<string> CatchAllAction
-        {
-            get => _catchAllAction ?? (_catchAllAction = new InputMap<string>());
-            set => _catchAllAction = value;
-        }
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
 
         /// <summary>
         /// GER id.
@@ -220,9 +268,9 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         [Input("gerId")]
         public Input<string>? GerId { get; set; }
 
-        public RulesetState()
+        public RulesetRuleState()
         {
         }
-        public static new RulesetState Empty => new RulesetState();
+        public static new RulesetRuleState Empty => new RulesetRuleState();
     }
 }

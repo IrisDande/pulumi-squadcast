@@ -35,7 +35,7 @@ namespace IrisDanded.Pulumi.Squadcast.Escalation
         /// ```
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("squadcast:escalation/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("squadcast:Escalation/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// [Escalation Policies](https://support.squadcast.com/docs/escalation-policies) defines rules indicating when and how alerts will escalate to various Users, Squads and (or) Schedules within your Organization.Use this data source to get information about a specific escalation policy that you can use for other Squadcast resources.
@@ -60,7 +60,7 @@ namespace IrisDanded.Pulumi.Squadcast.Escalation
         /// ```
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("squadcast:escalation/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("squadcast:Escalation/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

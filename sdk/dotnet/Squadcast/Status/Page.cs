@@ -65,10 +65,10 @@ namespace IrisDanded.Pulumi.Squadcast.Status
     /// statusPageID
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:status/page:Page test_status_page 285
+    /// $ pulumi import squadcast:Status/page:Page test_status_page 285
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:status/page:Page")]
+    [SquadcastResourceType("squadcast:Status/page:Page")]
     public partial class Page : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -164,12 +164,12 @@ namespace IrisDanded.Pulumi.Squadcast.Status
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Page(string name, PageArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:status/page:Page", name, args ?? new PageArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Status/page:Page", name, args ?? new PageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Page(string name, Input<string> id, PageState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:status/page:Page", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Status/page:Page", name, state, MakeResourceOptions(options, id))
         {
         }
 

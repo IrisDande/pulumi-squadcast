@@ -35,7 +35,7 @@ namespace IrisDanded.Pulumi.Squadcast.Team
         /// ```
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("squadcast:team/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("squadcast:Team/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Team roles are a way to define abilities/permissions for a user in the team. Each team role can be considered as a set of permissions that can be assigned to a user. Use this data source to get information about various team roles.
@@ -60,7 +60,7 @@ namespace IrisDanded.Pulumi.Squadcast.Team
         /// ```
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("squadcast:team/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("squadcast:Team/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 

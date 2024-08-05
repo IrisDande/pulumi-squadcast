@@ -60,10 +60,10 @@ namespace IrisDanded.Pulumi.Squadcast.Team
     /// Use 'Get All Teams' API to get the id of the team
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
+    /// $ pulumi import squadcast:Team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:team/member:Member")]
+    [SquadcastResourceType("squadcast:Team/member:Member")]
     public partial class Member : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -93,12 +93,12 @@ namespace IrisDanded.Pulumi.Squadcast.Team
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Member(string name, MemberArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:team/member:Member", name, args ?? new MemberArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Team/member:Member", name, args ?? new MemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Member(string name, Input<string> id, MemberState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:team/member:Member", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Team/member:Member", name, state, MakeResourceOptions(options, id))
         {
         }
 

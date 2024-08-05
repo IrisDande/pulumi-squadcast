@@ -39,7 +39,7 @@ namespace IrisDanded.Pulumi.Squadcast.Tagging
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         TaggingRules = new[]
     ///         {
     ///             new Squadcast.Tagging.Inputs.RulesRuleArgs
     ///             {
@@ -91,7 +91,7 @@ namespace IrisDanded.Pulumi.Squadcast.Tagging
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         TaggingRules = new[]
     ///         {
     ///             new Squadcast.Tagging.Inputs.RulesRuleArgs
     ///             {
@@ -118,7 +118,7 @@ namespace IrisDanded.Pulumi.Squadcast.Tagging
     public partial class Rules : global::Pulumi.CustomResource
     {
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.RulesRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesRule>> TaggingRules { get; private set; } = null!;
 
         /// <summary>
         /// Service id.
@@ -181,7 +181,7 @@ namespace IrisDanded.Pulumi.Squadcast.Tagging
     {
         [Input("rules", required: true)]
         private InputList<Inputs.RulesRuleArgs>? _rules;
-        public InputList<Inputs.RulesRuleArgs> Rules
+        public InputList<Inputs.RulesRuleArgs> TaggingRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleArgs>());
             set => _rules = value;
@@ -209,7 +209,7 @@ namespace IrisDanded.Pulumi.Squadcast.Tagging
     {
         [Input("rules")]
         private InputList<Inputs.RulesRuleGetArgs>? _rules;
-        public InputList<Inputs.RulesRuleGetArgs> Rules
+        public InputList<Inputs.RulesRuleGetArgs> TaggingRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleGetArgs>());
             set => _rules = value;

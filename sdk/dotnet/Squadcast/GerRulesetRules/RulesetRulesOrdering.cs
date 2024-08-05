@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace IrisDanded.Pulumi.Squadcast.Ger
+namespace IrisDanded.Pulumi.Squadcast.GerRulesetRules
 {
     /// <summary>
-    /// GER Ruleset is a set of rules and configurations in Squadcast. It allows users to define how alerts are routed to services without the need to set up individual webhooks for each alert source.
+    /// The ordering of rules within a Ruleset dictates the sequence in which rules are evaluated for an alert source. These rules are evaluated sequentially, starting from the top.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +29,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         Name = "Example Team",
     ///     });
     /// 
-    ///     var user = Squadcast.GetUser.Invoke(new()
+    ///     var exampleUser = Squadcast.GetUser.Invoke(new()
     ///     {
     ///         Email = "john@example.com",
     ///     });
@@ -46,7 +46,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         EntityOwner = new Squadcast.Inputs.GerEntityOwnerArgs
     ///         {
-    ///             Id = user.Apply(getUserResult =&gt; getUserResult.Id),
+    ///             Id = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
     ///             Type = "user",
     ///         },
     ///     });
@@ -61,6 +61,41 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     ///         },
     ///     });
     /// 
+    ///     var exampleGerRulesetRule1 = new Squadcast.GerRuleset.RulesetRule("exampleGerRulesetRule1", new()
+    ///     {
+    ///         GerId = exampleGer.Id,
+    ///         AlertSource = exampleGerRuleset.AlertSource,
+    ///         Expression = "alertname == \"DeploymentReplicasNotUpdated\"",
+    ///         Description = "Example GER Ruleset Rule",
+    ///         Action = 
+    ///         {
+    ///             { "route_to", exampleService.Apply(getServiceResult =&gt; getServiceResult.Id) },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleGerRulesetRule2 = new Squadcast.GerRuleset.RulesetRule("exampleGerRulesetRule2", new()
+    ///     {
+    ///         GerId = exampleGer.Id,
+    ///         AlertSource = exampleGerRuleset.AlertSource,
+    ///         Expression = "component == \"kube-state-metrics\"",
+    ///         Description = "Example GER Ruleset Rule",
+    ///         Action = 
+    ///         {
+    ///             { "route_to", exampleService.Apply(getServiceResult =&gt; getServiceResult.Id) },
+    ///         },
+    ///     });
+    /// 
+    ///     var ruleOrdering = new Squadcast.GerRulesetRules.RulesetRulesOrdering("ruleOrdering", new()
+    ///     {
+    ///         GerId = squadcast_ger.Ger.Id,
+    ///         AlertSource = squadcast_ger_ruleset.Ger_ruleset_1.Alert_source,
+    ///         Orderings = new[]
+    ///         {
+    ///             squadcast_ger_ruleset_rule.Ger_ruleset_rule_2.Id,
+    ///             squadcast_ger_ruleset_rule.Ger_ruleset_rule_1.Id,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -69,11 +104,11 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
     /// gerID:alertSourceName
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:Ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
+    /// $ pulumi import squadcast:GerRulesetRules/rulesetRulesOrdering:RulesetRulesOrdering example_ger_ruleset_rule_ordering_import "53:Grafana"
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:Ger/ruleset:Ruleset")]
-    public partial class Ruleset : global::Pulumi.CustomResource
+    [SquadcastResourceType("squadcast:GerRulesetRules/rulesetRulesOrdering:RulesetRulesOrdering")]
+    public partial class RulesetRulesOrdering : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
@@ -94,32 +129,32 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         public Output<string> AlertSourceVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
-        /// </summary>
-        [Output("catchAllAction")]
-        public Output<ImmutableDictionary<string, string>?> CatchAllAction { get; private set; } = null!;
-
-        /// <summary>
         /// GER id.
         /// </summary>
         [Output("gerId")]
         public Output<string> GerId { get; private set; } = null!;
 
+        /// <summary>
+        /// GER Ruleset Rule Ordering.
+        /// </summary>
+        [Output("orderings")]
+        public Output<ImmutableArray<string>> Orderings { get; private set; } = null!;
+
 
         /// <summary>
-        /// Create a Ruleset resource with the given unique name, arguments, and options.
+        /// Create a RulesetRulesOrdering resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Ruleset(string name, RulesetArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:Ger/ruleset:Ruleset", name, args ?? new RulesetArgs(), MakeResourceOptions(options, ""))
+        public RulesetRulesOrdering(string name, RulesetRulesOrderingArgs args, CustomResourceOptions? options = null)
+            : base("squadcast:GerRulesetRules/rulesetRulesOrdering:RulesetRulesOrdering", name, args ?? new RulesetRulesOrderingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Ruleset(string name, Input<string> id, RulesetState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:Ger/ruleset:Ruleset", name, state, MakeResourceOptions(options, id))
+        private RulesetRulesOrdering(string name, Input<string> id, RulesetRulesOrderingState? state = null, CustomResourceOptions? options = null)
+            : base("squadcast:GerRulesetRules/rulesetRulesOrdering:RulesetRulesOrdering", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -136,7 +171,7 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
             return merged;
         }
         /// <summary>
-        /// Get an existing Ruleset resource's state with the given name, ID, and optional extra
+        /// Get an existing RulesetRulesOrdering resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -144,13 +179,13 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Ruleset Get(string name, Input<string> id, RulesetState? state = null, CustomResourceOptions? options = null)
+        public static RulesetRulesOrdering Get(string name, Input<string> id, RulesetRulesOrderingState? state = null, CustomResourceOptions? options = null)
         {
-            return new Ruleset(name, id, state, options);
+            return new RulesetRulesOrdering(name, id, state, options);
         }
     }
 
-    public sealed class RulesetArgs : global::Pulumi.ResourceArgs
+    public sealed class RulesetRulesOrderingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
@@ -158,31 +193,31 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         [Input("alertSource", required: true)]
         public Input<string> AlertSource { get; set; } = null!;
 
-        [Input("catchAllAction")]
-        private InputMap<string>? _catchAllAction;
-
-        /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
-        /// </summary>
-        public InputMap<string> CatchAllAction
-        {
-            get => _catchAllAction ?? (_catchAllAction = new InputMap<string>());
-            set => _catchAllAction = value;
-        }
-
         /// <summary>
         /// GER id.
         /// </summary>
         [Input("gerId", required: true)]
         public Input<string> GerId { get; set; } = null!;
 
-        public RulesetArgs()
+        [Input("orderings", required: true)]
+        private InputList<string>? _orderings;
+
+        /// <summary>
+        /// GER Ruleset Rule Ordering.
+        /// </summary>
+        public InputList<string> Orderings
+        {
+            get => _orderings ?? (_orderings = new InputList<string>());
+            set => _orderings = value;
+        }
+
+        public RulesetRulesOrderingArgs()
         {
         }
-        public static new RulesetArgs Empty => new RulesetArgs();
+        public static new RulesetRulesOrderingArgs Empty => new RulesetRulesOrderingArgs();
     }
 
-    public sealed class RulesetState : global::Pulumi.ResourceArgs
+    public sealed class RulesetRulesOrderingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An alert source refers to the origin of an event (alert), such as a monitoring tool. These alert sources are associated with specific rules in GER, determining where events from each source should be routed. Find all alert sources supported on Squadcast [here](https://www.squadcast.com/integrations).
@@ -202,27 +237,27 @@ namespace IrisDanded.Pulumi.Squadcast.Ger
         [Input("alertSourceVersion")]
         public Input<string>? AlertSourceVersion { get; set; }
 
-        [Input("catchAllAction")]
-        private InputMap<string>? _catchAllAction;
-
-        /// <summary>
-        /// The "Catch-All Action", when configured, specifies a fall back service. If none of the defined rules for an incoming event evaluate to true, the incoming event is routed to the Catch-All service, ensuring no events are missed.
-        /// </summary>
-        public InputMap<string> CatchAllAction
-        {
-            get => _catchAllAction ?? (_catchAllAction = new InputMap<string>());
-            set => _catchAllAction = value;
-        }
-
         /// <summary>
         /// GER id.
         /// </summary>
         [Input("gerId")]
         public Input<string>? GerId { get; set; }
 
-        public RulesetState()
+        [Input("orderings")]
+        private InputList<string>? _orderings;
+
+        /// <summary>
+        /// GER Ruleset Rule Ordering.
+        /// </summary>
+        public InputList<string> Orderings
+        {
+            get => _orderings ?? (_orderings = new InputList<string>());
+            set => _orderings = value;
+        }
+
+        public RulesetRulesOrderingState()
         {
         }
-        public static new RulesetState Empty => new RulesetState();
+        public static new RulesetRulesOrderingState Empty => new RulesetRulesOrderingState();
     }
 }

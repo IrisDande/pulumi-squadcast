@@ -39,7 +39,7 @@ namespace IrisDanded.Pulumi.Squadcast.Deduplication
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         DeduplicationRules = new[]
     ///         {
     ///             new Squadcast.Deduplication.Inputs.RulesRuleArgs
     ///             {
@@ -81,7 +81,7 @@ namespace IrisDanded.Pulumi.Squadcast.Deduplication
     public partial class Rules : global::Pulumi.CustomResource
     {
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.RulesRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesRule>> DeduplicationRules { get; private set; } = null!;
 
         /// <summary>
         /// Service id.
@@ -144,7 +144,7 @@ namespace IrisDanded.Pulumi.Squadcast.Deduplication
     {
         [Input("rules", required: true)]
         private InputList<Inputs.RulesRuleArgs>? _rules;
-        public InputList<Inputs.RulesRuleArgs> Rules
+        public InputList<Inputs.RulesRuleArgs> DeduplicationRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleArgs>());
             set => _rules = value;
@@ -172,7 +172,7 @@ namespace IrisDanded.Pulumi.Squadcast.Deduplication
     {
         [Input("rules")]
         private InputList<Inputs.RulesRuleGetArgs>? _rules;
-        public InputList<Inputs.RulesRuleGetArgs> Rules
+        public InputList<Inputs.RulesRuleGetArgs> DeduplicationRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleGetArgs>());
             set => _rules = value;

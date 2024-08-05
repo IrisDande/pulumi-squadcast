@@ -35,6 +35,9 @@ import (
 //go:embed cmd/pulumi-resource-squadcast/bridge-metadata.json
 var bridgeMetadata []byte
 
+var namespaceMap = map[string]string{
+	"squadcast": "Squadcast",
+}
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
@@ -53,8 +56,15 @@ func convertName(tfname string) (module string, name string) {
 		module = mainMod
 		name = tfNameItems[1]
 	} else {
-		module = strings.Join(tfNameItems[1:len(tfNameItems)-1], "/")
-		name = tfNameItems[len(tfNameItems)-1]
+		// module = strings.Join(tfNameItems[1:len(tfNameItems)-1], "/")
+		// name = tfNameItems[len(tfNameItems)-1]
+		module = strcase.ToPascal(strings.Join(tfNameItems[1:len(tfNameItems)-1], "_"))
+		nameParts := tfNameItems[2:]
+		// Convert `name` parts to PascalCase
+		for i, part := range nameParts {
+			nameParts[i] = strings.Title(part)
+		}
+		name = strings.Join(nameParts, "") // Join and capitalize
 
 		if v, ok := module_overrides[module]; ok {
 			module = v
@@ -75,7 +85,10 @@ func makeDataSource(ds string) tokens.ModuleMember {
 }
 
 func makeResource(res string) tokens.Type {
+	fmt.Printf("The res is %s\n", res)
 	mod, name := convertName(res)
+	fmt.Printf("The Resource module %s\n", mod)
+	fmt.Printf("The Resource name %s\n", name)
 	return tfbridge.MakeResource("squadcast", mod, name)
 }
 
@@ -167,6 +180,39 @@ func Provider() tfbridge.ProviderInfo {
 			// "aws_iam_role": {
 			//   Tok: makeResource(mainMod, "aws_iam_role"),
 			// },
+
+			"squadcast_suppression_rules": {
+				Tok: tfbridge.MakeResource("squadcast", "suppression", "Rules"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rules": {
+						CSharpName: "SuppressionRules",
+					},
+				},
+			},
+			"squadcast_tagging_rules": {
+				Tok: tfbridge.MakeResource("squadcast", "tagging", "Rules"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rules": {
+						CSharpName: "TaggingRules",
+					},
+				},
+			},
+			"squadcast_routing_rules": {
+				Tok: tfbridge.MakeResource("squadcast", "routing", "Rules"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rules": {
+						CSharpName: "RoutingRules",
+					},
+				},
+			},
+			"squadcast_deduplication_rules": {
+				Tok: tfbridge.MakeResource("squadcast", "deduplication", "Rules"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"rules": {
+						CSharpName: "DeduplicationRules",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each data source in the Terraform provider to a Pulumi function.
@@ -214,6 +260,7 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
+			Namespaces: namespaceMap,
 		},
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "com.IrisDanded.Pulumi",

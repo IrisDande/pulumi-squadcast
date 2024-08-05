@@ -39,7 +39,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         SuppressionRules = new[]
     ///         {
     ///             new Squadcast.Suppression.Inputs.RulesRuleArgs
     ///             {
@@ -54,7 +54,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         SuppressionRules = new[]
     ///         {
     ///             new Squadcast.Suppression.Inputs.RulesRuleArgs
     ///             {
@@ -82,7 +82,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///         ServiceId = exampleService.Apply(getServiceResult =&gt; getServiceResult.Id),
-    ///         Rules = new[]
+    ///         SuppressionRules = new[]
     ///         {
     ///             new Squadcast.Suppression.Inputs.RulesRuleArgs
     ///             {
@@ -174,7 +174,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     public partial class Rules : global::Pulumi.CustomResource
     {
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.RulesRule>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RulesRule>> SuppressionRules { get; private set; } = null!;
 
         /// <summary>
         /// Service id.
@@ -237,7 +237,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     {
         [Input("rules", required: true)]
         private InputList<Inputs.RulesRuleArgs>? _rules;
-        public InputList<Inputs.RulesRuleArgs> Rules
+        public InputList<Inputs.RulesRuleArgs> SuppressionRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleArgs>());
             set => _rules = value;
@@ -265,7 +265,7 @@ namespace IrisDanded.Pulumi.Squadcast.Suppression
     {
         [Input("rules")]
         private InputList<Inputs.RulesRuleGetArgs>? _rules;
-        public InputList<Inputs.RulesRuleGetArgs> Rules
+        public InputList<Inputs.RulesRuleGetArgs> SuppressionRules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesRuleGetArgs>());
             set => _rules = value;

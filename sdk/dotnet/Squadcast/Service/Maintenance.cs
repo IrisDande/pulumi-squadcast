@@ -65,10 +65,10 @@ namespace IrisDanded.Pulumi.Squadcast.Service
     /// Use 'Get All Teams' and 'Get All Services' APIs to get the id of the team and service respectively
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:service/maintenance:Maintenance test 62d2fe23a57381088224d726:62da76c088f407f9ca756ca5
+    /// $ pulumi import squadcast:Service/maintenance:Maintenance test 62d2fe23a57381088224d726:62da76c088f407f9ca756ca5
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:service/maintenance:Maintenance")]
+    [SquadcastResourceType("squadcast:Service/maintenance:Maintenance")]
     public partial class Maintenance : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -92,12 +92,12 @@ namespace IrisDanded.Pulumi.Squadcast.Service
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Maintenance(string name, MaintenanceArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:service/maintenance:Maintenance", name, args ?? new MaintenanceArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Service/maintenance:Maintenance", name, args ?? new MaintenanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Maintenance(string name, Input<string> id, MaintenanceState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:service/maintenance:Maintenance", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Service/maintenance:Maintenance", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -144,10 +144,10 @@ namespace IrisDanded.Pulumi.Squadcast.Escalation
     /// Use 'Get All Teams' and 'Get All Escalation Policies' APIs to get the id of the team and escalation policy name respectively
     /// 
     /// ```sh
-    /// $ pulumi import squadcast:escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
+    /// $ pulumi import squadcast:Escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
     /// ```
     /// </summary>
-    [SquadcastResourceType("squadcast:escalation/policy:Policy")]
+    [SquadcastResourceType("squadcast:Escalation/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -195,12 +195,12 @@ namespace IrisDanded.Pulumi.Squadcast.Escalation
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs args, CustomResourceOptions? options = null)
-            : base("squadcast:escalation/policy:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
+            : base("squadcast:Escalation/policy:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Policy(string name, Input<string> id, PolicyState? state = null, CustomResourceOptions? options = null)
-            : base("squadcast:escalation/policy:Policy", name, state, MakeResourceOptions(options, id))
+            : base("squadcast:Escalation/policy:Policy", name, state, MakeResourceOptions(options, id))
         {
         }
 

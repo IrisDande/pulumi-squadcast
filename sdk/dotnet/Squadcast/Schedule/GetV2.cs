@@ -35,7 +35,7 @@ namespace IrisDanded.Pulumi.Squadcast.Schedule
         /// ```
         /// </summary>
         public static Task<GetV2Result> InvokeAsync(GetV2Args args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetV2Result>("squadcast:schedule/getV2:getV2", args ?? new GetV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetV2Result>("squadcast:Schedule/getV2:getV2", args ?? new GetV2Args(), options.WithDefaults());
 
         /// <summary>
         /// [Squadcast schedules v2](https://support.squadcast.com/schedules/schedules-new) are used to manage on-call scheduling &amp; determine who will be notified when an incident is triggered. Use this data source to get information about a specific schedule that you can use for other Squadcast resources.
@@ -60,7 +60,7 @@ namespace IrisDanded.Pulumi.Squadcast.Schedule
         /// ```
         /// </summary>
         public static Output<GetV2Result> Invoke(GetV2InvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetV2Result>("squadcast:schedule/getV2:getV2", args ?? new GetV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetV2Result>("squadcast:Schedule/getV2:getV2", args ?? new GetV2InvokeArgs(), options.WithDefaults());
     }
 
 

@@ -9,11 +9,3 @@ from .get_v2 import *
 from .v2 import *
 from ._inputs import *
 from . import outputs
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import irisdanded_squadcast_pulumi.schedule.rotation as __rotation
-    rotation = __rotation
-else:
-    rotation = _utilities.lazy_import('irisdanded_squadcast_pulumi.schedule.rotation')
-

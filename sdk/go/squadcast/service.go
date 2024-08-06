@@ -22,7 +22,6 @@ import (
 // import (
 //
 //	"github.com/IrisDande/pulumi-squadcast/sdk/go/squadcast"
-//	"github.com/IrisDande/pulumi-squadcast/sdk/go/squadcast/escalation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleEscalaionPolicy, err := escalation.LookupPolicy(ctx, &escalation.LookupPolicyArgs{
+//			exampleEscalaionPolicy, err := squadcast.LookupEscalationPolicy(ctx, &squadcast.LookupEscalationPolicyArgs{
 //				Name:   "example escalation policy name",
 //				TeamId: exampleTeam.Id,
 //			}, nil)

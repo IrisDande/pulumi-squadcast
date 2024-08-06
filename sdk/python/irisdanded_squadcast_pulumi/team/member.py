@@ -141,7 +141,7 @@ class Member(pulumi.CustomResource):
 
         example_team = squadcast.get_team(name="example team name")
         example_user = squadcast.get_user(email="test@example.com")
-        example_team_role = squadcast.team.get_role(name="example role name",
+        example_team_role = squadcast.Team.get_role(name="example role name",
             team_id=example_team.id)
         example_team_member = squadcast.team.Member("exampleTeamMember",
             team_id=example_team.id,
@@ -156,7 +156,7 @@ class Member(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
+        $ pulumi import squadcast:Team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -183,7 +183,7 @@ class Member(pulumi.CustomResource):
 
         example_team = squadcast.get_team(name="example team name")
         example_user = squadcast.get_user(email="test@example.com")
-        example_team_role = squadcast.team.get_role(name="example role name",
+        example_team_role = squadcast.Team.get_role(name="example role name",
             team_id=example_team.id)
         example_team_member = squadcast.team.Member("exampleTeamMember",
             team_id=example_team.id,
@@ -198,7 +198,7 @@ class Member(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
+        $ pulumi import squadcast:Team/member:Member example_resource_name 62d2fe23a57381088224d726:test@example.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -238,7 +238,7 @@ class Member(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
         super(Member, __self__).__init__(
-            'squadcast:team/member:Member',
+            'squadcast:Team/member:Member',
             resource_name,
             __props__,
             opts)

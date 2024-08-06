@@ -6,11 +6,3 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .ruleset import *
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import irisdanded_squadcast_pulumi.ger.ruleset as __ruleset
-    ruleset = __ruleset
-else:
-    ruleset = _utilities.lazy_import('irisdanded_squadcast_pulumi.ger.ruleset')
-

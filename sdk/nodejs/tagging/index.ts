@@ -11,13 +11,6 @@ export const Rules: typeof import("./rules").Rules = null as any;
 utilities.lazyLoad(exports, ["Rules"], () => require("./rules"));
 
 
-// Export sub-modules:
-import * as rule from "./rule";
-
-export {
-    rule,
-};
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

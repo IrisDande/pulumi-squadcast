@@ -1156,7 +1156,7 @@ class Action(pulumi.CustomResource):
                 raise TypeError("Missing required property 'workflow_id'")
             __props__.__dict__["workflow_id"] = workflow_id
         super(Action, __self__).__init__(
-            'squadcast:workflow/action:Action',
+            'squadcast:Workflow/action:Action',
             resource_name,
             __props__,
             opts)

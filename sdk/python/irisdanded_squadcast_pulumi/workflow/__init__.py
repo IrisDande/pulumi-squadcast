@@ -8,11 +8,3 @@ import typing
 from .action import *
 from ._inputs import *
 from . import outputs
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import irisdanded_squadcast_pulumi.workflow.action as __action
-    action = __action
-else:
-    action = _utilities.lazy_import('irisdanded_squadcast_pulumi.workflow.action')
-

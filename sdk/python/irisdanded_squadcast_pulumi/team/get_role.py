@@ -104,7 +104,7 @@ def get_role(name: Optional[str] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.team.get_role(name="testRole",
+    test = squadcast.Team.get_role(name="testRole",
         team_id="team id")
     ```
 
@@ -116,7 +116,7 @@ def get_role(name: Optional[str] = None,
     __args__['name'] = name
     __args__['teamId'] = team_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('squadcast:team/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
+    __ret__ = pulumi.runtime.invoke('squadcast:Team/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
         abilities=pulumi.get(__ret__, 'abilities'),
@@ -139,7 +139,7 @@ def get_role_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.team.get_role(name="testRole",
+    test = squadcast.Team.get_role(name="testRole",
         team_id="team id")
     ```
 

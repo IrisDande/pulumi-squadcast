@@ -5,6 +5,98 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DeduplicationRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: string;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: string;
+    /**
+     * right hand side value
+     */
+    rhs: string;
+}
+
+export interface EscalationPolicyEntityOwner {
+    /**
+     * Escalation policy owner id.
+     */
+    id: string;
+    /**
+     * Escalation policy owner type. Supported values are 'user' or 'squad'.
+     */
+    type: string;
+}
+
+export interface EscalationPolicyRepeat {
+    /**
+     * The number of minutes to wait before repeating the escalation policy
+     */
+    delayMinutes: number;
+    /**
+     * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+     */
+    times: number;
+}
+
+export interface EscalationPolicyRule {
+    delayMinutes: number;
+    /**
+     * Notification channels to notify the targets. (SMS, Phone, Email, Push)
+     */
+    notificationChannels?: string[];
+    /**
+     * repeat this rule
+     */
+    repeat?: outputs.EscalationPolicyRuleRepeat;
+    roundRobin?: outputs.EscalationPolicyRuleRoundRobin;
+    targets: outputs.EscalationPolicyRuleTarget[];
+}
+
+export interface EscalationPolicyRuleRepeat {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes: number;
+    /**
+     * repeat times
+     */
+    times: number;
+}
+
+export interface EscalationPolicyRuleRoundRobin {
+    /**
+     * Enables Round Robin escalation within this layer
+     */
+    enabled: boolean;
+    rotation?: outputs.EscalationPolicyRuleRoundRobinRotation;
+}
+
+export interface EscalationPolicyRuleRoundRobinRotation {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes?: number;
+    /**
+     * enable rotation within
+     */
+    enabled?: boolean;
+}
+
+export interface EscalationPolicyRuleTarget {
+    /**
+     * ID of the target
+     */
+    id: string;
+    /**
+     * Type of the target. (user, squad, schedule, schedulev2)
+     */
+    type: string;
+}
+
 export interface GerEntityOwner {
     /**
      * GER owner id.
@@ -13,6 +105,74 @@ export interface GerEntityOwner {
     /**
      * GER owner type. Supported values are 'user' or 'squad'.
      */
+    type: string;
+}
+
+export interface GetEscalationPolicyEntityOwner {
+    /**
+     * Escalation policy owner id.
+     */
+    id: string;
+    /**
+     * Escalation policy owner type. (user or squad or team)
+     */
+    type: string;
+}
+
+export interface GetEscalationPolicyRepeat {
+    /**
+     * The number of minutes to wait before repeating the escalation policy
+     */
+    delayMinutes: number;
+    /**
+     * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+     */
+    times: number;
+}
+
+export interface GetEscalationPolicyRule {
+    delayMinutes: number;
+    notificationChannels: string[];
+    /**
+     * repeat this rule
+     */
+    repeats: outputs.GetEscalationPolicyRuleRepeat[];
+    roundRobins: outputs.GetEscalationPolicyRuleRoundRobin[];
+    targets: outputs.GetEscalationPolicyRuleTarget[];
+}
+
+export interface GetEscalationPolicyRuleRepeat {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes: number;
+    /**
+     * repeat times
+     */
+    times: number;
+}
+
+export interface GetEscalationPolicyRuleRoundRobin {
+    /**
+     * Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+     */
+    enabled: boolean;
+    rotations: outputs.GetEscalationPolicyRuleRoundRobinRotation[];
+}
+
+export interface GetEscalationPolicyRuleRoundRobinRotation {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes: number;
+    /**
+     * enable rotation within
+     */
+    enabled: boolean;
+}
+
+export interface GetEscalationPolicyRuleTarget {
+    id: string;
     type: string;
 }
 
@@ -29,6 +189,32 @@ export interface GetRunbookEntityOwner {
 
 export interface GetRunbookStep {
     content: string;
+}
+
+export interface GetScheduleV2EntityOwner {
+    /**
+     * Schedule owner id.
+     */
+    id: string;
+    /**
+     * Schedule owner type (user, team, squad).
+     */
+    type: string;
+}
+
+export interface GetScheduleV2Tag {
+    /**
+     * Schedule tag color.
+     */
+    color: string;
+    /**
+     * Schedule tag key.
+     */
+    key: string;
+    /**
+     * Schedule tag value.
+     */
+    value: string;
 }
 
 export interface GetServiceMaintainer {
@@ -151,6 +337,17 @@ export interface GetWebformSeverity {
     type: string;
 }
 
+export interface RoutingRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: string;
+    /**
+     * right hand side value
+     */
+    rhs: string;
+}
+
 export interface RunbookEntityOwner {
     /**
      * Runbook owner id.
@@ -166,6 +363,69 @@ export interface RunbookStep {
     content: string;
 }
 
+export interface ScheduleRotationV2ParticipantGroup {
+    /**
+     * Group participants.
+     */
+    participants?: outputs.ScheduleRotationV2ParticipantGroupParticipant[];
+}
+
+export interface ScheduleRotationV2ParticipantGroupParticipant {
+    /**
+     * Participant id.
+     */
+    id: string;
+    /**
+     * Participant type (user, team, squad).
+     */
+    type: string;
+}
+
+export interface ScheduleRotationV2ShiftTimeslot {
+    /**
+     * Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+     */
+    dayOfWeek?: string;
+    /**
+     * Defines the duration of each shift. (in minutes)
+     */
+    duration: number;
+    /**
+     * Defines the start hour of the each shift in the schedule timezone.
+     */
+    startHour: number;
+    /**
+     * Defines the start minute of the each shift in the schedule timezone.
+     */
+    startMinute: number;
+}
+
+export interface ScheduleV2EntityOwner {
+    /**
+     * Schedule owner id.
+     */
+    id: string;
+    /**
+     * Schedule owner type. Supported values are 'user' or 'squad'.
+     */
+    type: string;
+}
+
+export interface ScheduleV2Tag {
+    /**
+     * Schedule tag color.
+     */
+    color: string;
+    /**
+     * Schedule tag key.
+     */
+    key: string;
+    /**
+     * Schedule tag value.
+     */
+    value: string;
+}
+
 export interface ServiceMaintainer {
     /**
      * The id of the maintainer.
@@ -175,6 +435,25 @@ export interface ServiceMaintainer {
      * The type of the maintainer. Supported values are 'user' or 'squad'.
      */
     type: string;
+}
+
+export interface ServiceMaintenanceWindow {
+    /**
+     * Starting Time
+     */
+    from: string;
+    /**
+     * repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+     */
+    repeatFrequency?: string;
+    /**
+     * Till when you want to repeat this Maintenance mode
+     */
+    repeatTill?: string;
+    /**
+     * End Time.
+     */
+    till: string;
 }
 
 export interface ServiceTag {
@@ -245,6 +524,131 @@ export interface SloRule {
     threshold?: number;
 }
 
+export interface StatusPageOwner {
+    /**
+     * Status page owner id.
+     */
+    id: string;
+    /**
+     * Status page owner type Supported values are 'user' or 'squad'.
+     */
+    type: string;
+}
+
+export interface StatusPageThemeColor {
+    /**
+     * Primary color.
+     */
+    primary: string;
+    /**
+     * Secondary color.
+     */
+    secondary: string;
+}
+
+export interface SuppressionRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: string;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: string;
+    /**
+     * right hand side value
+     */
+    rhs: string;
+}
+
+export interface SuppressionRuleV2Timeslot {
+    /**
+     * Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+     */
+    customs?: outputs.SuppressionRuleV2TimeslotCustom[];
+    /**
+     * Defines the end date of the time slot
+     */
+    endTime: string;
+    /**
+     * Defines whether the time slot ends or not
+     */
+    endsNever?: boolean;
+    /**
+     * Defines the end date of the repetition
+     */
+    endsOn: string;
+    /**
+     * Defines if the time slot is an all day slot
+     */
+    isAllday?: boolean;
+    /**
+     * Defines whether repetition is custom or not
+     */
+    isCustom: boolean;
+    /**
+     * Defines the repetition of the time slot
+     */
+    repetition: string;
+    /**
+     * Defines the start date of the time slot
+     */
+    startTime: string;
+    /**
+     * Time zone for the time slot
+     */
+    timeZone: string;
+}
+
+export interface SuppressionRuleV2TimeslotCustom {
+    /**
+     * Determines how often the rule repeats. Valid values are day, week, month.
+     */
+    repeats: string;
+    /**
+     * Number of times to repeat.
+     */
+    repeatsCount?: number;
+    /**
+     * Repeats on month.
+     */
+    repeatsOnMonth: string;
+    /**
+     * List of weekdays to repeat on.
+     */
+    repeatsOnWeekdays?: number[];
+}
+
+export interface TaggingRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: string;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: string;
+    /**
+     * right hand side value
+     */
+    rhs: string;
+}
+
+export interface TaggingRuleV2Tag {
+    /**
+     * Tag color, hex values
+     */
+    color: string;
+    /**
+     * key
+     */
+    key: string;
+    /**
+     * value
+     */
+    value: string;
+}
+
 export interface WebformInputField {
     /**
      * Input field Label.
@@ -295,6 +699,54 @@ export interface WebformSeverity {
      * Severity type.
      */
     type: string;
+}
+
+export interface WorkflowActionChannel {
+    /**
+     * The display text of the communication channel
+     */
+    displayText: string;
+    /**
+     * The link of the communication channel
+     */
+    link: string;
+    /**
+     * The type of the communication channel
+     */
+    type: string;
+}
+
+export interface WorkflowActionComponentAndImpact {
+    /**
+     * The ID of the component
+     */
+    componentId: number;
+    /**
+     * The ID of the impact status
+     */
+    impactStatusId: number;
+}
+
+export interface WorkflowActionHeader {
+    /**
+     * The key of the header
+     */
+    key: string;
+    /**
+     * The value of the header
+     */
+    value: string;
+}
+
+export interface WorkflowActionStatusAndMessage {
+    /**
+     * The messages to be set for the issue
+     */
+    messages?: string[];
+    /**
+     * The ID of the status
+     */
+    statusId: number;
 }
 
 export interface WorkflowEntityOwner {
@@ -382,171 +834,6 @@ export namespace deduplication {
         rhs: string;
     }
 
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: string;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: string;
-            /**
-             * right hand side value
-             */
-            rhs: string;
-        }
-
-    }
-}
-
-export namespace escalation {
-    export interface GetPolicyEntityOwner {
-        /**
-         * Escalation policy owner id.
-         */
-        id: string;
-        /**
-         * Escalation policy owner type. (user or squad or team)
-         */
-        type: string;
-    }
-
-    export interface GetPolicyRepeat {
-        /**
-         * The number of minutes to wait before repeating the escalation policy
-         */
-        delayMinutes: number;
-        /**
-         * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
-         */
-        times: number;
-    }
-
-    export interface GetPolicyRule {
-        delayMinutes: number;
-        notificationChannels: string[];
-        /**
-         * repeat this rule
-         */
-        repeats: outputs.escalation.GetPolicyRuleRepeat[];
-        roundRobins: outputs.escalation.GetPolicyRuleRoundRobin[];
-        targets: outputs.escalation.GetPolicyRuleTarget[];
-    }
-
-    export interface GetPolicyRuleRepeat {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes: number;
-        /**
-         * repeat times
-         */
-        times: number;
-    }
-
-    export interface GetPolicyRuleRoundRobin {
-        /**
-         * Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
-         */
-        enabled: boolean;
-        rotations: outputs.escalation.GetPolicyRuleRoundRobinRotation[];
-    }
-
-    export interface GetPolicyRuleRoundRobinRotation {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes: number;
-        /**
-         * enable rotation within
-         */
-        enabled: boolean;
-    }
-
-    export interface GetPolicyRuleTarget {
-        id: string;
-        type: string;
-    }
-
-    export interface PolicyEntityOwner {
-        /**
-         * Escalation policy owner id.
-         */
-        id: string;
-        /**
-         * Escalation policy owner type. Supported values are 'user' or 'squad'.
-         */
-        type: string;
-    }
-
-    export interface PolicyRepeat {
-        /**
-         * The number of minutes to wait before repeating the escalation policy
-         */
-        delayMinutes: number;
-        /**
-         * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
-         */
-        times: number;
-    }
-
-    export interface PolicyRule {
-        delayMinutes: number;
-        /**
-         * Notification channels to notify the targets. (SMS, Phone, Email, Push)
-         */
-        notificationChannels?: string[];
-        /**
-         * repeat this rule
-         */
-        repeat?: outputs.escalation.PolicyRuleRepeat;
-        roundRobin?: outputs.escalation.PolicyRuleRoundRobin;
-        targets: outputs.escalation.PolicyRuleTarget[];
-    }
-
-    export interface PolicyRuleRepeat {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes: number;
-        /**
-         * repeat times
-         */
-        times: number;
-    }
-
-    export interface PolicyRuleRoundRobin {
-        /**
-         * Enables Round Robin escalation within this layer
-         */
-        enabled: boolean;
-        rotation?: outputs.escalation.PolicyRuleRoundRobinRotation;
-    }
-
-    export interface PolicyRuleRoundRobinRotation {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes?: number;
-        /**
-         * enable rotation within
-         */
-        enabled?: boolean;
-    }
-
-    export interface PolicyRuleTarget {
-        /**
-         * ID of the target
-         */
-        id: string;
-        /**
-         * Type of the target. (user, squad, schedule, schedulev2)
-         */
-        type: string;
-    }
-
 }
 
 export namespace routing {
@@ -582,160 +869,6 @@ export namespace routing {
          * right hand side value
          */
         rhs: string;
-    }
-
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: string;
-            /**
-             * right hand side value
-             */
-            rhs: string;
-        }
-
-    }
-}
-
-export namespace schedule {
-    export interface GetV2EntityOwner {
-        /**
-         * Schedule owner id.
-         */
-        id: string;
-        /**
-         * Schedule owner type (user, team, squad).
-         */
-        type: string;
-    }
-
-    export interface GetV2Tag {
-        /**
-         * Schedule tag color.
-         */
-        color: string;
-        /**
-         * Schedule tag key.
-         */
-        key: string;
-        /**
-         * Schedule tag value.
-         */
-        value: string;
-    }
-
-    export interface V2EntityOwner {
-        /**
-         * Schedule owner id.
-         */
-        id: string;
-        /**
-         * Schedule owner type. Supported values are 'user' or 'squad'.
-         */
-        type: string;
-    }
-
-    export interface V2Tag {
-        /**
-         * Schedule tag color.
-         */
-        color: string;
-        /**
-         * Schedule tag key.
-         */
-        key: string;
-        /**
-         * Schedule tag value.
-         */
-        value: string;
-    }
-
-    export namespace rotation {
-        export interface V2ParticipantGroup {
-            /**
-             * Group participants.
-             */
-            participants?: outputs.schedule.rotation.V2ParticipantGroupParticipant[];
-        }
-
-        export interface V2ParticipantGroupParticipant {
-            /**
-             * Participant id.
-             */
-            id: string;
-            /**
-             * Participant type (user, team, squad).
-             */
-            type: string;
-        }
-
-        export interface V2ShiftTimeslot {
-            /**
-             * Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
-             */
-            dayOfWeek?: string;
-            /**
-             * Defines the duration of each shift. (in minutes)
-             */
-            duration: number;
-            /**
-             * Defines the start hour of the each shift in the schedule timezone.
-             */
-            startHour: number;
-            /**
-             * Defines the start minute of the each shift in the schedule timezone.
-             */
-            startMinute: number;
-        }
-
-    }
-}
-
-export namespace service {
-    export interface MaintenanceWindow {
-        /**
-         * Starting Time
-         */
-        from: string;
-        /**
-         * repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
-         */
-        repeatFrequency?: string;
-        /**
-         * Till when you want to repeat this Maintenance mode
-         */
-        repeatTill?: string;
-        /**
-         * End Time.
-         */
-        till: string;
-    }
-
-}
-
-export namespace status {
-    export interface PageOwner {
-        /**
-         * Status page owner id.
-         */
-        id: string;
-        /**
-         * Status page owner type Supported values are 'user' or 'squad'.
-         */
-        type: string;
-    }
-
-    export interface PageThemeColor {
-        /**
-         * Primary color.
-         */
-        primary: string;
-        /**
-         * Secondary color.
-         */
-        secondary: string;
     }
 
 }
@@ -841,81 +974,6 @@ export namespace suppression {
         repeatsOnWeekdays?: number[];
     }
 
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: string;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: string;
-            /**
-             * right hand side value
-             */
-            rhs: string;
-        }
-
-        export interface V2Timeslot {
-            /**
-             * Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
-             */
-            customs?: outputs.suppression.rule.V2TimeslotCustom[];
-            /**
-             * Defines the end date of the time slot
-             */
-            endTime: string;
-            /**
-             * Defines whether the time slot ends or not
-             */
-            endsNever?: boolean;
-            /**
-             * Defines the end date of the repetition
-             */
-            endsOn: string;
-            /**
-             * Defines if the time slot is an all day slot
-             */
-            isAllday?: boolean;
-            /**
-             * Defines whether repetition is custom or not
-             */
-            isCustom: boolean;
-            /**
-             * Defines the repetition of the time slot
-             */
-            repetition: string;
-            /**
-             * Defines the start date of the time slot
-             */
-            startTime: string;
-            /**
-             * Time zone for the time slot
-             */
-            timeZone: string;
-        }
-
-        export interface V2TimeslotCustom {
-            /**
-             * Determines how often the rule repeats. Valid values are day, week, month.
-             */
-            repeats: string;
-            /**
-             * Number of times to repeat.
-             */
-            repeatsCount?: number;
-            /**
-             * Repeats on month.
-             */
-            repeatsOnMonth: string;
-            /**
-             * List of weekdays to repeat on.
-             */
-            repeatsOnWeekdays?: number[];
-        }
-
-    }
 }
 
 export namespace tagging {
@@ -966,89 +1024,6 @@ export namespace tagging {
          * value
          */
         value: string;
-    }
-
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: string;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: string;
-            /**
-             * right hand side value
-             */
-            rhs: string;
-        }
-
-        export interface V2Tag {
-            /**
-             * Tag color, hex values
-             */
-            color: string;
-            /**
-             * key
-             */
-            key: string;
-            /**
-             * value
-             */
-            value: string;
-        }
-
-    }
-}
-
-export namespace workflow {
-    export interface ActionChannel {
-        /**
-         * The display text of the communication channel
-         */
-        displayText: string;
-        /**
-         * The link of the communication channel
-         */
-        link: string;
-        /**
-         * The type of the communication channel
-         */
-        type: string;
-    }
-
-    export interface ActionComponentAndImpact {
-        /**
-         * The ID of the component
-         */
-        componentId: number;
-        /**
-         * The ID of the impact status
-         */
-        impactStatusId: number;
-    }
-
-    export interface ActionHeader {
-        /**
-         * The key of the header
-         */
-        key: string;
-        /**
-         * The value of the header
-         */
-        value: string;
-    }
-
-    export interface ActionStatusAndMessage {
-        /**
-         * The messages to be set for the issue
-         */
-        messages?: string[];
-        /**
-         * The ID of the status
-         */
-        statusId: number;
     }
 
 }

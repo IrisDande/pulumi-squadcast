@@ -196,7 +196,7 @@ class Ruleset(pulumi.CustomResource):
         gerID:alertSourceName
 
         ```sh
-        $ pulumi import squadcast:ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
+        $ pulumi import squadcast:Ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
         ```
 
         :param str resource_name: The name of the resource.
@@ -245,7 +245,7 @@ class Ruleset(pulumi.CustomResource):
         gerID:alertSourceName
 
         ```sh
-        $ pulumi import squadcast:ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
+        $ pulumi import squadcast:Ger/ruleset:Ruleset example_ger_ruleset_import "53:Grafana"
         ```
 
         :param str resource_name: The name of the resource.
@@ -285,7 +285,7 @@ class Ruleset(pulumi.CustomResource):
             __props__.__dict__["alert_source_shortname"] = None
             __props__.__dict__["alert_source_version"] = None
         super(Ruleset, __self__).__init__(
-            'squadcast:ger/ruleset:Ruleset',
+            'squadcast:Ger/ruleset:Ruleset',
             resource_name,
             __props__,
             opts)

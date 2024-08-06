@@ -8,11 +8,3 @@ import typing
 from .rules import *
 from ._inputs import *
 from . import outputs
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import irisdanded_squadcast_pulumi.routing.rule as __rule
-    rule = __rule
-else:
-    rule = _utilities.lazy_import('irisdanded_squadcast_pulumi.routing.rule')
-

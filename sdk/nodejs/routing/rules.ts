@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     name: "example service name",
  *     teamId: exampleTeam.id,
  * }));
- * const exampleEscalaionPolicy = exampleTeam.then(exampleTeam => squadcast.escalation.getPolicy({
+ * const exampleEscalaionPolicy = exampleTeam.then(exampleTeam => squadcast.getEscalationPolicy({
  *     name: "example escalation policy name",
  *     teamId: exampleTeam.id,
  * }));

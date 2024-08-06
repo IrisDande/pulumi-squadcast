@@ -10,24 +10,396 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'DeduplicationRuleV2BasicExpressionArgs',
+    'EscalationPolicyEntityOwnerArgs',
+    'EscalationPolicyRepeatArgs',
+    'EscalationPolicyRuleArgs',
+    'EscalationPolicyRuleRepeatArgs',
+    'EscalationPolicyRuleRoundRobinArgs',
+    'EscalationPolicyRuleRoundRobinRotationArgs',
+    'EscalationPolicyRuleTargetArgs',
     'GerEntityOwnerArgs',
+    'RoutingRuleV2BasicExpressionArgs',
     'RunbookEntityOwnerArgs',
     'RunbookStepArgs',
+    'ScheduleRotationV2ParticipantGroupArgs',
+    'ScheduleRotationV2ParticipantGroupParticipantArgs',
+    'ScheduleRotationV2ShiftTimeslotArgs',
+    'ScheduleV2EntityOwnerArgs',
+    'ScheduleV2TagArgs',
     'ServiceMaintainerArgs',
+    'ServiceMaintenanceWindowArgs',
     'ServiceTagArgs',
     'SloEntityOwnerArgs',
     'SloNotifyArgs',
     'SloRuleArgs',
+    'StatusPageOwnerArgs',
+    'StatusPageThemeColorArgs',
+    'SuppressionRuleV2BasicExpressionArgs',
+    'SuppressionRuleV2TimeslotArgs',
+    'SuppressionRuleV2TimeslotCustomArgs',
+    'TaggingRuleV2BasicExpressionArgs',
+    'TaggingRuleV2TagArgs',
     'WebformInputFieldArgs',
     'WebformOwnerArgs',
     'WebformServiceArgs',
     'WebformSeverityArgs',
+    'WorkflowActionChannelArgs',
+    'WorkflowActionComponentAndImpactArgs',
+    'WorkflowActionHeaderArgs',
+    'WorkflowActionStatusAndMessageArgs',
     'WorkflowEntityOwnerArgs',
     'WorkflowFiltersArgs',
     'WorkflowFiltersFilterArgs',
     'WorkflowFiltersFilterFilterArgs',
     'WorkflowTagArgs',
 ]
+
+@pulumi.input_type
+class DeduplicationRuleV2BasicExpressionArgs:
+    def __init__(__self__, *,
+                 lhs: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 rhs: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] lhs: left hand side dropdown value
+        :param pulumi.Input[str] op: operator (is, is*not, matches, not*contains)
+        :param pulumi.Input[str] rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> pulumi.Input[str]:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @lhs.setter
+    def lhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lhs", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> pulumi.Input[str]:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+    @rhs.setter
+    def rhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rhs", value)
+
+
+@pulumi.input_type
+class EscalationPolicyEntityOwnerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Escalation policy owner id.
+        :param pulumi.Input[str] type: Escalation policy owner type. Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Escalation policy owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Escalation policy owner type. Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRepeatArgs:
+    def __init__(__self__, *,
+                 delay_minutes: pulumi.Input[int],
+                 times: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] delay_minutes: The number of minutes to wait before repeating the escalation policy
+        :param pulumi.Input[int] times: The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> pulumi.Input[int]:
+        """
+        The number of minutes to wait before repeating the escalation policy
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @delay_minutes.setter
+    def delay_minutes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "delay_minutes", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[int]:
+        """
+        The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[int]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRuleArgs:
+    def __init__(__self__, *,
+                 delay_minutes: pulumi.Input[int],
+                 targets: pulumi.Input[Sequence[pulumi.Input['EscalationPolicyRuleTargetArgs']]],
+                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repeat: Optional[pulumi.Input['EscalationPolicyRuleRepeatArgs']] = None,
+                 round_robin: Optional[pulumi.Input['EscalationPolicyRuleRoundRobinArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Notification channels to notify the targets. (SMS, Phone, Email, Push)
+        :param pulumi.Input['EscalationPolicyRuleRepeatArgs'] repeat: repeat this rule
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "targets", targets)
+        if notification_channels is not None:
+            pulumi.set(__self__, "notification_channels", notification_channels)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+        if round_robin is not None:
+            pulumi.set(__self__, "round_robin", round_robin)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "delay_minutes")
+
+    @delay_minutes.setter
+    def delay_minutes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "delay_minutes", value)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> pulumi.Input[Sequence[pulumi.Input['EscalationPolicyRuleTargetArgs']]]:
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Sequence[pulumi.Input['EscalationPolicyRuleTargetArgs']]]):
+        pulumi.set(self, "targets", value)
+
+    @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Notification channels to notify the targets. (SMS, Phone, Email, Push)
+        """
+        return pulumi.get(self, "notification_channels")
+
+    @notification_channels.setter
+    def notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_channels", value)
+
+    @property
+    @pulumi.getter
+    def repeat(self) -> Optional[pulumi.Input['EscalationPolicyRuleRepeatArgs']]:
+        """
+        repeat this rule
+        """
+        return pulumi.get(self, "repeat")
+
+    @repeat.setter
+    def repeat(self, value: Optional[pulumi.Input['EscalationPolicyRuleRepeatArgs']]):
+        pulumi.set(self, "repeat", value)
+
+    @property
+    @pulumi.getter(name="roundRobin")
+    def round_robin(self) -> Optional[pulumi.Input['EscalationPolicyRuleRoundRobinArgs']]:
+        return pulumi.get(self, "round_robin")
+
+    @round_robin.setter
+    def round_robin(self, value: Optional[pulumi.Input['EscalationPolicyRuleRoundRobinArgs']]):
+        pulumi.set(self, "round_robin", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRuleRepeatArgs:
+    def __init__(__self__, *,
+                 delay_minutes: pulumi.Input[int],
+                 times: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] delay_minutes: repeat after minutes
+        :param pulumi.Input[int] times: repeat times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> pulumi.Input[int]:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @delay_minutes.setter
+    def delay_minutes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "delay_minutes", value)
+
+    @property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[int]:
+        """
+        repeat times
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[int]):
+        pulumi.set(self, "times", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRuleRoundRobinArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 rotation: Optional[pulumi.Input['EscalationPolicyRuleRoundRobinRotationArgs']] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enables Round Robin escalation within this layer
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation is not None:
+            pulumi.set(__self__, "rotation", rotation)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enables Round Robin escalation within this layer
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def rotation(self) -> Optional[pulumi.Input['EscalationPolicyRuleRoundRobinRotationArgs']]:
+        return pulumi.get(self, "rotation")
+
+    @rotation.setter
+    def rotation(self, value: Optional[pulumi.Input['EscalationPolicyRuleRoundRobinRotationArgs']]):
+        pulumi.set(self, "rotation", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRuleRoundRobinRotationArgs:
+    def __init__(__self__, *,
+                 delay_minutes: Optional[pulumi.Input[int]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] delay_minutes: repeat after minutes
+        :param pulumi.Input[bool] enabled: enable rotation within
+        """
+        if delay_minutes is not None:
+            pulumi.set(__self__, "delay_minutes", delay_minutes)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @delay_minutes.setter
+    def delay_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "delay_minutes", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable rotation within
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class EscalationPolicyRuleTargetArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: ID of the target
+        :param pulumi.Input[str] type: Type of the target. (user, squad, schedule, schedulev2)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the target
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the target. (user, squad, schedule, schedulev2)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class GerEntityOwnerArgs:
@@ -64,6 +436,43 @@ class GerEntityOwnerArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class RoutingRuleV2BasicExpressionArgs:
+    def __init__(__self__, *,
+                 lhs: pulumi.Input[str],
+                 rhs: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] lhs: left hand side dropdown value
+        :param pulumi.Input[str] rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> pulumi.Input[str]:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @lhs.setter
+    def lhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lhs", value)
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> pulumi.Input[str]:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+    @rhs.setter
+    def rhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rhs", value)
 
 
 @pulumi.input_type
@@ -120,6 +529,224 @@ class RunbookStepArgs:
 
 
 @pulumi.input_type
+class ScheduleRotationV2ParticipantGroupArgs:
+    def __init__(__self__, *,
+                 participants: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRotationV2ParticipantGroupParticipantArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ScheduleRotationV2ParticipantGroupParticipantArgs']]] participants: Group participants.
+        """
+        if participants is not None:
+            pulumi.set(__self__, "participants", participants)
+
+    @property
+    @pulumi.getter
+    def participants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRotationV2ParticipantGroupParticipantArgs']]]]:
+        """
+        Group participants.
+        """
+        return pulumi.get(self, "participants")
+
+    @participants.setter
+    def participants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleRotationV2ParticipantGroupParticipantArgs']]]]):
+        pulumi.set(self, "participants", value)
+
+
+@pulumi.input_type
+class ScheduleRotationV2ParticipantGroupParticipantArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Participant id.
+        :param pulumi.Input[str] type: Participant type (user, team, squad).
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Participant id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Participant type (user, team, squad).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ScheduleRotationV2ShiftTimeslotArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[int],
+                 start_hour: pulumi.Input[int],
+                 start_minute: pulumi.Input[int],
+                 day_of_week: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] duration: Defines the duration of each shift. (in minutes)
+        :param pulumi.Input[int] start_hour: Defines the start hour of the each shift in the schedule timezone.
+        :param pulumi.Input[int] start_minute: Defines the start minute of the each shift in the schedule timezone.
+        :param pulumi.Input[str] day_of_week: Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "start_minute", start_minute)
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[int]:
+        """
+        Defines the duration of each shift. (in minutes)
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> pulumi.Input[int]:
+        """
+        Defines the start hour of the each shift in the schedule timezone.
+        """
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: pulumi.Input[int]):
+        pulumi.set(self, "start_hour", value)
+
+    @property
+    @pulumi.getter(name="startMinute")
+    def start_minute(self) -> pulumi.Input[int]:
+        """
+        Defines the start minute of the each shift in the schedule timezone.
+        """
+        return pulumi.get(self, "start_minute")
+
+    @start_minute.setter
+    def start_minute(self, value: pulumi.Input[int]):
+        pulumi.set(self, "start_minute", value)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "day_of_week", value)
+
+
+@pulumi.input_type
+class ScheduleV2EntityOwnerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Schedule owner id.
+        :param pulumi.Input[str] type: Schedule owner type. Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Schedule owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Schedule owner type. Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ScheduleV2TagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 color: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: Schedule tag key.
+        :param pulumi.Input[str] value: Schedule tag value.
+        :param pulumi.Input[str] color: Schedule tag color.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Schedule tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Schedule tag value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schedule tag color.
+        """
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "color", value)
+
+
+@pulumi.input_type
 class ServiceMaintainerArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
@@ -154,6 +781,75 @@ class ServiceMaintainerArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServiceMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input[str],
+                 till: pulumi.Input[str],
+                 repeat_frequency: Optional[pulumi.Input[str]] = None,
+                 repeat_till: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] from_: Starting Time
+        :param pulumi.Input[str] till: End Time.
+        :param pulumi.Input[str] repeat_frequency: repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+        :param pulumi.Input[str] repeat_till: Till when you want to repeat this Maintenance mode
+        """
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "till", till)
+        if repeat_frequency is not None:
+            pulumi.set(__self__, "repeat_frequency", repeat_frequency)
+        if repeat_till is not None:
+            pulumi.set(__self__, "repeat_till", repeat_till)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input[str]:
+        """
+        Starting Time
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input[str]):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def till(self) -> pulumi.Input[str]:
+        """
+        End Time.
+        """
+        return pulumi.get(self, "till")
+
+    @till.setter
+    def till(self, value: pulumi.Input[str]):
+        pulumi.set(self, "till", value)
+
+    @property
+    @pulumi.getter(name="repeatFrequency")
+    def repeat_frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+        """
+        return pulumi.get(self, "repeat_frequency")
+
+    @repeat_frequency.setter
+    def repeat_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repeat_frequency", value)
+
+    @property
+    @pulumi.getter(name="repeatTill")
+    def repeat_till(self) -> Optional[pulumi.Input[str]]:
+        """
+        Till when you want to repeat this Maintenance mode
+        """
+        return pulumi.get(self, "repeat_till")
+
+    @repeat_till.setter
+    def repeat_till(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repeat_till", value)
 
 
 @pulumi.input_type
@@ -404,6 +1100,452 @@ class SloRuleArgs:
 
 
 @pulumi.input_type
+class StatusPageOwnerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] id: Status page owner id.
+        :param pulumi.Input[str] type: Status page owner type Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Status page owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Status page owner type Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class StatusPageThemeColorArgs:
+    def __init__(__self__, *,
+                 primary: pulumi.Input[str],
+                 secondary: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] primary: Primary color.
+        :param pulumi.Input[str] secondary: Secondary color.
+        """
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> pulumi.Input[str]:
+        """
+        Primary color.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "primary", value)
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> pulumi.Input[str]:
+        """
+        Secondary color.
+        """
+        return pulumi.get(self, "secondary")
+
+    @secondary.setter
+    def secondary(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secondary", value)
+
+
+@pulumi.input_type
+class SuppressionRuleV2BasicExpressionArgs:
+    def __init__(__self__, *,
+                 lhs: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 rhs: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] lhs: left hand side dropdown value
+        :param pulumi.Input[str] op: operator (is, is*not, matches, not*contains)
+        :param pulumi.Input[str] rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> pulumi.Input[str]:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @lhs.setter
+    def lhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lhs", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> pulumi.Input[str]:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+    @rhs.setter
+    def rhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rhs", value)
+
+
+@pulumi.input_type
+class SuppressionRuleV2TimeslotArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[str],
+                 ends_on: pulumi.Input[str],
+                 repetition: pulumi.Input[str],
+                 start_time: pulumi.Input[str],
+                 time_zone: pulumi.Input[str],
+                 customs: Optional[pulumi.Input[Sequence[pulumi.Input['SuppressionRuleV2TimeslotCustomArgs']]]] = None,
+                 ends_never: Optional[pulumi.Input[bool]] = None,
+                 is_allday: Optional[pulumi.Input[bool]] = None,
+                 is_custom: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] end_time: Defines the end date of the time slot
+        :param pulumi.Input[str] ends_on: Defines the end date of the repetition
+        :param pulumi.Input[str] repetition: Defines the repetition of the time slot
+        :param pulumi.Input[str] start_time: Defines the start date of the time slot
+        :param pulumi.Input[str] time_zone: Time zone for the time slot
+        :param pulumi.Input[Sequence[pulumi.Input['SuppressionRuleV2TimeslotCustomArgs']]] customs: Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+        :param pulumi.Input[bool] ends_never: Defines whether the time slot ends or not
+        :param pulumi.Input[bool] is_allday: Defines if the time slot is an all day slot
+        :param pulumi.Input[bool] is_custom: Defines whether repetition is custom or not
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "ends_on", ends_on)
+        pulumi.set(__self__, "repetition", repetition)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if ends_never is not None:
+            pulumi.set(__self__, "ends_never", ends_never)
+        if is_allday is not None:
+            pulumi.set(__self__, "is_allday", is_allday)
+        if is_custom is not None:
+            pulumi.set(__self__, "is_custom", is_custom)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        Defines the end date of the time slot
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="endsOn")
+    def ends_on(self) -> pulumi.Input[str]:
+        """
+        Defines the end date of the repetition
+        """
+        return pulumi.get(self, "ends_on")
+
+    @ends_on.setter
+    def ends_on(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ends_on", value)
+
+    @property
+    @pulumi.getter
+    def repetition(self) -> pulumi.Input[str]:
+        """
+        Defines the repetition of the time slot
+        """
+        return pulumi.get(self, "repetition")
+
+    @repetition.setter
+    def repetition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repetition", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Defines the start date of the time slot
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        Time zone for the time slot
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SuppressionRuleV2TimeslotCustomArgs']]]]:
+        """
+        Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+        """
+        return pulumi.get(self, "customs")
+
+    @customs.setter
+    def customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SuppressionRuleV2TimeslotCustomArgs']]]]):
+        pulumi.set(self, "customs", value)
+
+    @property
+    @pulumi.getter(name="endsNever")
+    def ends_never(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the time slot ends or not
+        """
+        return pulumi.get(self, "ends_never")
+
+    @ends_never.setter
+    def ends_never(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ends_never", value)
+
+    @property
+    @pulumi.getter(name="isAllday")
+    def is_allday(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if the time slot is an all day slot
+        """
+        return pulumi.get(self, "is_allday")
+
+    @is_allday.setter
+    def is_allday(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_allday", value)
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether repetition is custom or not
+        """
+        return pulumi.get(self, "is_custom")
+
+    @is_custom.setter
+    def is_custom(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_custom", value)
+
+
+@pulumi.input_type
+class SuppressionRuleV2TimeslotCustomArgs:
+    def __init__(__self__, *,
+                 repeats: pulumi.Input[str],
+                 repeats_count: Optional[pulumi.Input[int]] = None,
+                 repeats_on_month: Optional[pulumi.Input[str]] = None,
+                 repeats_on_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[str] repeats: Determines how often the rule repeats. Valid values are day, week, month.
+        :param pulumi.Input[int] repeats_count: Number of times to repeat.
+        :param pulumi.Input[str] repeats_on_month: Repeats on month.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] repeats_on_weekdays: List of weekdays to repeat on.
+        """
+        pulumi.set(__self__, "repeats", repeats)
+        if repeats_count is not None:
+            pulumi.set(__self__, "repeats_count", repeats_count)
+        if repeats_on_month is not None:
+            pulumi.set(__self__, "repeats_on_month", repeats_on_month)
+        if repeats_on_weekdays is not None:
+            pulumi.set(__self__, "repeats_on_weekdays", repeats_on_weekdays)
+
+    @property
+    @pulumi.getter
+    def repeats(self) -> pulumi.Input[str]:
+        """
+        Determines how often the rule repeats. Valid values are day, week, month.
+        """
+        return pulumi.get(self, "repeats")
+
+    @repeats.setter
+    def repeats(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repeats", value)
+
+    @property
+    @pulumi.getter(name="repeatsCount")
+    def repeats_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of times to repeat.
+        """
+        return pulumi.get(self, "repeats_count")
+
+    @repeats_count.setter
+    def repeats_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "repeats_count", value)
+
+    @property
+    @pulumi.getter(name="repeatsOnMonth")
+    def repeats_on_month(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repeats on month.
+        """
+        return pulumi.get(self, "repeats_on_month")
+
+    @repeats_on_month.setter
+    def repeats_on_month(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repeats_on_month", value)
+
+    @property
+    @pulumi.getter(name="repeatsOnWeekdays")
+    def repeats_on_weekdays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        List of weekdays to repeat on.
+        """
+        return pulumi.get(self, "repeats_on_weekdays")
+
+    @repeats_on_weekdays.setter
+    def repeats_on_weekdays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "repeats_on_weekdays", value)
+
+
+@pulumi.input_type
+class TaggingRuleV2BasicExpressionArgs:
+    def __init__(__self__, *,
+                 lhs: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 rhs: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] lhs: left hand side dropdown value
+        :param pulumi.Input[str] op: operator (is, is*not, matches, not*contains)
+        :param pulumi.Input[str] rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> pulumi.Input[str]:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @lhs.setter
+    def lhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "lhs", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> pulumi.Input[str]:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+    @rhs.setter
+    def rhs(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rhs", value)
+
+
+@pulumi.input_type
+class TaggingRuleV2TagArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] color: Tag color, hex values
+        :param pulumi.Input[str] key: key
+        :param pulumi.Input[str] value: value
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[str]:
+        """
+        Tag color, hex values
+        """
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[str]):
+        pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        key
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class WebformInputFieldArgs:
     def __init__(__self__, *,
                  label: Optional[pulumi.Input[str]] = None,
@@ -585,6 +1727,170 @@ class WebformSeverityArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class WorkflowActionChannelArgs:
+    def __init__(__self__, *,
+                 display_text: pulumi.Input[str],
+                 link: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] display_text: The display text of the communication channel
+        :param pulumi.Input[str] link: The link of the communication channel
+        :param pulumi.Input[str] type: The type of the communication channel
+        """
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> pulumi.Input[str]:
+        """
+        The display text of the communication channel
+        """
+        return pulumi.get(self, "display_text")
+
+    @display_text.setter
+    def display_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_text", value)
+
+    @property
+    @pulumi.getter
+    def link(self) -> pulumi.Input[str]:
+        """
+        The link of the communication channel
+        """
+        return pulumi.get(self, "link")
+
+    @link.setter
+    def link(self, value: pulumi.Input[str]):
+        pulumi.set(self, "link", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the communication channel
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class WorkflowActionComponentAndImpactArgs:
+    def __init__(__self__, *,
+                 component_id: pulumi.Input[int],
+                 impact_status_id: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] component_id: The ID of the component
+        :param pulumi.Input[int] impact_status_id: The ID of the impact status
+        """
+        pulumi.set(__self__, "component_id", component_id)
+        pulumi.set(__self__, "impact_status_id", impact_status_id)
+
+    @property
+    @pulumi.getter(name="componentId")
+    def component_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the component
+        """
+        return pulumi.get(self, "component_id")
+
+    @component_id.setter
+    def component_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "component_id", value)
+
+    @property
+    @pulumi.getter(name="impactStatusId")
+    def impact_status_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the impact status
+        """
+        return pulumi.get(self, "impact_status_id")
+
+    @impact_status_id.setter
+    def impact_status_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "impact_status_id", value)
+
+
+@pulumi.input_type
+class WorkflowActionHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The key of the header
+        :param pulumi.Input[str] value: The value of the header
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key of the header
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the header
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class WorkflowActionStatusAndMessageArgs:
+    def __init__(__self__, *,
+                 status_id: pulumi.Input[int],
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[int] status_id: The ID of the status
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] messages: The messages to be set for the issue
+        """
+        pulumi.set(__self__, "status_id", status_id)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+
+    @property
+    @pulumi.getter(name="statusId")
+    def status_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the status
+        """
+        return pulumi.get(self, "status_id")
+
+    @status_id.setter
+    def status_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "status_id", value)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The messages to be set for the issue
+        """
+        return pulumi.get(self, "messages")
+
+    @messages.setter
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "messages", value)
 
 
 @pulumi.input_type

@@ -181,7 +181,7 @@ class Role(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
+        $ pulumi import squadcast:Team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
         ```
 
         :param str resource_name: The name of the resource.
@@ -225,7 +225,7 @@ class Role(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
+        $ pulumi import squadcast:Team/role:Role example_resource_name "62d2fe23a57381088224d726:Admin"
         ```
 
         :param str resource_name: The name of the resource.
@@ -264,7 +264,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["team_id"] = team_id
             __props__.__dict__["default"] = None
         super(Role, __self__).__init__(
-            'squadcast:team/role:Role',
+            'squadcast:Team/role:Role',
             resource_name,
             __props__,
             opts)

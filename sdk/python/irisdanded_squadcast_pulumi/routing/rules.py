@@ -137,7 +137,7 @@ class Rules(pulumi.CustomResource):
         example_user = squadcast.get_user(email="test@example.com")
         example_service = squadcast.get_service(name="example service name",
             team_id=example_team.id)
-        example_escalaion_policy = squadcast.escalation.get_policy(name="example escalation policy name",
+        example_escalaion_policy = squadcast.get_escalation_policy(name="example escalation policy name",
             team_id=example_team.id)
         example_squad = squadcast.get_squad(name="example squad name",
             team_id=example_team.id)
@@ -198,7 +198,7 @@ class Rules(pulumi.CustomResource):
         example_user = squadcast.get_user(email="test@example.com")
         example_service = squadcast.get_service(name="example service name",
             team_id=example_team.id)
-        example_escalaion_policy = squadcast.escalation.get_policy(name="example escalation policy name",
+        example_escalaion_policy = squadcast.get_escalation_policy(name="example escalation policy name",
             team_id=example_team.id)
         example_squad = squadcast.get_squad(name="example squad name",
             team_id=example_team.id)

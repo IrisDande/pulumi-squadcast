@@ -8,11 +8,3 @@ import typing
 from .page import *
 from ._inputs import *
 from . import outputs
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import irisdanded_squadcast_pulumi.status.page as __page
-    page = __page
-else:
-    page = _utilities.lazy_import('irisdanded_squadcast_pulumi.status.page')
-

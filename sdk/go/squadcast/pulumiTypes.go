@@ -13,6 +13,1127 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DeduplicationRuleV2BasicExpression struct {
+	// left hand side dropdown value
+	Lhs string `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op string `pulumi:"op"`
+	// right hand side value
+	Rhs string `pulumi:"rhs"`
+}
+
+// DeduplicationRuleV2BasicExpressionInput is an input type that accepts DeduplicationRuleV2BasicExpressionArgs and DeduplicationRuleV2BasicExpressionOutput values.
+// You can construct a concrete instance of `DeduplicationRuleV2BasicExpressionInput` via:
+//
+//	DeduplicationRuleV2BasicExpressionArgs{...}
+type DeduplicationRuleV2BasicExpressionInput interface {
+	pulumi.Input
+
+	ToDeduplicationRuleV2BasicExpressionOutput() DeduplicationRuleV2BasicExpressionOutput
+	ToDeduplicationRuleV2BasicExpressionOutputWithContext(context.Context) DeduplicationRuleV2BasicExpressionOutput
+}
+
+type DeduplicationRuleV2BasicExpressionArgs struct {
+	// left hand side dropdown value
+	Lhs pulumi.StringInput `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op pulumi.StringInput `pulumi:"op"`
+	// right hand side value
+	Rhs pulumi.StringInput `pulumi:"rhs"`
+}
+
+func (DeduplicationRuleV2BasicExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeduplicationRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i DeduplicationRuleV2BasicExpressionArgs) ToDeduplicationRuleV2BasicExpressionOutput() DeduplicationRuleV2BasicExpressionOutput {
+	return i.ToDeduplicationRuleV2BasicExpressionOutputWithContext(context.Background())
+}
+
+func (i DeduplicationRuleV2BasicExpressionArgs) ToDeduplicationRuleV2BasicExpressionOutputWithContext(ctx context.Context) DeduplicationRuleV2BasicExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeduplicationRuleV2BasicExpressionOutput)
+}
+
+// DeduplicationRuleV2BasicExpressionArrayInput is an input type that accepts DeduplicationRuleV2BasicExpressionArray and DeduplicationRuleV2BasicExpressionArrayOutput values.
+// You can construct a concrete instance of `DeduplicationRuleV2BasicExpressionArrayInput` via:
+//
+//	DeduplicationRuleV2BasicExpressionArray{ DeduplicationRuleV2BasicExpressionArgs{...} }
+type DeduplicationRuleV2BasicExpressionArrayInput interface {
+	pulumi.Input
+
+	ToDeduplicationRuleV2BasicExpressionArrayOutput() DeduplicationRuleV2BasicExpressionArrayOutput
+	ToDeduplicationRuleV2BasicExpressionArrayOutputWithContext(context.Context) DeduplicationRuleV2BasicExpressionArrayOutput
+}
+
+type DeduplicationRuleV2BasicExpressionArray []DeduplicationRuleV2BasicExpressionInput
+
+func (DeduplicationRuleV2BasicExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeduplicationRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i DeduplicationRuleV2BasicExpressionArray) ToDeduplicationRuleV2BasicExpressionArrayOutput() DeduplicationRuleV2BasicExpressionArrayOutput {
+	return i.ToDeduplicationRuleV2BasicExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i DeduplicationRuleV2BasicExpressionArray) ToDeduplicationRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) DeduplicationRuleV2BasicExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeduplicationRuleV2BasicExpressionArrayOutput)
+}
+
+type DeduplicationRuleV2BasicExpressionOutput struct{ *pulumi.OutputState }
+
+func (DeduplicationRuleV2BasicExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeduplicationRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o DeduplicationRuleV2BasicExpressionOutput) ToDeduplicationRuleV2BasicExpressionOutput() DeduplicationRuleV2BasicExpressionOutput {
+	return o
+}
+
+func (o DeduplicationRuleV2BasicExpressionOutput) ToDeduplicationRuleV2BasicExpressionOutputWithContext(ctx context.Context) DeduplicationRuleV2BasicExpressionOutput {
+	return o
+}
+
+// left hand side dropdown value
+func (o DeduplicationRuleV2BasicExpressionOutput) Lhs() pulumi.StringOutput {
+	return o.ApplyT(func(v DeduplicationRuleV2BasicExpression) string { return v.Lhs }).(pulumi.StringOutput)
+}
+
+// operator (is, is*not, matches, not*contains)
+func (o DeduplicationRuleV2BasicExpressionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v DeduplicationRuleV2BasicExpression) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// right hand side value
+func (o DeduplicationRuleV2BasicExpressionOutput) Rhs() pulumi.StringOutput {
+	return o.ApplyT(func(v DeduplicationRuleV2BasicExpression) string { return v.Rhs }).(pulumi.StringOutput)
+}
+
+type DeduplicationRuleV2BasicExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (DeduplicationRuleV2BasicExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeduplicationRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o DeduplicationRuleV2BasicExpressionArrayOutput) ToDeduplicationRuleV2BasicExpressionArrayOutput() DeduplicationRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o DeduplicationRuleV2BasicExpressionArrayOutput) ToDeduplicationRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) DeduplicationRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o DeduplicationRuleV2BasicExpressionArrayOutput) Index(i pulumi.IntInput) DeduplicationRuleV2BasicExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeduplicationRuleV2BasicExpression {
+		return vs[0].([]DeduplicationRuleV2BasicExpression)[vs[1].(int)]
+	}).(DeduplicationRuleV2BasicExpressionOutput)
+}
+
+type EscalationPolicyEntityOwner struct {
+	// Escalation policy owner id.
+	Id string `pulumi:"id"`
+	// Escalation policy owner type. Supported values are 'user' or 'squad'.
+	Type string `pulumi:"type"`
+}
+
+// EscalationPolicyEntityOwnerInput is an input type that accepts EscalationPolicyEntityOwnerArgs and EscalationPolicyEntityOwnerOutput values.
+// You can construct a concrete instance of `EscalationPolicyEntityOwnerInput` via:
+//
+//	EscalationPolicyEntityOwnerArgs{...}
+type EscalationPolicyEntityOwnerInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyEntityOwnerOutput() EscalationPolicyEntityOwnerOutput
+	ToEscalationPolicyEntityOwnerOutputWithContext(context.Context) EscalationPolicyEntityOwnerOutput
+}
+
+type EscalationPolicyEntityOwnerArgs struct {
+	// Escalation policy owner id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Escalation policy owner type. Supported values are 'user' or 'squad'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (EscalationPolicyEntityOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (i EscalationPolicyEntityOwnerArgs) ToEscalationPolicyEntityOwnerOutput() EscalationPolicyEntityOwnerOutput {
+	return i.ToEscalationPolicyEntityOwnerOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyEntityOwnerArgs) ToEscalationPolicyEntityOwnerOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyEntityOwnerOutput)
+}
+
+func (i EscalationPolicyEntityOwnerArgs) ToEscalationPolicyEntityOwnerPtrOutput() EscalationPolicyEntityOwnerPtrOutput {
+	return i.ToEscalationPolicyEntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyEntityOwnerArgs) ToEscalationPolicyEntityOwnerPtrOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyEntityOwnerOutput).ToEscalationPolicyEntityOwnerPtrOutputWithContext(ctx)
+}
+
+// EscalationPolicyEntityOwnerPtrInput is an input type that accepts EscalationPolicyEntityOwnerArgs, EscalationPolicyEntityOwnerPtr and EscalationPolicyEntityOwnerPtrOutput values.
+// You can construct a concrete instance of `EscalationPolicyEntityOwnerPtrInput` via:
+//
+//	        EscalationPolicyEntityOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type EscalationPolicyEntityOwnerPtrInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyEntityOwnerPtrOutput() EscalationPolicyEntityOwnerPtrOutput
+	ToEscalationPolicyEntityOwnerPtrOutputWithContext(context.Context) EscalationPolicyEntityOwnerPtrOutput
+}
+
+type escalationPolicyEntityOwnerPtrType EscalationPolicyEntityOwnerArgs
+
+func EscalationPolicyEntityOwnerPtr(v *EscalationPolicyEntityOwnerArgs) EscalationPolicyEntityOwnerPtrInput {
+	return (*escalationPolicyEntityOwnerPtrType)(v)
+}
+
+func (*escalationPolicyEntityOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (i *escalationPolicyEntityOwnerPtrType) ToEscalationPolicyEntityOwnerPtrOutput() EscalationPolicyEntityOwnerPtrOutput {
+	return i.ToEscalationPolicyEntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *escalationPolicyEntityOwnerPtrType) ToEscalationPolicyEntityOwnerPtrOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyEntityOwnerPtrOutput)
+}
+
+type EscalationPolicyEntityOwnerOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyEntityOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (o EscalationPolicyEntityOwnerOutput) ToEscalationPolicyEntityOwnerOutput() EscalationPolicyEntityOwnerOutput {
+	return o
+}
+
+func (o EscalationPolicyEntityOwnerOutput) ToEscalationPolicyEntityOwnerOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerOutput {
+	return o
+}
+
+func (o EscalationPolicyEntityOwnerOutput) ToEscalationPolicyEntityOwnerPtrOutput() EscalationPolicyEntityOwnerPtrOutput {
+	return o.ToEscalationPolicyEntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o EscalationPolicyEntityOwnerOutput) ToEscalationPolicyEntityOwnerPtrOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EscalationPolicyEntityOwner) *EscalationPolicyEntityOwner {
+		return &v
+	}).(EscalationPolicyEntityOwnerPtrOutput)
+}
+
+// Escalation policy owner id.
+func (o EscalationPolicyEntityOwnerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EscalationPolicyEntityOwner) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Escalation policy owner type. Supported values are 'user' or 'squad'.
+func (o EscalationPolicyEntityOwnerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EscalationPolicyEntityOwner) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EscalationPolicyEntityOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyEntityOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (o EscalationPolicyEntityOwnerPtrOutput) ToEscalationPolicyEntityOwnerPtrOutput() EscalationPolicyEntityOwnerPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyEntityOwnerPtrOutput) ToEscalationPolicyEntityOwnerPtrOutputWithContext(ctx context.Context) EscalationPolicyEntityOwnerPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyEntityOwnerPtrOutput) Elem() EscalationPolicyEntityOwnerOutput {
+	return o.ApplyT(func(v *EscalationPolicyEntityOwner) EscalationPolicyEntityOwner {
+		if v != nil {
+			return *v
+		}
+		var ret EscalationPolicyEntityOwner
+		return ret
+	}).(EscalationPolicyEntityOwnerOutput)
+}
+
+// Escalation policy owner id.
+func (o EscalationPolicyEntityOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyEntityOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Escalation policy owner type. Supported values are 'user' or 'squad'.
+func (o EscalationPolicyEntityOwnerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyEntityOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type EscalationPolicyRepeat struct {
+	// The number of minutes to wait before repeating the escalation policy
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+	Times int `pulumi:"times"`
+}
+
+// EscalationPolicyRepeatInput is an input type that accepts EscalationPolicyRepeatArgs and EscalationPolicyRepeatOutput values.
+// You can construct a concrete instance of `EscalationPolicyRepeatInput` via:
+//
+//	EscalationPolicyRepeatArgs{...}
+type EscalationPolicyRepeatInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRepeatOutput() EscalationPolicyRepeatOutput
+	ToEscalationPolicyRepeatOutputWithContext(context.Context) EscalationPolicyRepeatOutput
+}
+
+type EscalationPolicyRepeatArgs struct {
+	// The number of minutes to wait before repeating the escalation policy
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (EscalationPolicyRepeatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (i EscalationPolicyRepeatArgs) ToEscalationPolicyRepeatOutput() EscalationPolicyRepeatOutput {
+	return i.ToEscalationPolicyRepeatOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRepeatArgs) ToEscalationPolicyRepeatOutputWithContext(ctx context.Context) EscalationPolicyRepeatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRepeatOutput)
+}
+
+func (i EscalationPolicyRepeatArgs) ToEscalationPolicyRepeatPtrOutput() EscalationPolicyRepeatPtrOutput {
+	return i.ToEscalationPolicyRepeatPtrOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRepeatArgs) ToEscalationPolicyRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRepeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRepeatOutput).ToEscalationPolicyRepeatPtrOutputWithContext(ctx)
+}
+
+// EscalationPolicyRepeatPtrInput is an input type that accepts EscalationPolicyRepeatArgs, EscalationPolicyRepeatPtr and EscalationPolicyRepeatPtrOutput values.
+// You can construct a concrete instance of `EscalationPolicyRepeatPtrInput` via:
+//
+//	        EscalationPolicyRepeatArgs{...}
+//
+//	or:
+//
+//	        nil
+type EscalationPolicyRepeatPtrInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRepeatPtrOutput() EscalationPolicyRepeatPtrOutput
+	ToEscalationPolicyRepeatPtrOutputWithContext(context.Context) EscalationPolicyRepeatPtrOutput
+}
+
+type escalationPolicyRepeatPtrType EscalationPolicyRepeatArgs
+
+func EscalationPolicyRepeatPtr(v *EscalationPolicyRepeatArgs) EscalationPolicyRepeatPtrInput {
+	return (*escalationPolicyRepeatPtrType)(v)
+}
+
+func (*escalationPolicyRepeatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (i *escalationPolicyRepeatPtrType) ToEscalationPolicyRepeatPtrOutput() EscalationPolicyRepeatPtrOutput {
+	return i.ToEscalationPolicyRepeatPtrOutputWithContext(context.Background())
+}
+
+func (i *escalationPolicyRepeatPtrType) ToEscalationPolicyRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRepeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRepeatPtrOutput)
+}
+
+type EscalationPolicyRepeatOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRepeatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (o EscalationPolicyRepeatOutput) ToEscalationPolicyRepeatOutput() EscalationPolicyRepeatOutput {
+	return o
+}
+
+func (o EscalationPolicyRepeatOutput) ToEscalationPolicyRepeatOutputWithContext(ctx context.Context) EscalationPolicyRepeatOutput {
+	return o
+}
+
+func (o EscalationPolicyRepeatOutput) ToEscalationPolicyRepeatPtrOutput() EscalationPolicyRepeatPtrOutput {
+	return o.ToEscalationPolicyRepeatPtrOutputWithContext(context.Background())
+}
+
+func (o EscalationPolicyRepeatOutput) ToEscalationPolicyRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRepeatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EscalationPolicyRepeat) *EscalationPolicyRepeat {
+		return &v
+	}).(EscalationPolicyRepeatPtrOutput)
+}
+
+// The number of minutes to wait before repeating the escalation policy
+func (o EscalationPolicyRepeatOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v EscalationPolicyRepeat) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+func (o EscalationPolicyRepeatOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v EscalationPolicyRepeat) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type EscalationPolicyRepeatPtrOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRepeatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (o EscalationPolicyRepeatPtrOutput) ToEscalationPolicyRepeatPtrOutput() EscalationPolicyRepeatPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRepeatPtrOutput) ToEscalationPolicyRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRepeatPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRepeatPtrOutput) Elem() EscalationPolicyRepeatOutput {
+	return o.ApplyT(func(v *EscalationPolicyRepeat) EscalationPolicyRepeat {
+		if v != nil {
+			return *v
+		}
+		var ret EscalationPolicyRepeat
+		return ret
+	}).(EscalationPolicyRepeatOutput)
+}
+
+// The number of minutes to wait before repeating the escalation policy
+func (o EscalationPolicyRepeatPtrOutput) DelayMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRepeat) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DelayMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+func (o EscalationPolicyRepeatPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRepeat) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type EscalationPolicyRule struct {
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// Notification channels to notify the targets. (SMS, Phone, Email, Push)
+	NotificationChannels []string `pulumi:"notificationChannels"`
+	// repeat this rule
+	Repeat     *EscalationPolicyRuleRepeat     `pulumi:"repeat"`
+	RoundRobin *EscalationPolicyRuleRoundRobin `pulumi:"roundRobin"`
+	Targets    []EscalationPolicyRuleTarget    `pulumi:"targets"`
+}
+
+// EscalationPolicyRuleInput is an input type that accepts EscalationPolicyRuleArgs and EscalationPolicyRuleOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleInput` via:
+//
+//	EscalationPolicyRuleArgs{...}
+type EscalationPolicyRuleInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleOutput() EscalationPolicyRuleOutput
+	ToEscalationPolicyRuleOutputWithContext(context.Context) EscalationPolicyRuleOutput
+}
+
+type EscalationPolicyRuleArgs struct {
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// Notification channels to notify the targets. (SMS, Phone, Email, Push)
+	NotificationChannels pulumi.StringArrayInput `pulumi:"notificationChannels"`
+	// repeat this rule
+	Repeat     EscalationPolicyRuleRepeatPtrInput     `pulumi:"repeat"`
+	RoundRobin EscalationPolicyRuleRoundRobinPtrInput `pulumi:"roundRobin"`
+	Targets    EscalationPolicyRuleTargetArrayInput   `pulumi:"targets"`
+}
+
+func (EscalationPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRule)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleArgs) ToEscalationPolicyRuleOutput() EscalationPolicyRuleOutput {
+	return i.ToEscalationPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleArgs) ToEscalationPolicyRuleOutputWithContext(ctx context.Context) EscalationPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleOutput)
+}
+
+// EscalationPolicyRuleArrayInput is an input type that accepts EscalationPolicyRuleArray and EscalationPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleArrayInput` via:
+//
+//	EscalationPolicyRuleArray{ EscalationPolicyRuleArgs{...} }
+type EscalationPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleArrayOutput() EscalationPolicyRuleArrayOutput
+	ToEscalationPolicyRuleArrayOutputWithContext(context.Context) EscalationPolicyRuleArrayOutput
+}
+
+type EscalationPolicyRuleArray []EscalationPolicyRuleInput
+
+func (EscalationPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPolicyRule)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleArray) ToEscalationPolicyRuleArrayOutput() EscalationPolicyRuleArrayOutput {
+	return i.ToEscalationPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleArray) ToEscalationPolicyRuleArrayOutputWithContext(ctx context.Context) EscalationPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleArrayOutput)
+}
+
+type EscalationPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRule)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleOutput) ToEscalationPolicyRuleOutput() EscalationPolicyRuleOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleOutput) ToEscalationPolicyRuleOutputWithContext(ctx context.Context) EscalationPolicyRuleOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v EscalationPolicyRule) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// Notification channels to notify the targets. (SMS, Phone, Email, Push)
+func (o EscalationPolicyRuleOutput) NotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EscalationPolicyRule) []string { return v.NotificationChannels }).(pulumi.StringArrayOutput)
+}
+
+// repeat this rule
+func (o EscalationPolicyRuleOutput) Repeat() EscalationPolicyRuleRepeatPtrOutput {
+	return o.ApplyT(func(v EscalationPolicyRule) *EscalationPolicyRuleRepeat { return v.Repeat }).(EscalationPolicyRuleRepeatPtrOutput)
+}
+
+func (o EscalationPolicyRuleOutput) RoundRobin() EscalationPolicyRuleRoundRobinPtrOutput {
+	return o.ApplyT(func(v EscalationPolicyRule) *EscalationPolicyRuleRoundRobin { return v.RoundRobin }).(EscalationPolicyRuleRoundRobinPtrOutput)
+}
+
+func (o EscalationPolicyRuleOutput) Targets() EscalationPolicyRuleTargetArrayOutput {
+	return o.ApplyT(func(v EscalationPolicyRule) []EscalationPolicyRuleTarget { return v.Targets }).(EscalationPolicyRuleTargetArrayOutput)
+}
+
+type EscalationPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPolicyRule)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleArrayOutput) ToEscalationPolicyRuleArrayOutput() EscalationPolicyRuleArrayOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleArrayOutput) ToEscalationPolicyRuleArrayOutputWithContext(ctx context.Context) EscalationPolicyRuleArrayOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleArrayOutput) Index(i pulumi.IntInput) EscalationPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EscalationPolicyRule {
+		return vs[0].([]EscalationPolicyRule)[vs[1].(int)]
+	}).(EscalationPolicyRuleOutput)
+}
+
+type EscalationPolicyRuleRepeat struct {
+	// repeat after minutes
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// repeat times
+	Times int `pulumi:"times"`
+}
+
+// EscalationPolicyRuleRepeatInput is an input type that accepts EscalationPolicyRuleRepeatArgs and EscalationPolicyRuleRepeatOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRepeatInput` via:
+//
+//	EscalationPolicyRuleRepeatArgs{...}
+type EscalationPolicyRuleRepeatInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRepeatOutput() EscalationPolicyRuleRepeatOutput
+	ToEscalationPolicyRuleRepeatOutputWithContext(context.Context) EscalationPolicyRuleRepeatOutput
+}
+
+type EscalationPolicyRuleRepeatArgs struct {
+	// repeat after minutes
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// repeat times
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (EscalationPolicyRuleRepeatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleRepeatArgs) ToEscalationPolicyRuleRepeatOutput() EscalationPolicyRuleRepeatOutput {
+	return i.ToEscalationPolicyRuleRepeatOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRepeatArgs) ToEscalationPolicyRuleRepeatOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRepeatOutput)
+}
+
+func (i EscalationPolicyRuleRepeatArgs) ToEscalationPolicyRuleRepeatPtrOutput() EscalationPolicyRuleRepeatPtrOutput {
+	return i.ToEscalationPolicyRuleRepeatPtrOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRepeatArgs) ToEscalationPolicyRuleRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRepeatOutput).ToEscalationPolicyRuleRepeatPtrOutputWithContext(ctx)
+}
+
+// EscalationPolicyRuleRepeatPtrInput is an input type that accepts EscalationPolicyRuleRepeatArgs, EscalationPolicyRuleRepeatPtr and EscalationPolicyRuleRepeatPtrOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRepeatPtrInput` via:
+//
+//	        EscalationPolicyRuleRepeatArgs{...}
+//
+//	or:
+//
+//	        nil
+type EscalationPolicyRuleRepeatPtrInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRepeatPtrOutput() EscalationPolicyRuleRepeatPtrOutput
+	ToEscalationPolicyRuleRepeatPtrOutputWithContext(context.Context) EscalationPolicyRuleRepeatPtrOutput
+}
+
+type escalationPolicyRuleRepeatPtrType EscalationPolicyRuleRepeatArgs
+
+func EscalationPolicyRuleRepeatPtr(v *EscalationPolicyRuleRepeatArgs) EscalationPolicyRuleRepeatPtrInput {
+	return (*escalationPolicyRuleRepeatPtrType)(v)
+}
+
+func (*escalationPolicyRuleRepeatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (i *escalationPolicyRuleRepeatPtrType) ToEscalationPolicyRuleRepeatPtrOutput() EscalationPolicyRuleRepeatPtrOutput {
+	return i.ToEscalationPolicyRuleRepeatPtrOutputWithContext(context.Background())
+}
+
+func (i *escalationPolicyRuleRepeatPtrType) ToEscalationPolicyRuleRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRepeatPtrOutput)
+}
+
+type EscalationPolicyRuleRepeatOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRepeatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRepeatOutput) ToEscalationPolicyRuleRepeatOutput() EscalationPolicyRuleRepeatOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRepeatOutput) ToEscalationPolicyRuleRepeatOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRepeatOutput) ToEscalationPolicyRuleRepeatPtrOutput() EscalationPolicyRuleRepeatPtrOutput {
+	return o.ToEscalationPolicyRuleRepeatPtrOutputWithContext(context.Background())
+}
+
+func (o EscalationPolicyRuleRepeatOutput) ToEscalationPolicyRuleRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EscalationPolicyRuleRepeat) *EscalationPolicyRuleRepeat {
+		return &v
+	}).(EscalationPolicyRuleRepeatPtrOutput)
+}
+
+// repeat after minutes
+func (o EscalationPolicyRuleRepeatOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRepeat) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// repeat times
+func (o EscalationPolicyRuleRepeatOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRepeat) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type EscalationPolicyRuleRepeatPtrOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRepeatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRepeatPtrOutput) ToEscalationPolicyRuleRepeatPtrOutput() EscalationPolicyRuleRepeatPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRepeatPtrOutput) ToEscalationPolicyRuleRepeatPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRepeatPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRepeatPtrOutput) Elem() EscalationPolicyRuleRepeatOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRepeat) EscalationPolicyRuleRepeat {
+		if v != nil {
+			return *v
+		}
+		var ret EscalationPolicyRuleRepeat
+		return ret
+	}).(EscalationPolicyRuleRepeatOutput)
+}
+
+// repeat after minutes
+func (o EscalationPolicyRuleRepeatPtrOutput) DelayMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRepeat) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DelayMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// repeat times
+func (o EscalationPolicyRuleRepeatPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRepeat) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobin struct {
+	// Enables Round Robin escalation within this layer
+	Enabled  bool                                    `pulumi:"enabled"`
+	Rotation *EscalationPolicyRuleRoundRobinRotation `pulumi:"rotation"`
+}
+
+// EscalationPolicyRuleRoundRobinInput is an input type that accepts EscalationPolicyRuleRoundRobinArgs and EscalationPolicyRuleRoundRobinOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRoundRobinInput` via:
+//
+//	EscalationPolicyRuleRoundRobinArgs{...}
+type EscalationPolicyRuleRoundRobinInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRoundRobinOutput() EscalationPolicyRuleRoundRobinOutput
+	ToEscalationPolicyRuleRoundRobinOutputWithContext(context.Context) EscalationPolicyRuleRoundRobinOutput
+}
+
+type EscalationPolicyRuleRoundRobinArgs struct {
+	// Enables Round Robin escalation within this layer
+	Enabled  pulumi.BoolInput                               `pulumi:"enabled"`
+	Rotation EscalationPolicyRuleRoundRobinRotationPtrInput `pulumi:"rotation"`
+}
+
+func (EscalationPolicyRuleRoundRobinArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleRoundRobinArgs) ToEscalationPolicyRuleRoundRobinOutput() EscalationPolicyRuleRoundRobinOutput {
+	return i.ToEscalationPolicyRuleRoundRobinOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRoundRobinArgs) ToEscalationPolicyRuleRoundRobinOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinOutput)
+}
+
+func (i EscalationPolicyRuleRoundRobinArgs) ToEscalationPolicyRuleRoundRobinPtrOutput() EscalationPolicyRuleRoundRobinPtrOutput {
+	return i.ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRoundRobinArgs) ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinOutput).ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(ctx)
+}
+
+// EscalationPolicyRuleRoundRobinPtrInput is an input type that accepts EscalationPolicyRuleRoundRobinArgs, EscalationPolicyRuleRoundRobinPtr and EscalationPolicyRuleRoundRobinPtrOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRoundRobinPtrInput` via:
+//
+//	        EscalationPolicyRuleRoundRobinArgs{...}
+//
+//	or:
+//
+//	        nil
+type EscalationPolicyRuleRoundRobinPtrInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRoundRobinPtrOutput() EscalationPolicyRuleRoundRobinPtrOutput
+	ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(context.Context) EscalationPolicyRuleRoundRobinPtrOutput
+}
+
+type escalationPolicyRuleRoundRobinPtrType EscalationPolicyRuleRoundRobinArgs
+
+func EscalationPolicyRuleRoundRobinPtr(v *EscalationPolicyRuleRoundRobinArgs) EscalationPolicyRuleRoundRobinPtrInput {
+	return (*escalationPolicyRuleRoundRobinPtrType)(v)
+}
+
+func (*escalationPolicyRuleRoundRobinPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (i *escalationPolicyRuleRoundRobinPtrType) ToEscalationPolicyRuleRoundRobinPtrOutput() EscalationPolicyRuleRoundRobinPtrOutput {
+	return i.ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(context.Background())
+}
+
+func (i *escalationPolicyRuleRoundRobinPtrType) ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobinOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRoundRobinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRoundRobinOutput) ToEscalationPolicyRuleRoundRobinOutput() EscalationPolicyRuleRoundRobinOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinOutput) ToEscalationPolicyRuleRoundRobinOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinOutput) ToEscalationPolicyRuleRoundRobinPtrOutput() EscalationPolicyRuleRoundRobinPtrOutput {
+	return o.ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(context.Background())
+}
+
+func (o EscalationPolicyRuleRoundRobinOutput) ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EscalationPolicyRuleRoundRobin) *EscalationPolicyRuleRoundRobin {
+		return &v
+	}).(EscalationPolicyRuleRoundRobinPtrOutput)
+}
+
+// Enables Round Robin escalation within this layer
+func (o EscalationPolicyRuleRoundRobinOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRoundRobin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o EscalationPolicyRuleRoundRobinOutput) Rotation() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRoundRobin) *EscalationPolicyRuleRoundRobinRotation { return v.Rotation }).(EscalationPolicyRuleRoundRobinRotationPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobinPtrOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRoundRobinPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRoundRobinPtrOutput) ToEscalationPolicyRuleRoundRobinPtrOutput() EscalationPolicyRuleRoundRobinPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinPtrOutput) ToEscalationPolicyRuleRoundRobinPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinPtrOutput) Elem() EscalationPolicyRuleRoundRobinOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobin) EscalationPolicyRuleRoundRobin {
+		if v != nil {
+			return *v
+		}
+		var ret EscalationPolicyRuleRoundRobin
+		return ret
+	}).(EscalationPolicyRuleRoundRobinOutput)
+}
+
+// Enables Round Robin escalation within this layer
+func (o EscalationPolicyRuleRoundRobinPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o EscalationPolicyRuleRoundRobinPtrOutput) Rotation() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobin) *EscalationPolicyRuleRoundRobinRotation {
+		if v == nil {
+			return nil
+		}
+		return v.Rotation
+	}).(EscalationPolicyRuleRoundRobinRotationPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobinRotation struct {
+	// repeat after minutes
+	DelayMinutes *int `pulumi:"delayMinutes"`
+	// enable rotation within
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// EscalationPolicyRuleRoundRobinRotationInput is an input type that accepts EscalationPolicyRuleRoundRobinRotationArgs and EscalationPolicyRuleRoundRobinRotationOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRoundRobinRotationInput` via:
+//
+//	EscalationPolicyRuleRoundRobinRotationArgs{...}
+type EscalationPolicyRuleRoundRobinRotationInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRoundRobinRotationOutput() EscalationPolicyRuleRoundRobinRotationOutput
+	ToEscalationPolicyRuleRoundRobinRotationOutputWithContext(context.Context) EscalationPolicyRuleRoundRobinRotationOutput
+}
+
+type EscalationPolicyRuleRoundRobinRotationArgs struct {
+	// repeat after minutes
+	DelayMinutes pulumi.IntPtrInput `pulumi:"delayMinutes"`
+	// enable rotation within
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (EscalationPolicyRuleRoundRobinRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleRoundRobinRotationArgs) ToEscalationPolicyRuleRoundRobinRotationOutput() EscalationPolicyRuleRoundRobinRotationOutput {
+	return i.ToEscalationPolicyRuleRoundRobinRotationOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRoundRobinRotationArgs) ToEscalationPolicyRuleRoundRobinRotationOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinRotationOutput)
+}
+
+func (i EscalationPolicyRuleRoundRobinRotationArgs) ToEscalationPolicyRuleRoundRobinRotationPtrOutput() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return i.ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleRoundRobinRotationArgs) ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinRotationOutput).ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(ctx)
+}
+
+// EscalationPolicyRuleRoundRobinRotationPtrInput is an input type that accepts EscalationPolicyRuleRoundRobinRotationArgs, EscalationPolicyRuleRoundRobinRotationPtr and EscalationPolicyRuleRoundRobinRotationPtrOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleRoundRobinRotationPtrInput` via:
+//
+//	        EscalationPolicyRuleRoundRobinRotationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EscalationPolicyRuleRoundRobinRotationPtrInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleRoundRobinRotationPtrOutput() EscalationPolicyRuleRoundRobinRotationPtrOutput
+	ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(context.Context) EscalationPolicyRuleRoundRobinRotationPtrOutput
+}
+
+type escalationPolicyRuleRoundRobinRotationPtrType EscalationPolicyRuleRoundRobinRotationArgs
+
+func EscalationPolicyRuleRoundRobinRotationPtr(v *EscalationPolicyRuleRoundRobinRotationArgs) EscalationPolicyRuleRoundRobinRotationPtrInput {
+	return (*escalationPolicyRuleRoundRobinRotationPtrType)(v)
+}
+
+func (*escalationPolicyRuleRoundRobinRotationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (i *escalationPolicyRuleRoundRobinRotationPtrType) ToEscalationPolicyRuleRoundRobinRotationPtrOutput() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return i.ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(context.Background())
+}
+
+func (i *escalationPolicyRuleRoundRobinRotationPtrType) ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleRoundRobinRotationPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobinRotationOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRoundRobinRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationOutput) ToEscalationPolicyRuleRoundRobinRotationOutput() EscalationPolicyRuleRoundRobinRotationOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationOutput) ToEscalationPolicyRuleRoundRobinRotationOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationOutput) ToEscalationPolicyRuleRoundRobinRotationPtrOutput() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o.ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(context.Background())
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationOutput) ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EscalationPolicyRuleRoundRobinRotation) *EscalationPolicyRuleRoundRobinRotation {
+		return &v
+	}).(EscalationPolicyRuleRoundRobinRotationPtrOutput)
+}
+
+// repeat after minutes
+func (o EscalationPolicyRuleRoundRobinRotationOutput) DelayMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRoundRobinRotation) *int { return v.DelayMinutes }).(pulumi.IntPtrOutput)
+}
+
+// enable rotation within
+func (o EscalationPolicyRuleRoundRobinRotationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleRoundRobinRotation) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type EscalationPolicyRuleRoundRobinRotationPtrOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleRoundRobinRotationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationPtrOutput) ToEscalationPolicyRuleRoundRobinRotationPtrOutput() EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationPtrOutput) ToEscalationPolicyRuleRoundRobinRotationPtrOutputWithContext(ctx context.Context) EscalationPolicyRuleRoundRobinRotationPtrOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleRoundRobinRotationPtrOutput) Elem() EscalationPolicyRuleRoundRobinRotationOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobinRotation) EscalationPolicyRuleRoundRobinRotation {
+		if v != nil {
+			return *v
+		}
+		var ret EscalationPolicyRuleRoundRobinRotation
+		return ret
+	}).(EscalationPolicyRuleRoundRobinRotationOutput)
+}
+
+// repeat after minutes
+func (o EscalationPolicyRuleRoundRobinRotationPtrOutput) DelayMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobinRotation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DelayMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// enable rotation within
+func (o EscalationPolicyRuleRoundRobinRotationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EscalationPolicyRuleRoundRobinRotation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type EscalationPolicyRuleTarget struct {
+	// ID of the target
+	Id string `pulumi:"id"`
+	// Type of the target. (user, squad, schedule, schedulev2)
+	Type string `pulumi:"type"`
+}
+
+// EscalationPolicyRuleTargetInput is an input type that accepts EscalationPolicyRuleTargetArgs and EscalationPolicyRuleTargetOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleTargetInput` via:
+//
+//	EscalationPolicyRuleTargetArgs{...}
+type EscalationPolicyRuleTargetInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleTargetOutput() EscalationPolicyRuleTargetOutput
+	ToEscalationPolicyRuleTargetOutputWithContext(context.Context) EscalationPolicyRuleTargetOutput
+}
+
+type EscalationPolicyRuleTargetArgs struct {
+	// ID of the target
+	Id pulumi.StringInput `pulumi:"id"`
+	// Type of the target. (user, squad, schedule, schedulev2)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (EscalationPolicyRuleTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleTargetArgs) ToEscalationPolicyRuleTargetOutput() EscalationPolicyRuleTargetOutput {
+	return i.ToEscalationPolicyRuleTargetOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleTargetArgs) ToEscalationPolicyRuleTargetOutputWithContext(ctx context.Context) EscalationPolicyRuleTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleTargetOutput)
+}
+
+// EscalationPolicyRuleTargetArrayInput is an input type that accepts EscalationPolicyRuleTargetArray and EscalationPolicyRuleTargetArrayOutput values.
+// You can construct a concrete instance of `EscalationPolicyRuleTargetArrayInput` via:
+//
+//	EscalationPolicyRuleTargetArray{ EscalationPolicyRuleTargetArgs{...} }
+type EscalationPolicyRuleTargetArrayInput interface {
+	pulumi.Input
+
+	ToEscalationPolicyRuleTargetArrayOutput() EscalationPolicyRuleTargetArrayOutput
+	ToEscalationPolicyRuleTargetArrayOutputWithContext(context.Context) EscalationPolicyRuleTargetArrayOutput
+}
+
+type EscalationPolicyRuleTargetArray []EscalationPolicyRuleTargetInput
+
+func (EscalationPolicyRuleTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (i EscalationPolicyRuleTargetArray) ToEscalationPolicyRuleTargetArrayOutput() EscalationPolicyRuleTargetArrayOutput {
+	return i.ToEscalationPolicyRuleTargetArrayOutputWithContext(context.Background())
+}
+
+func (i EscalationPolicyRuleTargetArray) ToEscalationPolicyRuleTargetArrayOutputWithContext(ctx context.Context) EscalationPolicyRuleTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPolicyRuleTargetArrayOutput)
+}
+
+type EscalationPolicyRuleTargetOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleTargetOutput) ToEscalationPolicyRuleTargetOutput() EscalationPolicyRuleTargetOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleTargetOutput) ToEscalationPolicyRuleTargetOutputWithContext(ctx context.Context) EscalationPolicyRuleTargetOutput {
+	return o
+}
+
+// ID of the target
+func (o EscalationPolicyRuleTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of the target. (user, squad, schedule, schedulev2)
+func (o EscalationPolicyRuleTargetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EscalationPolicyRuleTarget) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type EscalationPolicyRuleTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (EscalationPolicyRuleTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (o EscalationPolicyRuleTargetArrayOutput) ToEscalationPolicyRuleTargetArrayOutput() EscalationPolicyRuleTargetArrayOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleTargetArrayOutput) ToEscalationPolicyRuleTargetArrayOutputWithContext(ctx context.Context) EscalationPolicyRuleTargetArrayOutput {
+	return o
+}
+
+func (o EscalationPolicyRuleTargetArrayOutput) Index(i pulumi.IntInput) EscalationPolicyRuleTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EscalationPolicyRuleTarget {
+		return vs[0].([]EscalationPolicyRuleTarget)[vs[1].(int)]
+	}).(EscalationPolicyRuleTargetOutput)
+}
+
 type GerEntityOwner struct {
 	// GER owner id.
 	Id string `pulumi:"id"`
@@ -167,6 +1288,112 @@ func (o GerEntityOwnerPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type RoutingRuleV2BasicExpression struct {
+	// left hand side dropdown value
+	Lhs string `pulumi:"lhs"`
+	// right hand side value
+	Rhs string `pulumi:"rhs"`
+}
+
+// RoutingRuleV2BasicExpressionInput is an input type that accepts RoutingRuleV2BasicExpressionArgs and RoutingRuleV2BasicExpressionOutput values.
+// You can construct a concrete instance of `RoutingRuleV2BasicExpressionInput` via:
+//
+//	RoutingRuleV2BasicExpressionArgs{...}
+type RoutingRuleV2BasicExpressionInput interface {
+	pulumi.Input
+
+	ToRoutingRuleV2BasicExpressionOutput() RoutingRuleV2BasicExpressionOutput
+	ToRoutingRuleV2BasicExpressionOutputWithContext(context.Context) RoutingRuleV2BasicExpressionOutput
+}
+
+type RoutingRuleV2BasicExpressionArgs struct {
+	// left hand side dropdown value
+	Lhs pulumi.StringInput `pulumi:"lhs"`
+	// right hand side value
+	Rhs pulumi.StringInput `pulumi:"rhs"`
+}
+
+func (RoutingRuleV2BasicExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i RoutingRuleV2BasicExpressionArgs) ToRoutingRuleV2BasicExpressionOutput() RoutingRuleV2BasicExpressionOutput {
+	return i.ToRoutingRuleV2BasicExpressionOutputWithContext(context.Background())
+}
+
+func (i RoutingRuleV2BasicExpressionArgs) ToRoutingRuleV2BasicExpressionOutputWithContext(ctx context.Context) RoutingRuleV2BasicExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleV2BasicExpressionOutput)
+}
+
+// RoutingRuleV2BasicExpressionArrayInput is an input type that accepts RoutingRuleV2BasicExpressionArray and RoutingRuleV2BasicExpressionArrayOutput values.
+// You can construct a concrete instance of `RoutingRuleV2BasicExpressionArrayInput` via:
+//
+//	RoutingRuleV2BasicExpressionArray{ RoutingRuleV2BasicExpressionArgs{...} }
+type RoutingRuleV2BasicExpressionArrayInput interface {
+	pulumi.Input
+
+	ToRoutingRuleV2BasicExpressionArrayOutput() RoutingRuleV2BasicExpressionArrayOutput
+	ToRoutingRuleV2BasicExpressionArrayOutputWithContext(context.Context) RoutingRuleV2BasicExpressionArrayOutput
+}
+
+type RoutingRuleV2BasicExpressionArray []RoutingRuleV2BasicExpressionInput
+
+func (RoutingRuleV2BasicExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i RoutingRuleV2BasicExpressionArray) ToRoutingRuleV2BasicExpressionArrayOutput() RoutingRuleV2BasicExpressionArrayOutput {
+	return i.ToRoutingRuleV2BasicExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i RoutingRuleV2BasicExpressionArray) ToRoutingRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) RoutingRuleV2BasicExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleV2BasicExpressionArrayOutput)
+}
+
+type RoutingRuleV2BasicExpressionOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleV2BasicExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o RoutingRuleV2BasicExpressionOutput) ToRoutingRuleV2BasicExpressionOutput() RoutingRuleV2BasicExpressionOutput {
+	return o
+}
+
+func (o RoutingRuleV2BasicExpressionOutput) ToRoutingRuleV2BasicExpressionOutputWithContext(ctx context.Context) RoutingRuleV2BasicExpressionOutput {
+	return o
+}
+
+// left hand side dropdown value
+func (o RoutingRuleV2BasicExpressionOutput) Lhs() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutingRuleV2BasicExpression) string { return v.Lhs }).(pulumi.StringOutput)
+}
+
+// right hand side value
+func (o RoutingRuleV2BasicExpressionOutput) Rhs() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutingRuleV2BasicExpression) string { return v.Rhs }).(pulumi.StringOutput)
+}
+
+type RoutingRuleV2BasicExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutingRuleV2BasicExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o RoutingRuleV2BasicExpressionArrayOutput) ToRoutingRuleV2BasicExpressionArrayOutput() RoutingRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o RoutingRuleV2BasicExpressionArrayOutput) ToRoutingRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) RoutingRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o RoutingRuleV2BasicExpressionArrayOutput) Index(i pulumi.IntInput) RoutingRuleV2BasicExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingRuleV2BasicExpression {
+		return vs[0].([]RoutingRuleV2BasicExpression)[vs[1].(int)]
+	}).(RoutingRuleV2BasicExpressionOutput)
 }
 
 type RunbookEntityOwner struct {
@@ -419,6 +1646,606 @@ func (o RunbookStepArrayOutput) Index(i pulumi.IntInput) RunbookStepOutput {
 	}).(RunbookStepOutput)
 }
 
+type ScheduleRotationV2ParticipantGroup struct {
+	// Group participants.
+	Participants []ScheduleRotationV2ParticipantGroupParticipant `pulumi:"participants"`
+}
+
+// ScheduleRotationV2ParticipantGroupInput is an input type that accepts ScheduleRotationV2ParticipantGroupArgs and ScheduleRotationV2ParticipantGroupOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ParticipantGroupInput` via:
+//
+//	ScheduleRotationV2ParticipantGroupArgs{...}
+type ScheduleRotationV2ParticipantGroupInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ParticipantGroupOutput() ScheduleRotationV2ParticipantGroupOutput
+	ToScheduleRotationV2ParticipantGroupOutputWithContext(context.Context) ScheduleRotationV2ParticipantGroupOutput
+}
+
+type ScheduleRotationV2ParticipantGroupArgs struct {
+	// Group participants.
+	Participants ScheduleRotationV2ParticipantGroupParticipantArrayInput `pulumi:"participants"`
+}
+
+func (ScheduleRotationV2ParticipantGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ParticipantGroup)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ParticipantGroupArgs) ToScheduleRotationV2ParticipantGroupOutput() ScheduleRotationV2ParticipantGroupOutput {
+	return i.ToScheduleRotationV2ParticipantGroupOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ParticipantGroupArgs) ToScheduleRotationV2ParticipantGroupOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ParticipantGroupOutput)
+}
+
+// ScheduleRotationV2ParticipantGroupArrayInput is an input type that accepts ScheduleRotationV2ParticipantGroupArray and ScheduleRotationV2ParticipantGroupArrayOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ParticipantGroupArrayInput` via:
+//
+//	ScheduleRotationV2ParticipantGroupArray{ ScheduleRotationV2ParticipantGroupArgs{...} }
+type ScheduleRotationV2ParticipantGroupArrayInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ParticipantGroupArrayOutput() ScheduleRotationV2ParticipantGroupArrayOutput
+	ToScheduleRotationV2ParticipantGroupArrayOutputWithContext(context.Context) ScheduleRotationV2ParticipantGroupArrayOutput
+}
+
+type ScheduleRotationV2ParticipantGroupArray []ScheduleRotationV2ParticipantGroupInput
+
+func (ScheduleRotationV2ParticipantGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ParticipantGroup)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ParticipantGroupArray) ToScheduleRotationV2ParticipantGroupArrayOutput() ScheduleRotationV2ParticipantGroupArrayOutput {
+	return i.ToScheduleRotationV2ParticipantGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ParticipantGroupArray) ToScheduleRotationV2ParticipantGroupArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ParticipantGroupArrayOutput)
+}
+
+type ScheduleRotationV2ParticipantGroupOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ParticipantGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ParticipantGroup)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ParticipantGroupOutput) ToScheduleRotationV2ParticipantGroupOutput() ScheduleRotationV2ParticipantGroupOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupOutput) ToScheduleRotationV2ParticipantGroupOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupOutput {
+	return o
+}
+
+// Group participants.
+func (o ScheduleRotationV2ParticipantGroupOutput) Participants() ScheduleRotationV2ParticipantGroupParticipantArrayOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ParticipantGroup) []ScheduleRotationV2ParticipantGroupParticipant {
+		return v.Participants
+	}).(ScheduleRotationV2ParticipantGroupParticipantArrayOutput)
+}
+
+type ScheduleRotationV2ParticipantGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ParticipantGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ParticipantGroup)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ParticipantGroupArrayOutput) ToScheduleRotationV2ParticipantGroupArrayOutput() ScheduleRotationV2ParticipantGroupArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupArrayOutput) ToScheduleRotationV2ParticipantGroupArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupArrayOutput) Index(i pulumi.IntInput) ScheduleRotationV2ParticipantGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRotationV2ParticipantGroup {
+		return vs[0].([]ScheduleRotationV2ParticipantGroup)[vs[1].(int)]
+	}).(ScheduleRotationV2ParticipantGroupOutput)
+}
+
+type ScheduleRotationV2ParticipantGroupParticipant struct {
+	// Participant id.
+	Id string `pulumi:"id"`
+	// Participant type (user, team, squad).
+	Type string `pulumi:"type"`
+}
+
+// ScheduleRotationV2ParticipantGroupParticipantInput is an input type that accepts ScheduleRotationV2ParticipantGroupParticipantArgs and ScheduleRotationV2ParticipantGroupParticipantOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ParticipantGroupParticipantInput` via:
+//
+//	ScheduleRotationV2ParticipantGroupParticipantArgs{...}
+type ScheduleRotationV2ParticipantGroupParticipantInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ParticipantGroupParticipantOutput() ScheduleRotationV2ParticipantGroupParticipantOutput
+	ToScheduleRotationV2ParticipantGroupParticipantOutputWithContext(context.Context) ScheduleRotationV2ParticipantGroupParticipantOutput
+}
+
+type ScheduleRotationV2ParticipantGroupParticipantArgs struct {
+	// Participant id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Participant type (user, team, squad).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ScheduleRotationV2ParticipantGroupParticipantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ParticipantGroupParticipant)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ParticipantGroupParticipantArgs) ToScheduleRotationV2ParticipantGroupParticipantOutput() ScheduleRotationV2ParticipantGroupParticipantOutput {
+	return i.ToScheduleRotationV2ParticipantGroupParticipantOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ParticipantGroupParticipantArgs) ToScheduleRotationV2ParticipantGroupParticipantOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupParticipantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ParticipantGroupParticipantOutput)
+}
+
+// ScheduleRotationV2ParticipantGroupParticipantArrayInput is an input type that accepts ScheduleRotationV2ParticipantGroupParticipantArray and ScheduleRotationV2ParticipantGroupParticipantArrayOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ParticipantGroupParticipantArrayInput` via:
+//
+//	ScheduleRotationV2ParticipantGroupParticipantArray{ ScheduleRotationV2ParticipantGroupParticipantArgs{...} }
+type ScheduleRotationV2ParticipantGroupParticipantArrayInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ParticipantGroupParticipantArrayOutput() ScheduleRotationV2ParticipantGroupParticipantArrayOutput
+	ToScheduleRotationV2ParticipantGroupParticipantArrayOutputWithContext(context.Context) ScheduleRotationV2ParticipantGroupParticipantArrayOutput
+}
+
+type ScheduleRotationV2ParticipantGroupParticipantArray []ScheduleRotationV2ParticipantGroupParticipantInput
+
+func (ScheduleRotationV2ParticipantGroupParticipantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ParticipantGroupParticipant)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ParticipantGroupParticipantArray) ToScheduleRotationV2ParticipantGroupParticipantArrayOutput() ScheduleRotationV2ParticipantGroupParticipantArrayOutput {
+	return i.ToScheduleRotationV2ParticipantGroupParticipantArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ParticipantGroupParticipantArray) ToScheduleRotationV2ParticipantGroupParticipantArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupParticipantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ParticipantGroupParticipantArrayOutput)
+}
+
+type ScheduleRotationV2ParticipantGroupParticipantOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ParticipantGroupParticipantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ParticipantGroupParticipant)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ParticipantGroupParticipantOutput) ToScheduleRotationV2ParticipantGroupParticipantOutput() ScheduleRotationV2ParticipantGroupParticipantOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupParticipantOutput) ToScheduleRotationV2ParticipantGroupParticipantOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupParticipantOutput {
+	return o
+}
+
+// Participant id.
+func (o ScheduleRotationV2ParticipantGroupParticipantOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ParticipantGroupParticipant) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Participant type (user, team, squad).
+func (o ScheduleRotationV2ParticipantGroupParticipantOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ParticipantGroupParticipant) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ScheduleRotationV2ParticipantGroupParticipantArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ParticipantGroupParticipantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ParticipantGroupParticipant)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ParticipantGroupParticipantArrayOutput) ToScheduleRotationV2ParticipantGroupParticipantArrayOutput() ScheduleRotationV2ParticipantGroupParticipantArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupParticipantArrayOutput) ToScheduleRotationV2ParticipantGroupParticipantArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ParticipantGroupParticipantArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ParticipantGroupParticipantArrayOutput) Index(i pulumi.IntInput) ScheduleRotationV2ParticipantGroupParticipantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRotationV2ParticipantGroupParticipant {
+		return vs[0].([]ScheduleRotationV2ParticipantGroupParticipant)[vs[1].(int)]
+	}).(ScheduleRotationV2ParticipantGroupParticipantOutput)
+}
+
+type ScheduleRotationV2ShiftTimeslot struct {
+	// Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// Defines the duration of each shift. (in minutes)
+	Duration int `pulumi:"duration"`
+	// Defines the start hour of the each shift in the schedule timezone.
+	StartHour int `pulumi:"startHour"`
+	// Defines the start minute of the each shift in the schedule timezone.
+	StartMinute int `pulumi:"startMinute"`
+}
+
+// ScheduleRotationV2ShiftTimeslotInput is an input type that accepts ScheduleRotationV2ShiftTimeslotArgs and ScheduleRotationV2ShiftTimeslotOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ShiftTimeslotInput` via:
+//
+//	ScheduleRotationV2ShiftTimeslotArgs{...}
+type ScheduleRotationV2ShiftTimeslotInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ShiftTimeslotOutput() ScheduleRotationV2ShiftTimeslotOutput
+	ToScheduleRotationV2ShiftTimeslotOutputWithContext(context.Context) ScheduleRotationV2ShiftTimeslotOutput
+}
+
+type ScheduleRotationV2ShiftTimeslotArgs struct {
+	// Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+	DayOfWeek pulumi.StringPtrInput `pulumi:"dayOfWeek"`
+	// Defines the duration of each shift. (in minutes)
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// Defines the start hour of the each shift in the schedule timezone.
+	StartHour pulumi.IntInput `pulumi:"startHour"`
+	// Defines the start minute of the each shift in the schedule timezone.
+	StartMinute pulumi.IntInput `pulumi:"startMinute"`
+}
+
+func (ScheduleRotationV2ShiftTimeslotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ShiftTimeslot)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ShiftTimeslotArgs) ToScheduleRotationV2ShiftTimeslotOutput() ScheduleRotationV2ShiftTimeslotOutput {
+	return i.ToScheduleRotationV2ShiftTimeslotOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ShiftTimeslotArgs) ToScheduleRotationV2ShiftTimeslotOutputWithContext(ctx context.Context) ScheduleRotationV2ShiftTimeslotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ShiftTimeslotOutput)
+}
+
+// ScheduleRotationV2ShiftTimeslotArrayInput is an input type that accepts ScheduleRotationV2ShiftTimeslotArray and ScheduleRotationV2ShiftTimeslotArrayOutput values.
+// You can construct a concrete instance of `ScheduleRotationV2ShiftTimeslotArrayInput` via:
+//
+//	ScheduleRotationV2ShiftTimeslotArray{ ScheduleRotationV2ShiftTimeslotArgs{...} }
+type ScheduleRotationV2ShiftTimeslotArrayInput interface {
+	pulumi.Input
+
+	ToScheduleRotationV2ShiftTimeslotArrayOutput() ScheduleRotationV2ShiftTimeslotArrayOutput
+	ToScheduleRotationV2ShiftTimeslotArrayOutputWithContext(context.Context) ScheduleRotationV2ShiftTimeslotArrayOutput
+}
+
+type ScheduleRotationV2ShiftTimeslotArray []ScheduleRotationV2ShiftTimeslotInput
+
+func (ScheduleRotationV2ShiftTimeslotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ShiftTimeslot)(nil)).Elem()
+}
+
+func (i ScheduleRotationV2ShiftTimeslotArray) ToScheduleRotationV2ShiftTimeslotArrayOutput() ScheduleRotationV2ShiftTimeslotArrayOutput {
+	return i.ToScheduleRotationV2ShiftTimeslotArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationV2ShiftTimeslotArray) ToScheduleRotationV2ShiftTimeslotArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ShiftTimeslotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationV2ShiftTimeslotArrayOutput)
+}
+
+type ScheduleRotationV2ShiftTimeslotOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ShiftTimeslotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationV2ShiftTimeslot)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ShiftTimeslotOutput) ToScheduleRotationV2ShiftTimeslotOutput() ScheduleRotationV2ShiftTimeslotOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ShiftTimeslotOutput) ToScheduleRotationV2ShiftTimeslotOutputWithContext(ctx context.Context) ScheduleRotationV2ShiftTimeslotOutput {
+	return o
+}
+
+// Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+func (o ScheduleRotationV2ShiftTimeslotOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ShiftTimeslot) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+}
+
+// Defines the duration of each shift. (in minutes)
+func (o ScheduleRotationV2ShiftTimeslotOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ShiftTimeslot) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+// Defines the start hour of the each shift in the schedule timezone.
+func (o ScheduleRotationV2ShiftTimeslotOutput) StartHour() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ShiftTimeslot) int { return v.StartHour }).(pulumi.IntOutput)
+}
+
+// Defines the start minute of the each shift in the schedule timezone.
+func (o ScheduleRotationV2ShiftTimeslotOutput) StartMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduleRotationV2ShiftTimeslot) int { return v.StartMinute }).(pulumi.IntOutput)
+}
+
+type ScheduleRotationV2ShiftTimeslotArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationV2ShiftTimeslotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationV2ShiftTimeslot)(nil)).Elem()
+}
+
+func (o ScheduleRotationV2ShiftTimeslotArrayOutput) ToScheduleRotationV2ShiftTimeslotArrayOutput() ScheduleRotationV2ShiftTimeslotArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ShiftTimeslotArrayOutput) ToScheduleRotationV2ShiftTimeslotArrayOutputWithContext(ctx context.Context) ScheduleRotationV2ShiftTimeslotArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationV2ShiftTimeslotArrayOutput) Index(i pulumi.IntInput) ScheduleRotationV2ShiftTimeslotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRotationV2ShiftTimeslot {
+		return vs[0].([]ScheduleRotationV2ShiftTimeslot)[vs[1].(int)]
+	}).(ScheduleRotationV2ShiftTimeslotOutput)
+}
+
+type ScheduleV2EntityOwner struct {
+	// Schedule owner id.
+	Id string `pulumi:"id"`
+	// Schedule owner type. Supported values are 'user' or 'squad'.
+	Type string `pulumi:"type"`
+}
+
+// ScheduleV2EntityOwnerInput is an input type that accepts ScheduleV2EntityOwnerArgs and ScheduleV2EntityOwnerOutput values.
+// You can construct a concrete instance of `ScheduleV2EntityOwnerInput` via:
+//
+//	ScheduleV2EntityOwnerArgs{...}
+type ScheduleV2EntityOwnerInput interface {
+	pulumi.Input
+
+	ToScheduleV2EntityOwnerOutput() ScheduleV2EntityOwnerOutput
+	ToScheduleV2EntityOwnerOutputWithContext(context.Context) ScheduleV2EntityOwnerOutput
+}
+
+type ScheduleV2EntityOwnerArgs struct {
+	// Schedule owner id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Schedule owner type. Supported values are 'user' or 'squad'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ScheduleV2EntityOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (i ScheduleV2EntityOwnerArgs) ToScheduleV2EntityOwnerOutput() ScheduleV2EntityOwnerOutput {
+	return i.ToScheduleV2EntityOwnerOutputWithContext(context.Background())
+}
+
+func (i ScheduleV2EntityOwnerArgs) ToScheduleV2EntityOwnerOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleV2EntityOwnerOutput)
+}
+
+func (i ScheduleV2EntityOwnerArgs) ToScheduleV2EntityOwnerPtrOutput() ScheduleV2EntityOwnerPtrOutput {
+	return i.ToScheduleV2EntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleV2EntityOwnerArgs) ToScheduleV2EntityOwnerPtrOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleV2EntityOwnerOutput).ToScheduleV2EntityOwnerPtrOutputWithContext(ctx)
+}
+
+// ScheduleV2EntityOwnerPtrInput is an input type that accepts ScheduleV2EntityOwnerArgs, ScheduleV2EntityOwnerPtr and ScheduleV2EntityOwnerPtrOutput values.
+// You can construct a concrete instance of `ScheduleV2EntityOwnerPtrInput` via:
+//
+//	        ScheduleV2EntityOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleV2EntityOwnerPtrInput interface {
+	pulumi.Input
+
+	ToScheduleV2EntityOwnerPtrOutput() ScheduleV2EntityOwnerPtrOutput
+	ToScheduleV2EntityOwnerPtrOutputWithContext(context.Context) ScheduleV2EntityOwnerPtrOutput
+}
+
+type scheduleV2EntityOwnerPtrType ScheduleV2EntityOwnerArgs
+
+func ScheduleV2EntityOwnerPtr(v *ScheduleV2EntityOwnerArgs) ScheduleV2EntityOwnerPtrInput {
+	return (*scheduleV2EntityOwnerPtrType)(v)
+}
+
+func (*scheduleV2EntityOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (i *scheduleV2EntityOwnerPtrType) ToScheduleV2EntityOwnerPtrOutput() ScheduleV2EntityOwnerPtrOutput {
+	return i.ToScheduleV2EntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleV2EntityOwnerPtrType) ToScheduleV2EntityOwnerPtrOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleV2EntityOwnerPtrOutput)
+}
+
+type ScheduleV2EntityOwnerOutput struct{ *pulumi.OutputState }
+
+func (ScheduleV2EntityOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (o ScheduleV2EntityOwnerOutput) ToScheduleV2EntityOwnerOutput() ScheduleV2EntityOwnerOutput {
+	return o
+}
+
+func (o ScheduleV2EntityOwnerOutput) ToScheduleV2EntityOwnerOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerOutput {
+	return o
+}
+
+func (o ScheduleV2EntityOwnerOutput) ToScheduleV2EntityOwnerPtrOutput() ScheduleV2EntityOwnerPtrOutput {
+	return o.ToScheduleV2EntityOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleV2EntityOwnerOutput) ToScheduleV2EntityOwnerPtrOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleV2EntityOwner) *ScheduleV2EntityOwner {
+		return &v
+	}).(ScheduleV2EntityOwnerPtrOutput)
+}
+
+// Schedule owner id.
+func (o ScheduleV2EntityOwnerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleV2EntityOwner) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Schedule owner type. Supported values are 'user' or 'squad'.
+func (o ScheduleV2EntityOwnerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleV2EntityOwner) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ScheduleV2EntityOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleV2EntityOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (o ScheduleV2EntityOwnerPtrOutput) ToScheduleV2EntityOwnerPtrOutput() ScheduleV2EntityOwnerPtrOutput {
+	return o
+}
+
+func (o ScheduleV2EntityOwnerPtrOutput) ToScheduleV2EntityOwnerPtrOutputWithContext(ctx context.Context) ScheduleV2EntityOwnerPtrOutput {
+	return o
+}
+
+func (o ScheduleV2EntityOwnerPtrOutput) Elem() ScheduleV2EntityOwnerOutput {
+	return o.ApplyT(func(v *ScheduleV2EntityOwner) ScheduleV2EntityOwner {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleV2EntityOwner
+		return ret
+	}).(ScheduleV2EntityOwnerOutput)
+}
+
+// Schedule owner id.
+func (o ScheduleV2EntityOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleV2EntityOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule owner type. Supported values are 'user' or 'squad'.
+func (o ScheduleV2EntityOwnerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleV2EntityOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleV2Tag struct {
+	// Schedule tag color.
+	Color *string `pulumi:"color"`
+	// Schedule tag key.
+	Key string `pulumi:"key"`
+	// Schedule tag value.
+	Value string `pulumi:"value"`
+}
+
+// ScheduleV2TagInput is an input type that accepts ScheduleV2TagArgs and ScheduleV2TagOutput values.
+// You can construct a concrete instance of `ScheduleV2TagInput` via:
+//
+//	ScheduleV2TagArgs{...}
+type ScheduleV2TagInput interface {
+	pulumi.Input
+
+	ToScheduleV2TagOutput() ScheduleV2TagOutput
+	ToScheduleV2TagOutputWithContext(context.Context) ScheduleV2TagOutput
+}
+
+type ScheduleV2TagArgs struct {
+	// Schedule tag color.
+	Color pulumi.StringPtrInput `pulumi:"color"`
+	// Schedule tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Schedule tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ScheduleV2TagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleV2Tag)(nil)).Elem()
+}
+
+func (i ScheduleV2TagArgs) ToScheduleV2TagOutput() ScheduleV2TagOutput {
+	return i.ToScheduleV2TagOutputWithContext(context.Background())
+}
+
+func (i ScheduleV2TagArgs) ToScheduleV2TagOutputWithContext(ctx context.Context) ScheduleV2TagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleV2TagOutput)
+}
+
+// ScheduleV2TagArrayInput is an input type that accepts ScheduleV2TagArray and ScheduleV2TagArrayOutput values.
+// You can construct a concrete instance of `ScheduleV2TagArrayInput` via:
+//
+//	ScheduleV2TagArray{ ScheduleV2TagArgs{...} }
+type ScheduleV2TagArrayInput interface {
+	pulumi.Input
+
+	ToScheduleV2TagArrayOutput() ScheduleV2TagArrayOutput
+	ToScheduleV2TagArrayOutputWithContext(context.Context) ScheduleV2TagArrayOutput
+}
+
+type ScheduleV2TagArray []ScheduleV2TagInput
+
+func (ScheduleV2TagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleV2Tag)(nil)).Elem()
+}
+
+func (i ScheduleV2TagArray) ToScheduleV2TagArrayOutput() ScheduleV2TagArrayOutput {
+	return i.ToScheduleV2TagArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleV2TagArray) ToScheduleV2TagArrayOutputWithContext(ctx context.Context) ScheduleV2TagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleV2TagArrayOutput)
+}
+
+type ScheduleV2TagOutput struct{ *pulumi.OutputState }
+
+func (ScheduleV2TagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleV2Tag)(nil)).Elem()
+}
+
+func (o ScheduleV2TagOutput) ToScheduleV2TagOutput() ScheduleV2TagOutput {
+	return o
+}
+
+func (o ScheduleV2TagOutput) ToScheduleV2TagOutputWithContext(ctx context.Context) ScheduleV2TagOutput {
+	return o
+}
+
+// Schedule tag color.
+func (o ScheduleV2TagOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleV2Tag) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+// Schedule tag key.
+func (o ScheduleV2TagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleV2Tag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Schedule tag value.
+func (o ScheduleV2TagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleV2Tag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ScheduleV2TagArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleV2TagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleV2Tag)(nil)).Elem()
+}
+
+func (o ScheduleV2TagArrayOutput) ToScheduleV2TagArrayOutput() ScheduleV2TagArrayOutput {
+	return o
+}
+
+func (o ScheduleV2TagArrayOutput) ToScheduleV2TagArrayOutputWithContext(ctx context.Context) ScheduleV2TagArrayOutput {
+	return o
+}
+
+func (o ScheduleV2TagArrayOutput) Index(i pulumi.IntInput) ScheduleV2TagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleV2Tag {
+		return vs[0].([]ScheduleV2Tag)[vs[1].(int)]
+	}).(ScheduleV2TagOutput)
+}
+
 type ServiceMaintainer struct {
 	// The id of the maintainer.
 	Id string `pulumi:"id"`
@@ -573,6 +2400,130 @@ func (o ServiceMaintainerPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMaintenanceWindow struct {
+	// Starting Time
+	From string `pulumi:"from"`
+	// repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+	RepeatFrequency *string `pulumi:"repeatFrequency"`
+	// Till when you want to repeat this Maintenance mode
+	RepeatTill *string `pulumi:"repeatTill"`
+	// End Time.
+	Till string `pulumi:"till"`
+}
+
+// ServiceMaintenanceWindowInput is an input type that accepts ServiceMaintenanceWindowArgs and ServiceMaintenanceWindowOutput values.
+// You can construct a concrete instance of `ServiceMaintenanceWindowInput` via:
+//
+//	ServiceMaintenanceWindowArgs{...}
+type ServiceMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToServiceMaintenanceWindowOutput() ServiceMaintenanceWindowOutput
+	ToServiceMaintenanceWindowOutputWithContext(context.Context) ServiceMaintenanceWindowOutput
+}
+
+type ServiceMaintenanceWindowArgs struct {
+	// Starting Time
+	From pulumi.StringInput `pulumi:"from"`
+	// repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+	RepeatFrequency pulumi.StringPtrInput `pulumi:"repeatFrequency"`
+	// Till when you want to repeat this Maintenance mode
+	RepeatTill pulumi.StringPtrInput `pulumi:"repeatTill"`
+	// End Time.
+	Till pulumi.StringInput `pulumi:"till"`
+}
+
+func (ServiceMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ServiceMaintenanceWindowArgs) ToServiceMaintenanceWindowOutput() ServiceMaintenanceWindowOutput {
+	return i.ToServiceMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i ServiceMaintenanceWindowArgs) ToServiceMaintenanceWindowOutputWithContext(ctx context.Context) ServiceMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMaintenanceWindowOutput)
+}
+
+// ServiceMaintenanceWindowArrayInput is an input type that accepts ServiceMaintenanceWindowArray and ServiceMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `ServiceMaintenanceWindowArrayInput` via:
+//
+//	ServiceMaintenanceWindowArray{ ServiceMaintenanceWindowArgs{...} }
+type ServiceMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToServiceMaintenanceWindowArrayOutput() ServiceMaintenanceWindowArrayOutput
+	ToServiceMaintenanceWindowArrayOutputWithContext(context.Context) ServiceMaintenanceWindowArrayOutput
+}
+
+type ServiceMaintenanceWindowArray []ServiceMaintenanceWindowInput
+
+func (ServiceMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ServiceMaintenanceWindowArray) ToServiceMaintenanceWindowArrayOutput() ServiceMaintenanceWindowArrayOutput {
+	return i.ToServiceMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceMaintenanceWindowArray) ToServiceMaintenanceWindowArrayOutputWithContext(ctx context.Context) ServiceMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMaintenanceWindowArrayOutput)
+}
+
+type ServiceMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (ServiceMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServiceMaintenanceWindowOutput) ToServiceMaintenanceWindowOutput() ServiceMaintenanceWindowOutput {
+	return o
+}
+
+func (o ServiceMaintenanceWindowOutput) ToServiceMaintenanceWindowOutputWithContext(ctx context.Context) ServiceMaintenanceWindowOutput {
+	return o
+}
+
+// Starting Time
+func (o ServiceMaintenanceWindowOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMaintenanceWindow) string { return v.From }).(pulumi.StringOutput)
+}
+
+// repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+func (o ServiceMaintenanceWindowOutput) RepeatFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMaintenanceWindow) *string { return v.RepeatFrequency }).(pulumi.StringPtrOutput)
+}
+
+// Till when you want to repeat this Maintenance mode
+func (o ServiceMaintenanceWindowOutput) RepeatTill() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMaintenanceWindow) *string { return v.RepeatTill }).(pulumi.StringPtrOutput)
+}
+
+// End Time.
+func (o ServiceMaintenanceWindowOutput) Till() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMaintenanceWindow) string { return v.Till }).(pulumi.StringOutput)
+}
+
+type ServiceMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServiceMaintenanceWindowArrayOutput) ToServiceMaintenanceWindowArrayOutput() ServiceMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o ServiceMaintenanceWindowArrayOutput) ToServiceMaintenanceWindowArrayOutputWithContext(ctx context.Context) ServiceMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o ServiceMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) ServiceMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceMaintenanceWindow {
+		return vs[0].([]ServiceMaintenanceWindow)[vs[1].(int)]
+	}).(ServiceMaintenanceWindowOutput)
 }
 
 type ServiceTag struct {
@@ -1183,6 +3134,956 @@ func (o SloRuleArrayOutput) Index(i pulumi.IntInput) SloRuleOutput {
 	}).(SloRuleOutput)
 }
 
+type StatusPageOwner struct {
+	// Status page owner id.
+	Id string `pulumi:"id"`
+	// Status page owner type Supported values are 'user' or 'squad'.
+	Type string `pulumi:"type"`
+}
+
+// StatusPageOwnerInput is an input type that accepts StatusPageOwnerArgs and StatusPageOwnerOutput values.
+// You can construct a concrete instance of `StatusPageOwnerInput` via:
+//
+//	StatusPageOwnerArgs{...}
+type StatusPageOwnerInput interface {
+	pulumi.Input
+
+	ToStatusPageOwnerOutput() StatusPageOwnerOutput
+	ToStatusPageOwnerOutputWithContext(context.Context) StatusPageOwnerOutput
+}
+
+type StatusPageOwnerArgs struct {
+	// Status page owner id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Status page owner type Supported values are 'user' or 'squad'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (StatusPageOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusPageOwner)(nil)).Elem()
+}
+
+func (i StatusPageOwnerArgs) ToStatusPageOwnerOutput() StatusPageOwnerOutput {
+	return i.ToStatusPageOwnerOutputWithContext(context.Background())
+}
+
+func (i StatusPageOwnerArgs) ToStatusPageOwnerOutputWithContext(ctx context.Context) StatusPageOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageOwnerOutput)
+}
+
+func (i StatusPageOwnerArgs) ToStatusPageOwnerPtrOutput() StatusPageOwnerPtrOutput {
+	return i.ToStatusPageOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i StatusPageOwnerArgs) ToStatusPageOwnerPtrOutputWithContext(ctx context.Context) StatusPageOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageOwnerOutput).ToStatusPageOwnerPtrOutputWithContext(ctx)
+}
+
+// StatusPageOwnerPtrInput is an input type that accepts StatusPageOwnerArgs, StatusPageOwnerPtr and StatusPageOwnerPtrOutput values.
+// You can construct a concrete instance of `StatusPageOwnerPtrInput` via:
+//
+//	        StatusPageOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatusPageOwnerPtrInput interface {
+	pulumi.Input
+
+	ToStatusPageOwnerPtrOutput() StatusPageOwnerPtrOutput
+	ToStatusPageOwnerPtrOutputWithContext(context.Context) StatusPageOwnerPtrOutput
+}
+
+type statusPageOwnerPtrType StatusPageOwnerArgs
+
+func StatusPageOwnerPtr(v *StatusPageOwnerArgs) StatusPageOwnerPtrInput {
+	return (*statusPageOwnerPtrType)(v)
+}
+
+func (*statusPageOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusPageOwner)(nil)).Elem()
+}
+
+func (i *statusPageOwnerPtrType) ToStatusPageOwnerPtrOutput() StatusPageOwnerPtrOutput {
+	return i.ToStatusPageOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *statusPageOwnerPtrType) ToStatusPageOwnerPtrOutputWithContext(ctx context.Context) StatusPageOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageOwnerPtrOutput)
+}
+
+type StatusPageOwnerOutput struct{ *pulumi.OutputState }
+
+func (StatusPageOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusPageOwner)(nil)).Elem()
+}
+
+func (o StatusPageOwnerOutput) ToStatusPageOwnerOutput() StatusPageOwnerOutput {
+	return o
+}
+
+func (o StatusPageOwnerOutput) ToStatusPageOwnerOutputWithContext(ctx context.Context) StatusPageOwnerOutput {
+	return o
+}
+
+func (o StatusPageOwnerOutput) ToStatusPageOwnerPtrOutput() StatusPageOwnerPtrOutput {
+	return o.ToStatusPageOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o StatusPageOwnerOutput) ToStatusPageOwnerPtrOutputWithContext(ctx context.Context) StatusPageOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusPageOwner) *StatusPageOwner {
+		return &v
+	}).(StatusPageOwnerPtrOutput)
+}
+
+// Status page owner id.
+func (o StatusPageOwnerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusPageOwner) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Status page owner type Supported values are 'user' or 'squad'.
+func (o StatusPageOwnerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusPageOwner) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type StatusPageOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (StatusPageOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusPageOwner)(nil)).Elem()
+}
+
+func (o StatusPageOwnerPtrOutput) ToStatusPageOwnerPtrOutput() StatusPageOwnerPtrOutput {
+	return o
+}
+
+func (o StatusPageOwnerPtrOutput) ToStatusPageOwnerPtrOutputWithContext(ctx context.Context) StatusPageOwnerPtrOutput {
+	return o
+}
+
+func (o StatusPageOwnerPtrOutput) Elem() StatusPageOwnerOutput {
+	return o.ApplyT(func(v *StatusPageOwner) StatusPageOwner {
+		if v != nil {
+			return *v
+		}
+		var ret StatusPageOwner
+		return ret
+	}).(StatusPageOwnerOutput)
+}
+
+// Status page owner id.
+func (o StatusPageOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusPageOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status page owner type Supported values are 'user' or 'squad'.
+func (o StatusPageOwnerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusPageOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatusPageThemeColor struct {
+	// Primary color.
+	Primary string `pulumi:"primary"`
+	// Secondary color.
+	Secondary string `pulumi:"secondary"`
+}
+
+// StatusPageThemeColorInput is an input type that accepts StatusPageThemeColorArgs and StatusPageThemeColorOutput values.
+// You can construct a concrete instance of `StatusPageThemeColorInput` via:
+//
+//	StatusPageThemeColorArgs{...}
+type StatusPageThemeColorInput interface {
+	pulumi.Input
+
+	ToStatusPageThemeColorOutput() StatusPageThemeColorOutput
+	ToStatusPageThemeColorOutputWithContext(context.Context) StatusPageThemeColorOutput
+}
+
+type StatusPageThemeColorArgs struct {
+	// Primary color.
+	Primary pulumi.StringInput `pulumi:"primary"`
+	// Secondary color.
+	Secondary pulumi.StringInput `pulumi:"secondary"`
+}
+
+func (StatusPageThemeColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusPageThemeColor)(nil)).Elem()
+}
+
+func (i StatusPageThemeColorArgs) ToStatusPageThemeColorOutput() StatusPageThemeColorOutput {
+	return i.ToStatusPageThemeColorOutputWithContext(context.Background())
+}
+
+func (i StatusPageThemeColorArgs) ToStatusPageThemeColorOutputWithContext(ctx context.Context) StatusPageThemeColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageThemeColorOutput)
+}
+
+func (i StatusPageThemeColorArgs) ToStatusPageThemeColorPtrOutput() StatusPageThemeColorPtrOutput {
+	return i.ToStatusPageThemeColorPtrOutputWithContext(context.Background())
+}
+
+func (i StatusPageThemeColorArgs) ToStatusPageThemeColorPtrOutputWithContext(ctx context.Context) StatusPageThemeColorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageThemeColorOutput).ToStatusPageThemeColorPtrOutputWithContext(ctx)
+}
+
+// StatusPageThemeColorPtrInput is an input type that accepts StatusPageThemeColorArgs, StatusPageThemeColorPtr and StatusPageThemeColorPtrOutput values.
+// You can construct a concrete instance of `StatusPageThemeColorPtrInput` via:
+//
+//	        StatusPageThemeColorArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatusPageThemeColorPtrInput interface {
+	pulumi.Input
+
+	ToStatusPageThemeColorPtrOutput() StatusPageThemeColorPtrOutput
+	ToStatusPageThemeColorPtrOutputWithContext(context.Context) StatusPageThemeColorPtrOutput
+}
+
+type statusPageThemeColorPtrType StatusPageThemeColorArgs
+
+func StatusPageThemeColorPtr(v *StatusPageThemeColorArgs) StatusPageThemeColorPtrInput {
+	return (*statusPageThemeColorPtrType)(v)
+}
+
+func (*statusPageThemeColorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusPageThemeColor)(nil)).Elem()
+}
+
+func (i *statusPageThemeColorPtrType) ToStatusPageThemeColorPtrOutput() StatusPageThemeColorPtrOutput {
+	return i.ToStatusPageThemeColorPtrOutputWithContext(context.Background())
+}
+
+func (i *statusPageThemeColorPtrType) ToStatusPageThemeColorPtrOutputWithContext(ctx context.Context) StatusPageThemeColorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusPageThemeColorPtrOutput)
+}
+
+type StatusPageThemeColorOutput struct{ *pulumi.OutputState }
+
+func (StatusPageThemeColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusPageThemeColor)(nil)).Elem()
+}
+
+func (o StatusPageThemeColorOutput) ToStatusPageThemeColorOutput() StatusPageThemeColorOutput {
+	return o
+}
+
+func (o StatusPageThemeColorOutput) ToStatusPageThemeColorOutputWithContext(ctx context.Context) StatusPageThemeColorOutput {
+	return o
+}
+
+func (o StatusPageThemeColorOutput) ToStatusPageThemeColorPtrOutput() StatusPageThemeColorPtrOutput {
+	return o.ToStatusPageThemeColorPtrOutputWithContext(context.Background())
+}
+
+func (o StatusPageThemeColorOutput) ToStatusPageThemeColorPtrOutputWithContext(ctx context.Context) StatusPageThemeColorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusPageThemeColor) *StatusPageThemeColor {
+		return &v
+	}).(StatusPageThemeColorPtrOutput)
+}
+
+// Primary color.
+func (o StatusPageThemeColorOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusPageThemeColor) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+// Secondary color.
+func (o StatusPageThemeColorOutput) Secondary() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusPageThemeColor) string { return v.Secondary }).(pulumi.StringOutput)
+}
+
+type StatusPageThemeColorPtrOutput struct{ *pulumi.OutputState }
+
+func (StatusPageThemeColorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusPageThemeColor)(nil)).Elem()
+}
+
+func (o StatusPageThemeColorPtrOutput) ToStatusPageThemeColorPtrOutput() StatusPageThemeColorPtrOutput {
+	return o
+}
+
+func (o StatusPageThemeColorPtrOutput) ToStatusPageThemeColorPtrOutputWithContext(ctx context.Context) StatusPageThemeColorPtrOutput {
+	return o
+}
+
+func (o StatusPageThemeColorPtrOutput) Elem() StatusPageThemeColorOutput {
+	return o.ApplyT(func(v *StatusPageThemeColor) StatusPageThemeColor {
+		if v != nil {
+			return *v
+		}
+		var ret StatusPageThemeColor
+		return ret
+	}).(StatusPageThemeColorOutput)
+}
+
+// Primary color.
+func (o StatusPageThemeColorPtrOutput) Primary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusPageThemeColor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Primary
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secondary color.
+func (o StatusPageThemeColorPtrOutput) Secondary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusPageThemeColor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secondary
+	}).(pulumi.StringPtrOutput)
+}
+
+type SuppressionRuleV2BasicExpression struct {
+	// left hand side dropdown value
+	Lhs string `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op string `pulumi:"op"`
+	// right hand side value
+	Rhs string `pulumi:"rhs"`
+}
+
+// SuppressionRuleV2BasicExpressionInput is an input type that accepts SuppressionRuleV2BasicExpressionArgs and SuppressionRuleV2BasicExpressionOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2BasicExpressionInput` via:
+//
+//	SuppressionRuleV2BasicExpressionArgs{...}
+type SuppressionRuleV2BasicExpressionInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2BasicExpressionOutput() SuppressionRuleV2BasicExpressionOutput
+	ToSuppressionRuleV2BasicExpressionOutputWithContext(context.Context) SuppressionRuleV2BasicExpressionOutput
+}
+
+type SuppressionRuleV2BasicExpressionArgs struct {
+	// left hand side dropdown value
+	Lhs pulumi.StringInput `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op pulumi.StringInput `pulumi:"op"`
+	// right hand side value
+	Rhs pulumi.StringInput `pulumi:"rhs"`
+}
+
+func (SuppressionRuleV2BasicExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2BasicExpressionArgs) ToSuppressionRuleV2BasicExpressionOutput() SuppressionRuleV2BasicExpressionOutput {
+	return i.ToSuppressionRuleV2BasicExpressionOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2BasicExpressionArgs) ToSuppressionRuleV2BasicExpressionOutputWithContext(ctx context.Context) SuppressionRuleV2BasicExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2BasicExpressionOutput)
+}
+
+// SuppressionRuleV2BasicExpressionArrayInput is an input type that accepts SuppressionRuleV2BasicExpressionArray and SuppressionRuleV2BasicExpressionArrayOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2BasicExpressionArrayInput` via:
+//
+//	SuppressionRuleV2BasicExpressionArray{ SuppressionRuleV2BasicExpressionArgs{...} }
+type SuppressionRuleV2BasicExpressionArrayInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2BasicExpressionArrayOutput() SuppressionRuleV2BasicExpressionArrayOutput
+	ToSuppressionRuleV2BasicExpressionArrayOutputWithContext(context.Context) SuppressionRuleV2BasicExpressionArrayOutput
+}
+
+type SuppressionRuleV2BasicExpressionArray []SuppressionRuleV2BasicExpressionInput
+
+func (SuppressionRuleV2BasicExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2BasicExpressionArray) ToSuppressionRuleV2BasicExpressionArrayOutput() SuppressionRuleV2BasicExpressionArrayOutput {
+	return i.ToSuppressionRuleV2BasicExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2BasicExpressionArray) ToSuppressionRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) SuppressionRuleV2BasicExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2BasicExpressionArrayOutput)
+}
+
+type SuppressionRuleV2BasicExpressionOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2BasicExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2BasicExpressionOutput) ToSuppressionRuleV2BasicExpressionOutput() SuppressionRuleV2BasicExpressionOutput {
+	return o
+}
+
+func (o SuppressionRuleV2BasicExpressionOutput) ToSuppressionRuleV2BasicExpressionOutputWithContext(ctx context.Context) SuppressionRuleV2BasicExpressionOutput {
+	return o
+}
+
+// left hand side dropdown value
+func (o SuppressionRuleV2BasicExpressionOutput) Lhs() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2BasicExpression) string { return v.Lhs }).(pulumi.StringOutput)
+}
+
+// operator (is, is*not, matches, not*contains)
+func (o SuppressionRuleV2BasicExpressionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2BasicExpression) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// right hand side value
+func (o SuppressionRuleV2BasicExpressionOutput) Rhs() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2BasicExpression) string { return v.Rhs }).(pulumi.StringOutput)
+}
+
+type SuppressionRuleV2BasicExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2BasicExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2BasicExpressionArrayOutput) ToSuppressionRuleV2BasicExpressionArrayOutput() SuppressionRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2BasicExpressionArrayOutput) ToSuppressionRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) SuppressionRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2BasicExpressionArrayOutput) Index(i pulumi.IntInput) SuppressionRuleV2BasicExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SuppressionRuleV2BasicExpression {
+		return vs[0].([]SuppressionRuleV2BasicExpression)[vs[1].(int)]
+	}).(SuppressionRuleV2BasicExpressionOutput)
+}
+
+type SuppressionRuleV2Timeslot struct {
+	// Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+	Customs []SuppressionRuleV2TimeslotCustom `pulumi:"customs"`
+	// Defines the end date of the time slot
+	EndTime string `pulumi:"endTime"`
+	// Defines whether the time slot ends or not
+	EndsNever *bool `pulumi:"endsNever"`
+	// Defines the end date of the repetition
+	EndsOn string `pulumi:"endsOn"`
+	// Defines if the time slot is an all day slot
+	IsAllday *bool `pulumi:"isAllday"`
+	// Defines whether repetition is custom or not
+	IsCustom *bool `pulumi:"isCustom"`
+	// Defines the repetition of the time slot
+	Repetition string `pulumi:"repetition"`
+	// Defines the start date of the time slot
+	StartTime string `pulumi:"startTime"`
+	// Time zone for the time slot
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// SuppressionRuleV2TimeslotInput is an input type that accepts SuppressionRuleV2TimeslotArgs and SuppressionRuleV2TimeslotOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2TimeslotInput` via:
+//
+//	SuppressionRuleV2TimeslotArgs{...}
+type SuppressionRuleV2TimeslotInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2TimeslotOutput() SuppressionRuleV2TimeslotOutput
+	ToSuppressionRuleV2TimeslotOutputWithContext(context.Context) SuppressionRuleV2TimeslotOutput
+}
+
+type SuppressionRuleV2TimeslotArgs struct {
+	// Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+	Customs SuppressionRuleV2TimeslotCustomArrayInput `pulumi:"customs"`
+	// Defines the end date of the time slot
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Defines whether the time slot ends or not
+	EndsNever pulumi.BoolPtrInput `pulumi:"endsNever"`
+	// Defines the end date of the repetition
+	EndsOn pulumi.StringInput `pulumi:"endsOn"`
+	// Defines if the time slot is an all day slot
+	IsAllday pulumi.BoolPtrInput `pulumi:"isAllday"`
+	// Defines whether repetition is custom or not
+	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
+	// Defines the repetition of the time slot
+	Repetition pulumi.StringInput `pulumi:"repetition"`
+	// Defines the start date of the time slot
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Time zone for the time slot
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (SuppressionRuleV2TimeslotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2Timeslot)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2TimeslotArgs) ToSuppressionRuleV2TimeslotOutput() SuppressionRuleV2TimeslotOutput {
+	return i.ToSuppressionRuleV2TimeslotOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2TimeslotArgs) ToSuppressionRuleV2TimeslotOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2TimeslotOutput)
+}
+
+// SuppressionRuleV2TimeslotArrayInput is an input type that accepts SuppressionRuleV2TimeslotArray and SuppressionRuleV2TimeslotArrayOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2TimeslotArrayInput` via:
+//
+//	SuppressionRuleV2TimeslotArray{ SuppressionRuleV2TimeslotArgs{...} }
+type SuppressionRuleV2TimeslotArrayInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2TimeslotArrayOutput() SuppressionRuleV2TimeslotArrayOutput
+	ToSuppressionRuleV2TimeslotArrayOutputWithContext(context.Context) SuppressionRuleV2TimeslotArrayOutput
+}
+
+type SuppressionRuleV2TimeslotArray []SuppressionRuleV2TimeslotInput
+
+func (SuppressionRuleV2TimeslotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2Timeslot)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2TimeslotArray) ToSuppressionRuleV2TimeslotArrayOutput() SuppressionRuleV2TimeslotArrayOutput {
+	return i.ToSuppressionRuleV2TimeslotArrayOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2TimeslotArray) ToSuppressionRuleV2TimeslotArrayOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2TimeslotArrayOutput)
+}
+
+type SuppressionRuleV2TimeslotOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2TimeslotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2Timeslot)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2TimeslotOutput) ToSuppressionRuleV2TimeslotOutput() SuppressionRuleV2TimeslotOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotOutput) ToSuppressionRuleV2TimeslotOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotOutput {
+	return o
+}
+
+// Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+func (o SuppressionRuleV2TimeslotOutput) Customs() SuppressionRuleV2TimeslotCustomArrayOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) []SuppressionRuleV2TimeslotCustom { return v.Customs }).(SuppressionRuleV2TimeslotCustomArrayOutput)
+}
+
+// Defines the end date of the time slot
+func (o SuppressionRuleV2TimeslotOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Defines whether the time slot ends or not
+func (o SuppressionRuleV2TimeslotOutput) EndsNever() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) *bool { return v.EndsNever }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the end date of the repetition
+func (o SuppressionRuleV2TimeslotOutput) EndsOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) string { return v.EndsOn }).(pulumi.StringOutput)
+}
+
+// Defines if the time slot is an all day slot
+func (o SuppressionRuleV2TimeslotOutput) IsAllday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) *bool { return v.IsAllday }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether repetition is custom or not
+func (o SuppressionRuleV2TimeslotOutput) IsCustom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) *bool { return v.IsCustom }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the repetition of the time slot
+func (o SuppressionRuleV2TimeslotOutput) Repetition() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) string { return v.Repetition }).(pulumi.StringOutput)
+}
+
+// Defines the start date of the time slot
+func (o SuppressionRuleV2TimeslotOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Time zone for the time slot
+func (o SuppressionRuleV2TimeslotOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2Timeslot) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type SuppressionRuleV2TimeslotArrayOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2TimeslotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2Timeslot)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2TimeslotArrayOutput) ToSuppressionRuleV2TimeslotArrayOutput() SuppressionRuleV2TimeslotArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotArrayOutput) ToSuppressionRuleV2TimeslotArrayOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotArrayOutput) Index(i pulumi.IntInput) SuppressionRuleV2TimeslotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SuppressionRuleV2Timeslot {
+		return vs[0].([]SuppressionRuleV2Timeslot)[vs[1].(int)]
+	}).(SuppressionRuleV2TimeslotOutput)
+}
+
+type SuppressionRuleV2TimeslotCustom struct {
+	// Determines how often the rule repeats. Valid values are day, week, month.
+	Repeats string `pulumi:"repeats"`
+	// Number of times to repeat.
+	RepeatsCount *int `pulumi:"repeatsCount"`
+	// Repeats on month.
+	RepeatsOnMonth *string `pulumi:"repeatsOnMonth"`
+	// List of weekdays to repeat on.
+	RepeatsOnWeekdays []int `pulumi:"repeatsOnWeekdays"`
+}
+
+// SuppressionRuleV2TimeslotCustomInput is an input type that accepts SuppressionRuleV2TimeslotCustomArgs and SuppressionRuleV2TimeslotCustomOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2TimeslotCustomInput` via:
+//
+//	SuppressionRuleV2TimeslotCustomArgs{...}
+type SuppressionRuleV2TimeslotCustomInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2TimeslotCustomOutput() SuppressionRuleV2TimeslotCustomOutput
+	ToSuppressionRuleV2TimeslotCustomOutputWithContext(context.Context) SuppressionRuleV2TimeslotCustomOutput
+}
+
+type SuppressionRuleV2TimeslotCustomArgs struct {
+	// Determines how often the rule repeats. Valid values are day, week, month.
+	Repeats pulumi.StringInput `pulumi:"repeats"`
+	// Number of times to repeat.
+	RepeatsCount pulumi.IntPtrInput `pulumi:"repeatsCount"`
+	// Repeats on month.
+	RepeatsOnMonth pulumi.StringPtrInput `pulumi:"repeatsOnMonth"`
+	// List of weekdays to repeat on.
+	RepeatsOnWeekdays pulumi.IntArrayInput `pulumi:"repeatsOnWeekdays"`
+}
+
+func (SuppressionRuleV2TimeslotCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2TimeslotCustom)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2TimeslotCustomArgs) ToSuppressionRuleV2TimeslotCustomOutput() SuppressionRuleV2TimeslotCustomOutput {
+	return i.ToSuppressionRuleV2TimeslotCustomOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2TimeslotCustomArgs) ToSuppressionRuleV2TimeslotCustomOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2TimeslotCustomOutput)
+}
+
+// SuppressionRuleV2TimeslotCustomArrayInput is an input type that accepts SuppressionRuleV2TimeslotCustomArray and SuppressionRuleV2TimeslotCustomArrayOutput values.
+// You can construct a concrete instance of `SuppressionRuleV2TimeslotCustomArrayInput` via:
+//
+//	SuppressionRuleV2TimeslotCustomArray{ SuppressionRuleV2TimeslotCustomArgs{...} }
+type SuppressionRuleV2TimeslotCustomArrayInput interface {
+	pulumi.Input
+
+	ToSuppressionRuleV2TimeslotCustomArrayOutput() SuppressionRuleV2TimeslotCustomArrayOutput
+	ToSuppressionRuleV2TimeslotCustomArrayOutputWithContext(context.Context) SuppressionRuleV2TimeslotCustomArrayOutput
+}
+
+type SuppressionRuleV2TimeslotCustomArray []SuppressionRuleV2TimeslotCustomInput
+
+func (SuppressionRuleV2TimeslotCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2TimeslotCustom)(nil)).Elem()
+}
+
+func (i SuppressionRuleV2TimeslotCustomArray) ToSuppressionRuleV2TimeslotCustomArrayOutput() SuppressionRuleV2TimeslotCustomArrayOutput {
+	return i.ToSuppressionRuleV2TimeslotCustomArrayOutputWithContext(context.Background())
+}
+
+func (i SuppressionRuleV2TimeslotCustomArray) ToSuppressionRuleV2TimeslotCustomArrayOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionRuleV2TimeslotCustomArrayOutput)
+}
+
+type SuppressionRuleV2TimeslotCustomOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2TimeslotCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionRuleV2TimeslotCustom)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2TimeslotCustomOutput) ToSuppressionRuleV2TimeslotCustomOutput() SuppressionRuleV2TimeslotCustomOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotCustomOutput) ToSuppressionRuleV2TimeslotCustomOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotCustomOutput {
+	return o
+}
+
+// Determines how often the rule repeats. Valid values are day, week, month.
+func (o SuppressionRuleV2TimeslotCustomOutput) Repeats() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionRuleV2TimeslotCustom) string { return v.Repeats }).(pulumi.StringOutput)
+}
+
+// Number of times to repeat.
+func (o SuppressionRuleV2TimeslotCustomOutput) RepeatsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SuppressionRuleV2TimeslotCustom) *int { return v.RepeatsCount }).(pulumi.IntPtrOutput)
+}
+
+// Repeats on month.
+func (o SuppressionRuleV2TimeslotCustomOutput) RepeatsOnMonth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionRuleV2TimeslotCustom) *string { return v.RepeatsOnMonth }).(pulumi.StringPtrOutput)
+}
+
+// List of weekdays to repeat on.
+func (o SuppressionRuleV2TimeslotCustomOutput) RepeatsOnWeekdays() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SuppressionRuleV2TimeslotCustom) []int { return v.RepeatsOnWeekdays }).(pulumi.IntArrayOutput)
+}
+
+type SuppressionRuleV2TimeslotCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (SuppressionRuleV2TimeslotCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SuppressionRuleV2TimeslotCustom)(nil)).Elem()
+}
+
+func (o SuppressionRuleV2TimeslotCustomArrayOutput) ToSuppressionRuleV2TimeslotCustomArrayOutput() SuppressionRuleV2TimeslotCustomArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotCustomArrayOutput) ToSuppressionRuleV2TimeslotCustomArrayOutputWithContext(ctx context.Context) SuppressionRuleV2TimeslotCustomArrayOutput {
+	return o
+}
+
+func (o SuppressionRuleV2TimeslotCustomArrayOutput) Index(i pulumi.IntInput) SuppressionRuleV2TimeslotCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SuppressionRuleV2TimeslotCustom {
+		return vs[0].([]SuppressionRuleV2TimeslotCustom)[vs[1].(int)]
+	}).(SuppressionRuleV2TimeslotCustomOutput)
+}
+
+type TaggingRuleV2BasicExpression struct {
+	// left hand side dropdown value
+	Lhs string `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op string `pulumi:"op"`
+	// right hand side value
+	Rhs string `pulumi:"rhs"`
+}
+
+// TaggingRuleV2BasicExpressionInput is an input type that accepts TaggingRuleV2BasicExpressionArgs and TaggingRuleV2BasicExpressionOutput values.
+// You can construct a concrete instance of `TaggingRuleV2BasicExpressionInput` via:
+//
+//	TaggingRuleV2BasicExpressionArgs{...}
+type TaggingRuleV2BasicExpressionInput interface {
+	pulumi.Input
+
+	ToTaggingRuleV2BasicExpressionOutput() TaggingRuleV2BasicExpressionOutput
+	ToTaggingRuleV2BasicExpressionOutputWithContext(context.Context) TaggingRuleV2BasicExpressionOutput
+}
+
+type TaggingRuleV2BasicExpressionArgs struct {
+	// left hand side dropdown value
+	Lhs pulumi.StringInput `pulumi:"lhs"`
+	// operator (is, is*not, matches, not*contains)
+	Op pulumi.StringInput `pulumi:"op"`
+	// right hand side value
+	Rhs pulumi.StringInput `pulumi:"rhs"`
+}
+
+func (TaggingRuleV2BasicExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaggingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i TaggingRuleV2BasicExpressionArgs) ToTaggingRuleV2BasicExpressionOutput() TaggingRuleV2BasicExpressionOutput {
+	return i.ToTaggingRuleV2BasicExpressionOutputWithContext(context.Background())
+}
+
+func (i TaggingRuleV2BasicExpressionArgs) ToTaggingRuleV2BasicExpressionOutputWithContext(ctx context.Context) TaggingRuleV2BasicExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaggingRuleV2BasicExpressionOutput)
+}
+
+// TaggingRuleV2BasicExpressionArrayInput is an input type that accepts TaggingRuleV2BasicExpressionArray and TaggingRuleV2BasicExpressionArrayOutput values.
+// You can construct a concrete instance of `TaggingRuleV2BasicExpressionArrayInput` via:
+//
+//	TaggingRuleV2BasicExpressionArray{ TaggingRuleV2BasicExpressionArgs{...} }
+type TaggingRuleV2BasicExpressionArrayInput interface {
+	pulumi.Input
+
+	ToTaggingRuleV2BasicExpressionArrayOutput() TaggingRuleV2BasicExpressionArrayOutput
+	ToTaggingRuleV2BasicExpressionArrayOutputWithContext(context.Context) TaggingRuleV2BasicExpressionArrayOutput
+}
+
+type TaggingRuleV2BasicExpressionArray []TaggingRuleV2BasicExpressionInput
+
+func (TaggingRuleV2BasicExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaggingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (i TaggingRuleV2BasicExpressionArray) ToTaggingRuleV2BasicExpressionArrayOutput() TaggingRuleV2BasicExpressionArrayOutput {
+	return i.ToTaggingRuleV2BasicExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i TaggingRuleV2BasicExpressionArray) ToTaggingRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) TaggingRuleV2BasicExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaggingRuleV2BasicExpressionArrayOutput)
+}
+
+type TaggingRuleV2BasicExpressionOutput struct{ *pulumi.OutputState }
+
+func (TaggingRuleV2BasicExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaggingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o TaggingRuleV2BasicExpressionOutput) ToTaggingRuleV2BasicExpressionOutput() TaggingRuleV2BasicExpressionOutput {
+	return o
+}
+
+func (o TaggingRuleV2BasicExpressionOutput) ToTaggingRuleV2BasicExpressionOutputWithContext(ctx context.Context) TaggingRuleV2BasicExpressionOutput {
+	return o
+}
+
+// left hand side dropdown value
+func (o TaggingRuleV2BasicExpressionOutput) Lhs() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2BasicExpression) string { return v.Lhs }).(pulumi.StringOutput)
+}
+
+// operator (is, is*not, matches, not*contains)
+func (o TaggingRuleV2BasicExpressionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2BasicExpression) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// right hand side value
+func (o TaggingRuleV2BasicExpressionOutput) Rhs() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2BasicExpression) string { return v.Rhs }).(pulumi.StringOutput)
+}
+
+type TaggingRuleV2BasicExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (TaggingRuleV2BasicExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaggingRuleV2BasicExpression)(nil)).Elem()
+}
+
+func (o TaggingRuleV2BasicExpressionArrayOutput) ToTaggingRuleV2BasicExpressionArrayOutput() TaggingRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o TaggingRuleV2BasicExpressionArrayOutput) ToTaggingRuleV2BasicExpressionArrayOutputWithContext(ctx context.Context) TaggingRuleV2BasicExpressionArrayOutput {
+	return o
+}
+
+func (o TaggingRuleV2BasicExpressionArrayOutput) Index(i pulumi.IntInput) TaggingRuleV2BasicExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaggingRuleV2BasicExpression {
+		return vs[0].([]TaggingRuleV2BasicExpression)[vs[1].(int)]
+	}).(TaggingRuleV2BasicExpressionOutput)
+}
+
+type TaggingRuleV2Tag struct {
+	// Tag color, hex values
+	Color string `pulumi:"color"`
+	// key
+	Key string `pulumi:"key"`
+	// value
+	Value string `pulumi:"value"`
+}
+
+// TaggingRuleV2TagInput is an input type that accepts TaggingRuleV2TagArgs and TaggingRuleV2TagOutput values.
+// You can construct a concrete instance of `TaggingRuleV2TagInput` via:
+//
+//	TaggingRuleV2TagArgs{...}
+type TaggingRuleV2TagInput interface {
+	pulumi.Input
+
+	ToTaggingRuleV2TagOutput() TaggingRuleV2TagOutput
+	ToTaggingRuleV2TagOutputWithContext(context.Context) TaggingRuleV2TagOutput
+}
+
+type TaggingRuleV2TagArgs struct {
+	// Tag color, hex values
+	Color pulumi.StringInput `pulumi:"color"`
+	// key
+	Key pulumi.StringInput `pulumi:"key"`
+	// value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (TaggingRuleV2TagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaggingRuleV2Tag)(nil)).Elem()
+}
+
+func (i TaggingRuleV2TagArgs) ToTaggingRuleV2TagOutput() TaggingRuleV2TagOutput {
+	return i.ToTaggingRuleV2TagOutputWithContext(context.Background())
+}
+
+func (i TaggingRuleV2TagArgs) ToTaggingRuleV2TagOutputWithContext(ctx context.Context) TaggingRuleV2TagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaggingRuleV2TagOutput)
+}
+
+// TaggingRuleV2TagArrayInput is an input type that accepts TaggingRuleV2TagArray and TaggingRuleV2TagArrayOutput values.
+// You can construct a concrete instance of `TaggingRuleV2TagArrayInput` via:
+//
+//	TaggingRuleV2TagArray{ TaggingRuleV2TagArgs{...} }
+type TaggingRuleV2TagArrayInput interface {
+	pulumi.Input
+
+	ToTaggingRuleV2TagArrayOutput() TaggingRuleV2TagArrayOutput
+	ToTaggingRuleV2TagArrayOutputWithContext(context.Context) TaggingRuleV2TagArrayOutput
+}
+
+type TaggingRuleV2TagArray []TaggingRuleV2TagInput
+
+func (TaggingRuleV2TagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaggingRuleV2Tag)(nil)).Elem()
+}
+
+func (i TaggingRuleV2TagArray) ToTaggingRuleV2TagArrayOutput() TaggingRuleV2TagArrayOutput {
+	return i.ToTaggingRuleV2TagArrayOutputWithContext(context.Background())
+}
+
+func (i TaggingRuleV2TagArray) ToTaggingRuleV2TagArrayOutputWithContext(ctx context.Context) TaggingRuleV2TagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaggingRuleV2TagArrayOutput)
+}
+
+type TaggingRuleV2TagOutput struct{ *pulumi.OutputState }
+
+func (TaggingRuleV2TagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaggingRuleV2Tag)(nil)).Elem()
+}
+
+func (o TaggingRuleV2TagOutput) ToTaggingRuleV2TagOutput() TaggingRuleV2TagOutput {
+	return o
+}
+
+func (o TaggingRuleV2TagOutput) ToTaggingRuleV2TagOutputWithContext(ctx context.Context) TaggingRuleV2TagOutput {
+	return o
+}
+
+// Tag color, hex values
+func (o TaggingRuleV2TagOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2Tag) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// key
+func (o TaggingRuleV2TagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2Tag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// value
+func (o TaggingRuleV2TagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TaggingRuleV2Tag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TaggingRuleV2TagArrayOutput struct{ *pulumi.OutputState }
+
+func (TaggingRuleV2TagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaggingRuleV2Tag)(nil)).Elem()
+}
+
+func (o TaggingRuleV2TagArrayOutput) ToTaggingRuleV2TagArrayOutput() TaggingRuleV2TagArrayOutput {
+	return o
+}
+
+func (o TaggingRuleV2TagArrayOutput) ToTaggingRuleV2TagArrayOutputWithContext(ctx context.Context) TaggingRuleV2TagArrayOutput {
+	return o
+}
+
+func (o TaggingRuleV2TagArrayOutput) Index(i pulumi.IntInput) TaggingRuleV2TagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaggingRuleV2Tag {
+		return vs[0].([]TaggingRuleV2Tag)[vs[1].(int)]
+	}).(TaggingRuleV2TagOutput)
+}
+
 type WebformInputField struct {
 	// Input field Label.
 	Label *string `pulumi:"label"`
@@ -1683,6 +4584,439 @@ func (o WebformSeverityArrayOutput) Index(i pulumi.IntInput) WebformSeverityOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebformSeverity {
 		return vs[0].([]WebformSeverity)[vs[1].(int)]
 	}).(WebformSeverityOutput)
+}
+
+type WorkflowActionChannel struct {
+	// The display text of the communication channel
+	DisplayText string `pulumi:"displayText"`
+	// The link of the communication channel
+	Link string `pulumi:"link"`
+	// The type of the communication channel
+	Type string `pulumi:"type"`
+}
+
+// WorkflowActionChannelInput is an input type that accepts WorkflowActionChannelArgs and WorkflowActionChannelOutput values.
+// You can construct a concrete instance of `WorkflowActionChannelInput` via:
+//
+//	WorkflowActionChannelArgs{...}
+type WorkflowActionChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowActionChannelOutput() WorkflowActionChannelOutput
+	ToWorkflowActionChannelOutputWithContext(context.Context) WorkflowActionChannelOutput
+}
+
+type WorkflowActionChannelArgs struct {
+	// The display text of the communication channel
+	DisplayText pulumi.StringInput `pulumi:"displayText"`
+	// The link of the communication channel
+	Link pulumi.StringInput `pulumi:"link"`
+	// The type of the communication channel
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WorkflowActionChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionChannel)(nil)).Elem()
+}
+
+func (i WorkflowActionChannelArgs) ToWorkflowActionChannelOutput() WorkflowActionChannelOutput {
+	return i.ToWorkflowActionChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionChannelArgs) ToWorkflowActionChannelOutputWithContext(ctx context.Context) WorkflowActionChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionChannelOutput)
+}
+
+// WorkflowActionChannelArrayInput is an input type that accepts WorkflowActionChannelArray and WorkflowActionChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowActionChannelArrayInput` via:
+//
+//	WorkflowActionChannelArray{ WorkflowActionChannelArgs{...} }
+type WorkflowActionChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowActionChannelArrayOutput() WorkflowActionChannelArrayOutput
+	ToWorkflowActionChannelArrayOutputWithContext(context.Context) WorkflowActionChannelArrayOutput
+}
+
+type WorkflowActionChannelArray []WorkflowActionChannelInput
+
+func (WorkflowActionChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionChannel)(nil)).Elem()
+}
+
+func (i WorkflowActionChannelArray) ToWorkflowActionChannelArrayOutput() WorkflowActionChannelArrayOutput {
+	return i.ToWorkflowActionChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionChannelArray) ToWorkflowActionChannelArrayOutputWithContext(ctx context.Context) WorkflowActionChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionChannelArrayOutput)
+}
+
+type WorkflowActionChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionChannel)(nil)).Elem()
+}
+
+func (o WorkflowActionChannelOutput) ToWorkflowActionChannelOutput() WorkflowActionChannelOutput {
+	return o
+}
+
+func (o WorkflowActionChannelOutput) ToWorkflowActionChannelOutputWithContext(ctx context.Context) WorkflowActionChannelOutput {
+	return o
+}
+
+// The display text of the communication channel
+func (o WorkflowActionChannelOutput) DisplayText() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionChannel) string { return v.DisplayText }).(pulumi.StringOutput)
+}
+
+// The link of the communication channel
+func (o WorkflowActionChannelOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionChannel) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// The type of the communication channel
+func (o WorkflowActionChannelOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionChannel) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WorkflowActionChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionChannel)(nil)).Elem()
+}
+
+func (o WorkflowActionChannelArrayOutput) ToWorkflowActionChannelArrayOutput() WorkflowActionChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowActionChannelArrayOutput) ToWorkflowActionChannelArrayOutputWithContext(ctx context.Context) WorkflowActionChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowActionChannelArrayOutput) Index(i pulumi.IntInput) WorkflowActionChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowActionChannel {
+		return vs[0].([]WorkflowActionChannel)[vs[1].(int)]
+	}).(WorkflowActionChannelOutput)
+}
+
+type WorkflowActionComponentAndImpact struct {
+	// The ID of the component
+	ComponentId int `pulumi:"componentId"`
+	// The ID of the impact status
+	ImpactStatusId int `pulumi:"impactStatusId"`
+}
+
+// WorkflowActionComponentAndImpactInput is an input type that accepts WorkflowActionComponentAndImpactArgs and WorkflowActionComponentAndImpactOutput values.
+// You can construct a concrete instance of `WorkflowActionComponentAndImpactInput` via:
+//
+//	WorkflowActionComponentAndImpactArgs{...}
+type WorkflowActionComponentAndImpactInput interface {
+	pulumi.Input
+
+	ToWorkflowActionComponentAndImpactOutput() WorkflowActionComponentAndImpactOutput
+	ToWorkflowActionComponentAndImpactOutputWithContext(context.Context) WorkflowActionComponentAndImpactOutput
+}
+
+type WorkflowActionComponentAndImpactArgs struct {
+	// The ID of the component
+	ComponentId pulumi.IntInput `pulumi:"componentId"`
+	// The ID of the impact status
+	ImpactStatusId pulumi.IntInput `pulumi:"impactStatusId"`
+}
+
+func (WorkflowActionComponentAndImpactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionComponentAndImpact)(nil)).Elem()
+}
+
+func (i WorkflowActionComponentAndImpactArgs) ToWorkflowActionComponentAndImpactOutput() WorkflowActionComponentAndImpactOutput {
+	return i.ToWorkflowActionComponentAndImpactOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionComponentAndImpactArgs) ToWorkflowActionComponentAndImpactOutputWithContext(ctx context.Context) WorkflowActionComponentAndImpactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionComponentAndImpactOutput)
+}
+
+// WorkflowActionComponentAndImpactArrayInput is an input type that accepts WorkflowActionComponentAndImpactArray and WorkflowActionComponentAndImpactArrayOutput values.
+// You can construct a concrete instance of `WorkflowActionComponentAndImpactArrayInput` via:
+//
+//	WorkflowActionComponentAndImpactArray{ WorkflowActionComponentAndImpactArgs{...} }
+type WorkflowActionComponentAndImpactArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowActionComponentAndImpactArrayOutput() WorkflowActionComponentAndImpactArrayOutput
+	ToWorkflowActionComponentAndImpactArrayOutputWithContext(context.Context) WorkflowActionComponentAndImpactArrayOutput
+}
+
+type WorkflowActionComponentAndImpactArray []WorkflowActionComponentAndImpactInput
+
+func (WorkflowActionComponentAndImpactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionComponentAndImpact)(nil)).Elem()
+}
+
+func (i WorkflowActionComponentAndImpactArray) ToWorkflowActionComponentAndImpactArrayOutput() WorkflowActionComponentAndImpactArrayOutput {
+	return i.ToWorkflowActionComponentAndImpactArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionComponentAndImpactArray) ToWorkflowActionComponentAndImpactArrayOutputWithContext(ctx context.Context) WorkflowActionComponentAndImpactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionComponentAndImpactArrayOutput)
+}
+
+type WorkflowActionComponentAndImpactOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionComponentAndImpactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionComponentAndImpact)(nil)).Elem()
+}
+
+func (o WorkflowActionComponentAndImpactOutput) ToWorkflowActionComponentAndImpactOutput() WorkflowActionComponentAndImpactOutput {
+	return o
+}
+
+func (o WorkflowActionComponentAndImpactOutput) ToWorkflowActionComponentAndImpactOutputWithContext(ctx context.Context) WorkflowActionComponentAndImpactOutput {
+	return o
+}
+
+// The ID of the component
+func (o WorkflowActionComponentAndImpactOutput) ComponentId() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkflowActionComponentAndImpact) int { return v.ComponentId }).(pulumi.IntOutput)
+}
+
+// The ID of the impact status
+func (o WorkflowActionComponentAndImpactOutput) ImpactStatusId() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkflowActionComponentAndImpact) int { return v.ImpactStatusId }).(pulumi.IntOutput)
+}
+
+type WorkflowActionComponentAndImpactArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionComponentAndImpactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionComponentAndImpact)(nil)).Elem()
+}
+
+func (o WorkflowActionComponentAndImpactArrayOutput) ToWorkflowActionComponentAndImpactArrayOutput() WorkflowActionComponentAndImpactArrayOutput {
+	return o
+}
+
+func (o WorkflowActionComponentAndImpactArrayOutput) ToWorkflowActionComponentAndImpactArrayOutputWithContext(ctx context.Context) WorkflowActionComponentAndImpactArrayOutput {
+	return o
+}
+
+func (o WorkflowActionComponentAndImpactArrayOutput) Index(i pulumi.IntInput) WorkflowActionComponentAndImpactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowActionComponentAndImpact {
+		return vs[0].([]WorkflowActionComponentAndImpact)[vs[1].(int)]
+	}).(WorkflowActionComponentAndImpactOutput)
+}
+
+type WorkflowActionHeader struct {
+	// The key of the header
+	Key string `pulumi:"key"`
+	// The value of the header
+	Value string `pulumi:"value"`
+}
+
+// WorkflowActionHeaderInput is an input type that accepts WorkflowActionHeaderArgs and WorkflowActionHeaderOutput values.
+// You can construct a concrete instance of `WorkflowActionHeaderInput` via:
+//
+//	WorkflowActionHeaderArgs{...}
+type WorkflowActionHeaderInput interface {
+	pulumi.Input
+
+	ToWorkflowActionHeaderOutput() WorkflowActionHeaderOutput
+	ToWorkflowActionHeaderOutputWithContext(context.Context) WorkflowActionHeaderOutput
+}
+
+type WorkflowActionHeaderArgs struct {
+	// The key of the header
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the header
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (WorkflowActionHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionHeader)(nil)).Elem()
+}
+
+func (i WorkflowActionHeaderArgs) ToWorkflowActionHeaderOutput() WorkflowActionHeaderOutput {
+	return i.ToWorkflowActionHeaderOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionHeaderArgs) ToWorkflowActionHeaderOutputWithContext(ctx context.Context) WorkflowActionHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionHeaderOutput)
+}
+
+// WorkflowActionHeaderArrayInput is an input type that accepts WorkflowActionHeaderArray and WorkflowActionHeaderArrayOutput values.
+// You can construct a concrete instance of `WorkflowActionHeaderArrayInput` via:
+//
+//	WorkflowActionHeaderArray{ WorkflowActionHeaderArgs{...} }
+type WorkflowActionHeaderArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowActionHeaderArrayOutput() WorkflowActionHeaderArrayOutput
+	ToWorkflowActionHeaderArrayOutputWithContext(context.Context) WorkflowActionHeaderArrayOutput
+}
+
+type WorkflowActionHeaderArray []WorkflowActionHeaderInput
+
+func (WorkflowActionHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionHeader)(nil)).Elem()
+}
+
+func (i WorkflowActionHeaderArray) ToWorkflowActionHeaderArrayOutput() WorkflowActionHeaderArrayOutput {
+	return i.ToWorkflowActionHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionHeaderArray) ToWorkflowActionHeaderArrayOutputWithContext(ctx context.Context) WorkflowActionHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionHeaderArrayOutput)
+}
+
+type WorkflowActionHeaderOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionHeader)(nil)).Elem()
+}
+
+func (o WorkflowActionHeaderOutput) ToWorkflowActionHeaderOutput() WorkflowActionHeaderOutput {
+	return o
+}
+
+func (o WorkflowActionHeaderOutput) ToWorkflowActionHeaderOutputWithContext(ctx context.Context) WorkflowActionHeaderOutput {
+	return o
+}
+
+// The key of the header
+func (o WorkflowActionHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the header
+func (o WorkflowActionHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type WorkflowActionHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionHeader)(nil)).Elem()
+}
+
+func (o WorkflowActionHeaderArrayOutput) ToWorkflowActionHeaderArrayOutput() WorkflowActionHeaderArrayOutput {
+	return o
+}
+
+func (o WorkflowActionHeaderArrayOutput) ToWorkflowActionHeaderArrayOutputWithContext(ctx context.Context) WorkflowActionHeaderArrayOutput {
+	return o
+}
+
+func (o WorkflowActionHeaderArrayOutput) Index(i pulumi.IntInput) WorkflowActionHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowActionHeader {
+		return vs[0].([]WorkflowActionHeader)[vs[1].(int)]
+	}).(WorkflowActionHeaderOutput)
+}
+
+type WorkflowActionStatusAndMessage struct {
+	// The messages to be set for the issue
+	Messages []string `pulumi:"messages"`
+	// The ID of the status
+	StatusId int `pulumi:"statusId"`
+}
+
+// WorkflowActionStatusAndMessageInput is an input type that accepts WorkflowActionStatusAndMessageArgs and WorkflowActionStatusAndMessageOutput values.
+// You can construct a concrete instance of `WorkflowActionStatusAndMessageInput` via:
+//
+//	WorkflowActionStatusAndMessageArgs{...}
+type WorkflowActionStatusAndMessageInput interface {
+	pulumi.Input
+
+	ToWorkflowActionStatusAndMessageOutput() WorkflowActionStatusAndMessageOutput
+	ToWorkflowActionStatusAndMessageOutputWithContext(context.Context) WorkflowActionStatusAndMessageOutput
+}
+
+type WorkflowActionStatusAndMessageArgs struct {
+	// The messages to be set for the issue
+	Messages pulumi.StringArrayInput `pulumi:"messages"`
+	// The ID of the status
+	StatusId pulumi.IntInput `pulumi:"statusId"`
+}
+
+func (WorkflowActionStatusAndMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionStatusAndMessage)(nil)).Elem()
+}
+
+func (i WorkflowActionStatusAndMessageArgs) ToWorkflowActionStatusAndMessageOutput() WorkflowActionStatusAndMessageOutput {
+	return i.ToWorkflowActionStatusAndMessageOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionStatusAndMessageArgs) ToWorkflowActionStatusAndMessageOutputWithContext(ctx context.Context) WorkflowActionStatusAndMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionStatusAndMessageOutput)
+}
+
+// WorkflowActionStatusAndMessageArrayInput is an input type that accepts WorkflowActionStatusAndMessageArray and WorkflowActionStatusAndMessageArrayOutput values.
+// You can construct a concrete instance of `WorkflowActionStatusAndMessageArrayInput` via:
+//
+//	WorkflowActionStatusAndMessageArray{ WorkflowActionStatusAndMessageArgs{...} }
+type WorkflowActionStatusAndMessageArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowActionStatusAndMessageArrayOutput() WorkflowActionStatusAndMessageArrayOutput
+	ToWorkflowActionStatusAndMessageArrayOutputWithContext(context.Context) WorkflowActionStatusAndMessageArrayOutput
+}
+
+type WorkflowActionStatusAndMessageArray []WorkflowActionStatusAndMessageInput
+
+func (WorkflowActionStatusAndMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionStatusAndMessage)(nil)).Elem()
+}
+
+func (i WorkflowActionStatusAndMessageArray) ToWorkflowActionStatusAndMessageArrayOutput() WorkflowActionStatusAndMessageArrayOutput {
+	return i.ToWorkflowActionStatusAndMessageArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionStatusAndMessageArray) ToWorkflowActionStatusAndMessageArrayOutputWithContext(ctx context.Context) WorkflowActionStatusAndMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionStatusAndMessageArrayOutput)
+}
+
+type WorkflowActionStatusAndMessageOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionStatusAndMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionStatusAndMessage)(nil)).Elem()
+}
+
+func (o WorkflowActionStatusAndMessageOutput) ToWorkflowActionStatusAndMessageOutput() WorkflowActionStatusAndMessageOutput {
+	return o
+}
+
+func (o WorkflowActionStatusAndMessageOutput) ToWorkflowActionStatusAndMessageOutputWithContext(ctx context.Context) WorkflowActionStatusAndMessageOutput {
+	return o
+}
+
+// The messages to be set for the issue
+func (o WorkflowActionStatusAndMessageOutput) Messages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowActionStatusAndMessage) []string { return v.Messages }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the status
+func (o WorkflowActionStatusAndMessageOutput) StatusId() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkflowActionStatusAndMessage) int { return v.StatusId }).(pulumi.IntOutput)
+}
+
+type WorkflowActionStatusAndMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionStatusAndMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionStatusAndMessage)(nil)).Elem()
+}
+
+func (o WorkflowActionStatusAndMessageArrayOutput) ToWorkflowActionStatusAndMessageArrayOutput() WorkflowActionStatusAndMessageArrayOutput {
+	return o
+}
+
+func (o WorkflowActionStatusAndMessageArrayOutput) ToWorkflowActionStatusAndMessageArrayOutputWithContext(ctx context.Context) WorkflowActionStatusAndMessageArrayOutput {
+	return o
+}
+
+func (o WorkflowActionStatusAndMessageArrayOutput) Index(i pulumi.IntInput) WorkflowActionStatusAndMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowActionStatusAndMessage {
+		return vs[0].([]WorkflowActionStatusAndMessage)[vs[1].(int)]
+	}).(WorkflowActionStatusAndMessageOutput)
 }
 
 type WorkflowEntityOwner struct {
@@ -2267,6 +5601,756 @@ func (o WorkflowTagArrayOutput) Index(i pulumi.IntInput) WorkflowTagOutput {
 	}).(WorkflowTagOutput)
 }
 
+type GetEscalationPolicyEntityOwner struct {
+	// Escalation policy owner id.
+	Id string `pulumi:"id"`
+	// Escalation policy owner type. (user or squad or team)
+	Type string `pulumi:"type"`
+}
+
+// GetEscalationPolicyEntityOwnerInput is an input type that accepts GetEscalationPolicyEntityOwnerArgs and GetEscalationPolicyEntityOwnerOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyEntityOwnerInput` via:
+//
+//	GetEscalationPolicyEntityOwnerArgs{...}
+type GetEscalationPolicyEntityOwnerInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyEntityOwnerOutput() GetEscalationPolicyEntityOwnerOutput
+	ToGetEscalationPolicyEntityOwnerOutputWithContext(context.Context) GetEscalationPolicyEntityOwnerOutput
+}
+
+type GetEscalationPolicyEntityOwnerArgs struct {
+	// Escalation policy owner id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Escalation policy owner type. (user or squad or team)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetEscalationPolicyEntityOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyEntityOwnerArgs) ToGetEscalationPolicyEntityOwnerOutput() GetEscalationPolicyEntityOwnerOutput {
+	return i.ToGetEscalationPolicyEntityOwnerOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyEntityOwnerArgs) ToGetEscalationPolicyEntityOwnerOutputWithContext(ctx context.Context) GetEscalationPolicyEntityOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyEntityOwnerOutput)
+}
+
+// GetEscalationPolicyEntityOwnerArrayInput is an input type that accepts GetEscalationPolicyEntityOwnerArray and GetEscalationPolicyEntityOwnerArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyEntityOwnerArrayInput` via:
+//
+//	GetEscalationPolicyEntityOwnerArray{ GetEscalationPolicyEntityOwnerArgs{...} }
+type GetEscalationPolicyEntityOwnerArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyEntityOwnerArrayOutput() GetEscalationPolicyEntityOwnerArrayOutput
+	ToGetEscalationPolicyEntityOwnerArrayOutputWithContext(context.Context) GetEscalationPolicyEntityOwnerArrayOutput
+}
+
+type GetEscalationPolicyEntityOwnerArray []GetEscalationPolicyEntityOwnerInput
+
+func (GetEscalationPolicyEntityOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyEntityOwnerArray) ToGetEscalationPolicyEntityOwnerArrayOutput() GetEscalationPolicyEntityOwnerArrayOutput {
+	return i.ToGetEscalationPolicyEntityOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyEntityOwnerArray) ToGetEscalationPolicyEntityOwnerArrayOutputWithContext(ctx context.Context) GetEscalationPolicyEntityOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyEntityOwnerArrayOutput)
+}
+
+type GetEscalationPolicyEntityOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyEntityOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyEntityOwnerOutput) ToGetEscalationPolicyEntityOwnerOutput() GetEscalationPolicyEntityOwnerOutput {
+	return o
+}
+
+func (o GetEscalationPolicyEntityOwnerOutput) ToGetEscalationPolicyEntityOwnerOutputWithContext(ctx context.Context) GetEscalationPolicyEntityOwnerOutput {
+	return o
+}
+
+// Escalation policy owner id.
+func (o GetEscalationPolicyEntityOwnerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEscalationPolicyEntityOwner) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Escalation policy owner type. (user or squad or team)
+func (o GetEscalationPolicyEntityOwnerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEscalationPolicyEntityOwner) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetEscalationPolicyEntityOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyEntityOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyEntityOwner)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyEntityOwnerArrayOutput) ToGetEscalationPolicyEntityOwnerArrayOutput() GetEscalationPolicyEntityOwnerArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyEntityOwnerArrayOutput) ToGetEscalationPolicyEntityOwnerArrayOutputWithContext(ctx context.Context) GetEscalationPolicyEntityOwnerArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyEntityOwnerArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyEntityOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyEntityOwner {
+		return vs[0].([]GetEscalationPolicyEntityOwner)[vs[1].(int)]
+	}).(GetEscalationPolicyEntityOwnerOutput)
+}
+
+type GetEscalationPolicyRepeat struct {
+	// The number of minutes to wait before repeating the escalation policy
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+	Times int `pulumi:"times"`
+}
+
+// GetEscalationPolicyRepeatInput is an input type that accepts GetEscalationPolicyRepeatArgs and GetEscalationPolicyRepeatOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRepeatInput` via:
+//
+//	GetEscalationPolicyRepeatArgs{...}
+type GetEscalationPolicyRepeatInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRepeatOutput() GetEscalationPolicyRepeatOutput
+	ToGetEscalationPolicyRepeatOutputWithContext(context.Context) GetEscalationPolicyRepeatOutput
+}
+
+type GetEscalationPolicyRepeatArgs struct {
+	// The number of minutes to wait before repeating the escalation policy
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetEscalationPolicyRepeatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRepeatArgs) ToGetEscalationPolicyRepeatOutput() GetEscalationPolicyRepeatOutput {
+	return i.ToGetEscalationPolicyRepeatOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRepeatArgs) ToGetEscalationPolicyRepeatOutputWithContext(ctx context.Context) GetEscalationPolicyRepeatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRepeatOutput)
+}
+
+// GetEscalationPolicyRepeatArrayInput is an input type that accepts GetEscalationPolicyRepeatArray and GetEscalationPolicyRepeatArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRepeatArrayInput` via:
+//
+//	GetEscalationPolicyRepeatArray{ GetEscalationPolicyRepeatArgs{...} }
+type GetEscalationPolicyRepeatArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRepeatArrayOutput() GetEscalationPolicyRepeatArrayOutput
+	ToGetEscalationPolicyRepeatArrayOutputWithContext(context.Context) GetEscalationPolicyRepeatArrayOutput
+}
+
+type GetEscalationPolicyRepeatArray []GetEscalationPolicyRepeatInput
+
+func (GetEscalationPolicyRepeatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRepeatArray) ToGetEscalationPolicyRepeatArrayOutput() GetEscalationPolicyRepeatArrayOutput {
+	return i.ToGetEscalationPolicyRepeatArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRepeatArray) ToGetEscalationPolicyRepeatArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRepeatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRepeatArrayOutput)
+}
+
+type GetEscalationPolicyRepeatOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRepeatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRepeatOutput) ToGetEscalationPolicyRepeatOutput() GetEscalationPolicyRepeatOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRepeatOutput) ToGetEscalationPolicyRepeatOutputWithContext(ctx context.Context) GetEscalationPolicyRepeatOutput {
+	return o
+}
+
+// The number of minutes to wait before repeating the escalation policy
+func (o GetEscalationPolicyRepeatOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRepeat) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+func (o GetEscalationPolicyRepeatOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRepeat) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetEscalationPolicyRepeatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRepeatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRepeat)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRepeatArrayOutput) ToGetEscalationPolicyRepeatArrayOutput() GetEscalationPolicyRepeatArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRepeatArrayOutput) ToGetEscalationPolicyRepeatArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRepeatArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRepeatArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRepeatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRepeat {
+		return vs[0].([]GetEscalationPolicyRepeat)[vs[1].(int)]
+	}).(GetEscalationPolicyRepeatOutput)
+}
+
+type GetEscalationPolicyRule struct {
+	DelayMinutes         int      `pulumi:"delayMinutes"`
+	NotificationChannels []string `pulumi:"notificationChannels"`
+	// repeat this rule
+	Repeats     []GetEscalationPolicyRuleRepeat     `pulumi:"repeats"`
+	RoundRobins []GetEscalationPolicyRuleRoundRobin `pulumi:"roundRobins"`
+	Targets     []GetEscalationPolicyRuleTarget     `pulumi:"targets"`
+}
+
+// GetEscalationPolicyRuleInput is an input type that accepts GetEscalationPolicyRuleArgs and GetEscalationPolicyRuleOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleInput` via:
+//
+//	GetEscalationPolicyRuleArgs{...}
+type GetEscalationPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleOutput() GetEscalationPolicyRuleOutput
+	ToGetEscalationPolicyRuleOutputWithContext(context.Context) GetEscalationPolicyRuleOutput
+}
+
+type GetEscalationPolicyRuleArgs struct {
+	DelayMinutes         pulumi.IntInput         `pulumi:"delayMinutes"`
+	NotificationChannels pulumi.StringArrayInput `pulumi:"notificationChannels"`
+	// repeat this rule
+	Repeats     GetEscalationPolicyRuleRepeatArrayInput     `pulumi:"repeats"`
+	RoundRobins GetEscalationPolicyRuleRoundRobinArrayInput `pulumi:"roundRobins"`
+	Targets     GetEscalationPolicyRuleTargetArrayInput     `pulumi:"targets"`
+}
+
+func (GetEscalationPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRule)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleArgs) ToGetEscalationPolicyRuleOutput() GetEscalationPolicyRuleOutput {
+	return i.ToGetEscalationPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleArgs) ToGetEscalationPolicyRuleOutputWithContext(ctx context.Context) GetEscalationPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleOutput)
+}
+
+// GetEscalationPolicyRuleArrayInput is an input type that accepts GetEscalationPolicyRuleArray and GetEscalationPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleArrayInput` via:
+//
+//	GetEscalationPolicyRuleArray{ GetEscalationPolicyRuleArgs{...} }
+type GetEscalationPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleArrayOutput() GetEscalationPolicyRuleArrayOutput
+	ToGetEscalationPolicyRuleArrayOutputWithContext(context.Context) GetEscalationPolicyRuleArrayOutput
+}
+
+type GetEscalationPolicyRuleArray []GetEscalationPolicyRuleInput
+
+func (GetEscalationPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRule)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleArray) ToGetEscalationPolicyRuleArrayOutput() GetEscalationPolicyRuleArrayOutput {
+	return i.ToGetEscalationPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleArray) ToGetEscalationPolicyRuleArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleArrayOutput)
+}
+
+type GetEscalationPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRule)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleOutput) ToGetEscalationPolicyRuleOutput() GetEscalationPolicyRuleOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleOutput) ToGetEscalationPolicyRuleOutputWithContext(ctx context.Context) GetEscalationPolicyRuleOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRule) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+func (o GetEscalationPolicyRuleOutput) NotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRule) []string { return v.NotificationChannels }).(pulumi.StringArrayOutput)
+}
+
+// repeat this rule
+func (o GetEscalationPolicyRuleOutput) Repeats() GetEscalationPolicyRuleRepeatArrayOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRule) []GetEscalationPolicyRuleRepeat { return v.Repeats }).(GetEscalationPolicyRuleRepeatArrayOutput)
+}
+
+func (o GetEscalationPolicyRuleOutput) RoundRobins() GetEscalationPolicyRuleRoundRobinArrayOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRule) []GetEscalationPolicyRuleRoundRobin { return v.RoundRobins }).(GetEscalationPolicyRuleRoundRobinArrayOutput)
+}
+
+func (o GetEscalationPolicyRuleOutput) Targets() GetEscalationPolicyRuleTargetArrayOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRule) []GetEscalationPolicyRuleTarget { return v.Targets }).(GetEscalationPolicyRuleTargetArrayOutput)
+}
+
+type GetEscalationPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRule)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleArrayOutput) ToGetEscalationPolicyRuleArrayOutput() GetEscalationPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleArrayOutput) ToGetEscalationPolicyRuleArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRule {
+		return vs[0].([]GetEscalationPolicyRule)[vs[1].(int)]
+	}).(GetEscalationPolicyRuleOutput)
+}
+
+type GetEscalationPolicyRuleRepeat struct {
+	// repeat after minutes
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// repeat times
+	Times int `pulumi:"times"`
+}
+
+// GetEscalationPolicyRuleRepeatInput is an input type that accepts GetEscalationPolicyRuleRepeatArgs and GetEscalationPolicyRuleRepeatOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRepeatInput` via:
+//
+//	GetEscalationPolicyRuleRepeatArgs{...}
+type GetEscalationPolicyRuleRepeatInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRepeatOutput() GetEscalationPolicyRuleRepeatOutput
+	ToGetEscalationPolicyRuleRepeatOutputWithContext(context.Context) GetEscalationPolicyRuleRepeatOutput
+}
+
+type GetEscalationPolicyRuleRepeatArgs struct {
+	// repeat after minutes
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// repeat times
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetEscalationPolicyRuleRepeatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRepeatArgs) ToGetEscalationPolicyRuleRepeatOutput() GetEscalationPolicyRuleRepeatOutput {
+	return i.ToGetEscalationPolicyRuleRepeatOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRepeatArgs) ToGetEscalationPolicyRuleRepeatOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRepeatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRepeatOutput)
+}
+
+// GetEscalationPolicyRuleRepeatArrayInput is an input type that accepts GetEscalationPolicyRuleRepeatArray and GetEscalationPolicyRuleRepeatArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRepeatArrayInput` via:
+//
+//	GetEscalationPolicyRuleRepeatArray{ GetEscalationPolicyRuleRepeatArgs{...} }
+type GetEscalationPolicyRuleRepeatArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRepeatArrayOutput() GetEscalationPolicyRuleRepeatArrayOutput
+	ToGetEscalationPolicyRuleRepeatArrayOutputWithContext(context.Context) GetEscalationPolicyRuleRepeatArrayOutput
+}
+
+type GetEscalationPolicyRuleRepeatArray []GetEscalationPolicyRuleRepeatInput
+
+func (GetEscalationPolicyRuleRepeatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRepeatArray) ToGetEscalationPolicyRuleRepeatArrayOutput() GetEscalationPolicyRuleRepeatArrayOutput {
+	return i.ToGetEscalationPolicyRuleRepeatArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRepeatArray) ToGetEscalationPolicyRuleRepeatArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRepeatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRepeatArrayOutput)
+}
+
+type GetEscalationPolicyRuleRepeatOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRepeatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRepeatOutput) ToGetEscalationPolicyRuleRepeatOutput() GetEscalationPolicyRuleRepeatOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRepeatOutput) ToGetEscalationPolicyRuleRepeatOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRepeatOutput {
+	return o
+}
+
+// repeat after minutes
+func (o GetEscalationPolicyRuleRepeatOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRepeat) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// repeat times
+func (o GetEscalationPolicyRuleRepeatOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRepeat) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetEscalationPolicyRuleRepeatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRepeatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRepeat)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRepeatArrayOutput) ToGetEscalationPolicyRuleRepeatArrayOutput() GetEscalationPolicyRuleRepeatArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRepeatArrayOutput) ToGetEscalationPolicyRuleRepeatArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRepeatArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRepeatArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRuleRepeatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRuleRepeat {
+		return vs[0].([]GetEscalationPolicyRuleRepeat)[vs[1].(int)]
+	}).(GetEscalationPolicyRuleRepeatOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobin struct {
+	// Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+	Enabled   bool                                        `pulumi:"enabled"`
+	Rotations []GetEscalationPolicyRuleRoundRobinRotation `pulumi:"rotations"`
+}
+
+// GetEscalationPolicyRuleRoundRobinInput is an input type that accepts GetEscalationPolicyRuleRoundRobinArgs and GetEscalationPolicyRuleRoundRobinOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRoundRobinInput` via:
+//
+//	GetEscalationPolicyRuleRoundRobinArgs{...}
+type GetEscalationPolicyRuleRoundRobinInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRoundRobinOutput() GetEscalationPolicyRuleRoundRobinOutput
+	ToGetEscalationPolicyRuleRoundRobinOutputWithContext(context.Context) GetEscalationPolicyRuleRoundRobinOutput
+}
+
+type GetEscalationPolicyRuleRoundRobinArgs struct {
+	// Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+	Enabled   pulumi.BoolInput                                    `pulumi:"enabled"`
+	Rotations GetEscalationPolicyRuleRoundRobinRotationArrayInput `pulumi:"rotations"`
+}
+
+func (GetEscalationPolicyRuleRoundRobinArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRoundRobinArgs) ToGetEscalationPolicyRuleRoundRobinOutput() GetEscalationPolicyRuleRoundRobinOutput {
+	return i.ToGetEscalationPolicyRuleRoundRobinOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRoundRobinArgs) ToGetEscalationPolicyRuleRoundRobinOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRoundRobinOutput)
+}
+
+// GetEscalationPolicyRuleRoundRobinArrayInput is an input type that accepts GetEscalationPolicyRuleRoundRobinArray and GetEscalationPolicyRuleRoundRobinArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRoundRobinArrayInput` via:
+//
+//	GetEscalationPolicyRuleRoundRobinArray{ GetEscalationPolicyRuleRoundRobinArgs{...} }
+type GetEscalationPolicyRuleRoundRobinArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRoundRobinArrayOutput() GetEscalationPolicyRuleRoundRobinArrayOutput
+	ToGetEscalationPolicyRuleRoundRobinArrayOutputWithContext(context.Context) GetEscalationPolicyRuleRoundRobinArrayOutput
+}
+
+type GetEscalationPolicyRuleRoundRobinArray []GetEscalationPolicyRuleRoundRobinInput
+
+func (GetEscalationPolicyRuleRoundRobinArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRoundRobinArray) ToGetEscalationPolicyRuleRoundRobinArrayOutput() GetEscalationPolicyRuleRoundRobinArrayOutput {
+	return i.ToGetEscalationPolicyRuleRoundRobinArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRoundRobinArray) ToGetEscalationPolicyRuleRoundRobinArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRoundRobinArrayOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobinOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRoundRobinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRoundRobinOutput) ToGetEscalationPolicyRuleRoundRobinOutput() GetEscalationPolicyRuleRoundRobinOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinOutput) ToGetEscalationPolicyRuleRoundRobinOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinOutput {
+	return o
+}
+
+// Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+func (o GetEscalationPolicyRuleRoundRobinOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRoundRobin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetEscalationPolicyRuleRoundRobinOutput) Rotations() GetEscalationPolicyRuleRoundRobinRotationArrayOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRoundRobin) []GetEscalationPolicyRuleRoundRobinRotation {
+		return v.Rotations
+	}).(GetEscalationPolicyRuleRoundRobinRotationArrayOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobinArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRoundRobinArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRoundRobin)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRoundRobinArrayOutput) ToGetEscalationPolicyRuleRoundRobinArrayOutput() GetEscalationPolicyRuleRoundRobinArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinArrayOutput) ToGetEscalationPolicyRuleRoundRobinArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRuleRoundRobinOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRuleRoundRobin {
+		return vs[0].([]GetEscalationPolicyRuleRoundRobin)[vs[1].(int)]
+	}).(GetEscalationPolicyRuleRoundRobinOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobinRotation struct {
+	// repeat after minutes
+	DelayMinutes int `pulumi:"delayMinutes"`
+	// enable rotation within
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetEscalationPolicyRuleRoundRobinRotationInput is an input type that accepts GetEscalationPolicyRuleRoundRobinRotationArgs and GetEscalationPolicyRuleRoundRobinRotationOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRoundRobinRotationInput` via:
+//
+//	GetEscalationPolicyRuleRoundRobinRotationArgs{...}
+type GetEscalationPolicyRuleRoundRobinRotationInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRoundRobinRotationOutput() GetEscalationPolicyRuleRoundRobinRotationOutput
+	ToGetEscalationPolicyRuleRoundRobinRotationOutputWithContext(context.Context) GetEscalationPolicyRuleRoundRobinRotationOutput
+}
+
+type GetEscalationPolicyRuleRoundRobinRotationArgs struct {
+	// repeat after minutes
+	DelayMinutes pulumi.IntInput `pulumi:"delayMinutes"`
+	// enable rotation within
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetEscalationPolicyRuleRoundRobinRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRoundRobinRotationArgs) ToGetEscalationPolicyRuleRoundRobinRotationOutput() GetEscalationPolicyRuleRoundRobinRotationOutput {
+	return i.ToGetEscalationPolicyRuleRoundRobinRotationOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRoundRobinRotationArgs) ToGetEscalationPolicyRuleRoundRobinRotationOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRoundRobinRotationOutput)
+}
+
+// GetEscalationPolicyRuleRoundRobinRotationArrayInput is an input type that accepts GetEscalationPolicyRuleRoundRobinRotationArray and GetEscalationPolicyRuleRoundRobinRotationArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleRoundRobinRotationArrayInput` via:
+//
+//	GetEscalationPolicyRuleRoundRobinRotationArray{ GetEscalationPolicyRuleRoundRobinRotationArgs{...} }
+type GetEscalationPolicyRuleRoundRobinRotationArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleRoundRobinRotationArrayOutput() GetEscalationPolicyRuleRoundRobinRotationArrayOutput
+	ToGetEscalationPolicyRuleRoundRobinRotationArrayOutputWithContext(context.Context) GetEscalationPolicyRuleRoundRobinRotationArrayOutput
+}
+
+type GetEscalationPolicyRuleRoundRobinRotationArray []GetEscalationPolicyRuleRoundRobinRotationInput
+
+func (GetEscalationPolicyRuleRoundRobinRotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleRoundRobinRotationArray) ToGetEscalationPolicyRuleRoundRobinRotationArrayOutput() GetEscalationPolicyRuleRoundRobinRotationArrayOutput {
+	return i.ToGetEscalationPolicyRuleRoundRobinRotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleRoundRobinRotationArray) ToGetEscalationPolicyRuleRoundRobinRotationArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinRotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleRoundRobinRotationArrayOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobinRotationOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRoundRobinRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRoundRobinRotationOutput) ToGetEscalationPolicyRuleRoundRobinRotationOutput() GetEscalationPolicyRuleRoundRobinRotationOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinRotationOutput) ToGetEscalationPolicyRuleRoundRobinRotationOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinRotationOutput {
+	return o
+}
+
+// repeat after minutes
+func (o GetEscalationPolicyRuleRoundRobinRotationOutput) DelayMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRoundRobinRotation) int { return v.DelayMinutes }).(pulumi.IntOutput)
+}
+
+// enable rotation within
+func (o GetEscalationPolicyRuleRoundRobinRotationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleRoundRobinRotation) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetEscalationPolicyRuleRoundRobinRotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleRoundRobinRotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleRoundRobinRotation)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleRoundRobinRotationArrayOutput) ToGetEscalationPolicyRuleRoundRobinRotationArrayOutput() GetEscalationPolicyRuleRoundRobinRotationArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinRotationArrayOutput) ToGetEscalationPolicyRuleRoundRobinRotationArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleRoundRobinRotationArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleRoundRobinRotationArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRuleRoundRobinRotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRuleRoundRobinRotation {
+		return vs[0].([]GetEscalationPolicyRuleRoundRobinRotation)[vs[1].(int)]
+	}).(GetEscalationPolicyRuleRoundRobinRotationOutput)
+}
+
+type GetEscalationPolicyRuleTarget struct {
+	Id   string `pulumi:"id"`
+	Type string `pulumi:"type"`
+}
+
+// GetEscalationPolicyRuleTargetInput is an input type that accepts GetEscalationPolicyRuleTargetArgs and GetEscalationPolicyRuleTargetOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleTargetInput` via:
+//
+//	GetEscalationPolicyRuleTargetArgs{...}
+type GetEscalationPolicyRuleTargetInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleTargetOutput() GetEscalationPolicyRuleTargetOutput
+	ToGetEscalationPolicyRuleTargetOutputWithContext(context.Context) GetEscalationPolicyRuleTargetOutput
+}
+
+type GetEscalationPolicyRuleTargetArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetEscalationPolicyRuleTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleTargetArgs) ToGetEscalationPolicyRuleTargetOutput() GetEscalationPolicyRuleTargetOutput {
+	return i.ToGetEscalationPolicyRuleTargetOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleTargetArgs) ToGetEscalationPolicyRuleTargetOutputWithContext(ctx context.Context) GetEscalationPolicyRuleTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleTargetOutput)
+}
+
+// GetEscalationPolicyRuleTargetArrayInput is an input type that accepts GetEscalationPolicyRuleTargetArray and GetEscalationPolicyRuleTargetArrayOutput values.
+// You can construct a concrete instance of `GetEscalationPolicyRuleTargetArrayInput` via:
+//
+//	GetEscalationPolicyRuleTargetArray{ GetEscalationPolicyRuleTargetArgs{...} }
+type GetEscalationPolicyRuleTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetEscalationPolicyRuleTargetArrayOutput() GetEscalationPolicyRuleTargetArrayOutput
+	ToGetEscalationPolicyRuleTargetArrayOutputWithContext(context.Context) GetEscalationPolicyRuleTargetArrayOutput
+}
+
+type GetEscalationPolicyRuleTargetArray []GetEscalationPolicyRuleTargetInput
+
+func (GetEscalationPolicyRuleTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (i GetEscalationPolicyRuleTargetArray) ToGetEscalationPolicyRuleTargetArrayOutput() GetEscalationPolicyRuleTargetArrayOutput {
+	return i.ToGetEscalationPolicyRuleTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetEscalationPolicyRuleTargetArray) ToGetEscalationPolicyRuleTargetArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEscalationPolicyRuleTargetArrayOutput)
+}
+
+type GetEscalationPolicyRuleTargetOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleTargetOutput) ToGetEscalationPolicyRuleTargetOutput() GetEscalationPolicyRuleTargetOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleTargetOutput) ToGetEscalationPolicyRuleTargetOutputWithContext(ctx context.Context) GetEscalationPolicyRuleTargetOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleTargetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleTarget) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEscalationPolicyRuleTargetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEscalationPolicyRuleTarget) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetEscalationPolicyRuleTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEscalationPolicyRuleTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEscalationPolicyRuleTarget)(nil)).Elem()
+}
+
+func (o GetEscalationPolicyRuleTargetArrayOutput) ToGetEscalationPolicyRuleTargetArrayOutput() GetEscalationPolicyRuleTargetArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleTargetArrayOutput) ToGetEscalationPolicyRuleTargetArrayOutputWithContext(ctx context.Context) GetEscalationPolicyRuleTargetArrayOutput {
+	return o
+}
+
+func (o GetEscalationPolicyRuleTargetArrayOutput) Index(i pulumi.IntInput) GetEscalationPolicyRuleTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEscalationPolicyRuleTarget {
+		return vs[0].([]GetEscalationPolicyRuleTarget)[vs[1].(int)]
+	}).(GetEscalationPolicyRuleTargetOutput)
+}
+
 type GetRunbookEntityOwner struct {
 	// Runbook owner id.
 	Id string `pulumi:"id"`
@@ -2465,6 +6549,227 @@ func (o GetRunbookStepArrayOutput) Index(i pulumi.IntInput) GetRunbookStepOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRunbookStep {
 		return vs[0].([]GetRunbookStep)[vs[1].(int)]
 	}).(GetRunbookStepOutput)
+}
+
+type GetScheduleV2EntityOwner struct {
+	// Schedule owner id.
+	Id string `pulumi:"id"`
+	// Schedule owner type (user, team, squad).
+	Type string `pulumi:"type"`
+}
+
+// GetScheduleV2EntityOwnerInput is an input type that accepts GetScheduleV2EntityOwnerArgs and GetScheduleV2EntityOwnerOutput values.
+// You can construct a concrete instance of `GetScheduleV2EntityOwnerInput` via:
+//
+//	GetScheduleV2EntityOwnerArgs{...}
+type GetScheduleV2EntityOwnerInput interface {
+	pulumi.Input
+
+	ToGetScheduleV2EntityOwnerOutput() GetScheduleV2EntityOwnerOutput
+	ToGetScheduleV2EntityOwnerOutputWithContext(context.Context) GetScheduleV2EntityOwnerOutput
+}
+
+type GetScheduleV2EntityOwnerArgs struct {
+	// Schedule owner id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Schedule owner type (user, team, squad).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetScheduleV2EntityOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (i GetScheduleV2EntityOwnerArgs) ToGetScheduleV2EntityOwnerOutput() GetScheduleV2EntityOwnerOutput {
+	return i.ToGetScheduleV2EntityOwnerOutputWithContext(context.Background())
+}
+
+func (i GetScheduleV2EntityOwnerArgs) ToGetScheduleV2EntityOwnerOutputWithContext(ctx context.Context) GetScheduleV2EntityOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduleV2EntityOwnerOutput)
+}
+
+// GetScheduleV2EntityOwnerArrayInput is an input type that accepts GetScheduleV2EntityOwnerArray and GetScheduleV2EntityOwnerArrayOutput values.
+// You can construct a concrete instance of `GetScheduleV2EntityOwnerArrayInput` via:
+//
+//	GetScheduleV2EntityOwnerArray{ GetScheduleV2EntityOwnerArgs{...} }
+type GetScheduleV2EntityOwnerArrayInput interface {
+	pulumi.Input
+
+	ToGetScheduleV2EntityOwnerArrayOutput() GetScheduleV2EntityOwnerArrayOutput
+	ToGetScheduleV2EntityOwnerArrayOutputWithContext(context.Context) GetScheduleV2EntityOwnerArrayOutput
+}
+
+type GetScheduleV2EntityOwnerArray []GetScheduleV2EntityOwnerInput
+
+func (GetScheduleV2EntityOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (i GetScheduleV2EntityOwnerArray) ToGetScheduleV2EntityOwnerArrayOutput() GetScheduleV2EntityOwnerArrayOutput {
+	return i.ToGetScheduleV2EntityOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i GetScheduleV2EntityOwnerArray) ToGetScheduleV2EntityOwnerArrayOutputWithContext(ctx context.Context) GetScheduleV2EntityOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduleV2EntityOwnerArrayOutput)
+}
+
+type GetScheduleV2EntityOwnerOutput struct{ *pulumi.OutputState }
+
+func (GetScheduleV2EntityOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (o GetScheduleV2EntityOwnerOutput) ToGetScheduleV2EntityOwnerOutput() GetScheduleV2EntityOwnerOutput {
+	return o
+}
+
+func (o GetScheduleV2EntityOwnerOutput) ToGetScheduleV2EntityOwnerOutputWithContext(ctx context.Context) GetScheduleV2EntityOwnerOutput {
+	return o
+}
+
+// Schedule owner id.
+func (o GetScheduleV2EntityOwnerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduleV2EntityOwner) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Schedule owner type (user, team, squad).
+func (o GetScheduleV2EntityOwnerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduleV2EntityOwner) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetScheduleV2EntityOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScheduleV2EntityOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduleV2EntityOwner)(nil)).Elem()
+}
+
+func (o GetScheduleV2EntityOwnerArrayOutput) ToGetScheduleV2EntityOwnerArrayOutput() GetScheduleV2EntityOwnerArrayOutput {
+	return o
+}
+
+func (o GetScheduleV2EntityOwnerArrayOutput) ToGetScheduleV2EntityOwnerArrayOutputWithContext(ctx context.Context) GetScheduleV2EntityOwnerArrayOutput {
+	return o
+}
+
+func (o GetScheduleV2EntityOwnerArrayOutput) Index(i pulumi.IntInput) GetScheduleV2EntityOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScheduleV2EntityOwner {
+		return vs[0].([]GetScheduleV2EntityOwner)[vs[1].(int)]
+	}).(GetScheduleV2EntityOwnerOutput)
+}
+
+type GetScheduleV2Tag struct {
+	// Schedule tag color.
+	Color string `pulumi:"color"`
+	// Schedule tag key.
+	Key string `pulumi:"key"`
+	// Schedule tag value.
+	Value string `pulumi:"value"`
+}
+
+// GetScheduleV2TagInput is an input type that accepts GetScheduleV2TagArgs and GetScheduleV2TagOutput values.
+// You can construct a concrete instance of `GetScheduleV2TagInput` via:
+//
+//	GetScheduleV2TagArgs{...}
+type GetScheduleV2TagInput interface {
+	pulumi.Input
+
+	ToGetScheduleV2TagOutput() GetScheduleV2TagOutput
+	ToGetScheduleV2TagOutputWithContext(context.Context) GetScheduleV2TagOutput
+}
+
+type GetScheduleV2TagArgs struct {
+	// Schedule tag color.
+	Color pulumi.StringInput `pulumi:"color"`
+	// Schedule tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Schedule tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetScheduleV2TagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduleV2Tag)(nil)).Elem()
+}
+
+func (i GetScheduleV2TagArgs) ToGetScheduleV2TagOutput() GetScheduleV2TagOutput {
+	return i.ToGetScheduleV2TagOutputWithContext(context.Background())
+}
+
+func (i GetScheduleV2TagArgs) ToGetScheduleV2TagOutputWithContext(ctx context.Context) GetScheduleV2TagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduleV2TagOutput)
+}
+
+// GetScheduleV2TagArrayInput is an input type that accepts GetScheduleV2TagArray and GetScheduleV2TagArrayOutput values.
+// You can construct a concrete instance of `GetScheduleV2TagArrayInput` via:
+//
+//	GetScheduleV2TagArray{ GetScheduleV2TagArgs{...} }
+type GetScheduleV2TagArrayInput interface {
+	pulumi.Input
+
+	ToGetScheduleV2TagArrayOutput() GetScheduleV2TagArrayOutput
+	ToGetScheduleV2TagArrayOutputWithContext(context.Context) GetScheduleV2TagArrayOutput
+}
+
+type GetScheduleV2TagArray []GetScheduleV2TagInput
+
+func (GetScheduleV2TagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduleV2Tag)(nil)).Elem()
+}
+
+func (i GetScheduleV2TagArray) ToGetScheduleV2TagArrayOutput() GetScheduleV2TagArrayOutput {
+	return i.ToGetScheduleV2TagArrayOutputWithContext(context.Background())
+}
+
+func (i GetScheduleV2TagArray) ToGetScheduleV2TagArrayOutputWithContext(ctx context.Context) GetScheduleV2TagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduleV2TagArrayOutput)
+}
+
+type GetScheduleV2TagOutput struct{ *pulumi.OutputState }
+
+func (GetScheduleV2TagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduleV2Tag)(nil)).Elem()
+}
+
+func (o GetScheduleV2TagOutput) ToGetScheduleV2TagOutput() GetScheduleV2TagOutput {
+	return o
+}
+
+func (o GetScheduleV2TagOutput) ToGetScheduleV2TagOutputWithContext(ctx context.Context) GetScheduleV2TagOutput {
+	return o
+}
+
+// Schedule tag color.
+func (o GetScheduleV2TagOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduleV2Tag) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// Schedule tag key.
+func (o GetScheduleV2TagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduleV2Tag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Schedule tag value.
+func (o GetScheduleV2TagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScheduleV2Tag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetScheduleV2TagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetScheduleV2TagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduleV2Tag)(nil)).Elem()
+}
+
+func (o GetScheduleV2TagArrayOutput) ToGetScheduleV2TagArrayOutput() GetScheduleV2TagArrayOutput {
+	return o
+}
+
+func (o GetScheduleV2TagArrayOutput) ToGetScheduleV2TagArrayOutputWithContext(ctx context.Context) GetScheduleV2TagArrayOutput {
+	return o
+}
+
+func (o GetScheduleV2TagArrayOutput) Index(i pulumi.IntInput) GetScheduleV2TagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScheduleV2Tag {
+		return vs[0].([]GetScheduleV2Tag)[vs[1].(int)]
+	}).(GetScheduleV2TagOutput)
 }
 
 type GetServiceMaintainer struct {
@@ -2679,110 +6984,110 @@ func (o GetServiceTagArrayOutput) Index(i pulumi.IntInput) GetServiceTagOutput {
 	}).(GetServiceTagOutput)
 }
 
-type GetTeamMember struct {
+type GetTeamMemberType struct {
 	RoleIds []string `pulumi:"roleIds"`
 	// User id.
 	UserId string `pulumi:"userId"`
 }
 
-// GetTeamMemberInput is an input type that accepts GetTeamMemberArgs and GetTeamMemberOutput values.
-// You can construct a concrete instance of `GetTeamMemberInput` via:
+// GetTeamMemberTypeInput is an input type that accepts GetTeamMemberTypeArgs and GetTeamMemberTypeOutput values.
+// You can construct a concrete instance of `GetTeamMemberTypeInput` via:
 //
-//	GetTeamMemberArgs{...}
-type GetTeamMemberInput interface {
+//	GetTeamMemberTypeArgs{...}
+type GetTeamMemberTypeInput interface {
 	pulumi.Input
 
-	ToGetTeamMemberOutput() GetTeamMemberOutput
-	ToGetTeamMemberOutputWithContext(context.Context) GetTeamMemberOutput
+	ToGetTeamMemberTypeOutput() GetTeamMemberTypeOutput
+	ToGetTeamMemberTypeOutputWithContext(context.Context) GetTeamMemberTypeOutput
 }
 
-type GetTeamMemberArgs struct {
+type GetTeamMemberTypeArgs struct {
 	RoleIds pulumi.StringArrayInput `pulumi:"roleIds"`
 	// User id.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
-func (GetTeamMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMember)(nil)).Elem()
+func (GetTeamMemberTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMemberType)(nil)).Elem()
 }
 
-func (i GetTeamMemberArgs) ToGetTeamMemberOutput() GetTeamMemberOutput {
-	return i.ToGetTeamMemberOutputWithContext(context.Background())
+func (i GetTeamMemberTypeArgs) ToGetTeamMemberTypeOutput() GetTeamMemberTypeOutput {
+	return i.ToGetTeamMemberTypeOutputWithContext(context.Background())
 }
 
-func (i GetTeamMemberArgs) ToGetTeamMemberOutputWithContext(ctx context.Context) GetTeamMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberOutput)
+func (i GetTeamMemberTypeArgs) ToGetTeamMemberTypeOutputWithContext(ctx context.Context) GetTeamMemberTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberTypeOutput)
 }
 
-// GetTeamMemberArrayInput is an input type that accepts GetTeamMemberArray and GetTeamMemberArrayOutput values.
-// You can construct a concrete instance of `GetTeamMemberArrayInput` via:
+// GetTeamMemberTypeArrayInput is an input type that accepts GetTeamMemberTypeArray and GetTeamMemberTypeArrayOutput values.
+// You can construct a concrete instance of `GetTeamMemberTypeArrayInput` via:
 //
-//	GetTeamMemberArray{ GetTeamMemberArgs{...} }
-type GetTeamMemberArrayInput interface {
+//	GetTeamMemberTypeArray{ GetTeamMemberTypeArgs{...} }
+type GetTeamMemberTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetTeamMemberArrayOutput() GetTeamMemberArrayOutput
-	ToGetTeamMemberArrayOutputWithContext(context.Context) GetTeamMemberArrayOutput
+	ToGetTeamMemberTypeArrayOutput() GetTeamMemberTypeArrayOutput
+	ToGetTeamMemberTypeArrayOutputWithContext(context.Context) GetTeamMemberTypeArrayOutput
 }
 
-type GetTeamMemberArray []GetTeamMemberInput
+type GetTeamMemberTypeArray []GetTeamMemberTypeInput
 
-func (GetTeamMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMember)(nil)).Elem()
+func (GetTeamMemberTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMemberType)(nil)).Elem()
 }
 
-func (i GetTeamMemberArray) ToGetTeamMemberArrayOutput() GetTeamMemberArrayOutput {
-	return i.ToGetTeamMemberArrayOutputWithContext(context.Background())
+func (i GetTeamMemberTypeArray) ToGetTeamMemberTypeArrayOutput() GetTeamMemberTypeArrayOutput {
+	return i.ToGetTeamMemberTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetTeamMemberArray) ToGetTeamMemberArrayOutputWithContext(ctx context.Context) GetTeamMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberArrayOutput)
+func (i GetTeamMemberTypeArray) ToGetTeamMemberTypeArrayOutputWithContext(ctx context.Context) GetTeamMemberTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMemberTypeArrayOutput)
 }
 
-type GetTeamMemberOutput struct{ *pulumi.OutputState }
+type GetTeamMemberTypeOutput struct{ *pulumi.OutputState }
 
-func (GetTeamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamMember)(nil)).Elem()
+func (GetTeamMemberTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMemberType)(nil)).Elem()
 }
 
-func (o GetTeamMemberOutput) ToGetTeamMemberOutput() GetTeamMemberOutput {
+func (o GetTeamMemberTypeOutput) ToGetTeamMemberTypeOutput() GetTeamMemberTypeOutput {
 	return o
 }
 
-func (o GetTeamMemberOutput) ToGetTeamMemberOutputWithContext(ctx context.Context) GetTeamMemberOutput {
+func (o GetTeamMemberTypeOutput) ToGetTeamMemberTypeOutputWithContext(ctx context.Context) GetTeamMemberTypeOutput {
 	return o
 }
 
-func (o GetTeamMemberOutput) RoleIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTeamMember) []string { return v.RoleIds }).(pulumi.StringArrayOutput)
+func (o GetTeamMemberTypeOutput) RoleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTeamMemberType) []string { return v.RoleIds }).(pulumi.StringArrayOutput)
 }
 
 // User id.
-func (o GetTeamMemberOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamMember) string { return v.UserId }).(pulumi.StringOutput)
+func (o GetTeamMemberTypeOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMemberType) string { return v.UserId }).(pulumi.StringOutput)
 }
 
-type GetTeamMemberArrayOutput struct{ *pulumi.OutputState }
+type GetTeamMemberTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetTeamMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamMember)(nil)).Elem()
+func (GetTeamMemberTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMemberType)(nil)).Elem()
 }
 
-func (o GetTeamMemberArrayOutput) ToGetTeamMemberArrayOutput() GetTeamMemberArrayOutput {
+func (o GetTeamMemberTypeArrayOutput) ToGetTeamMemberTypeArrayOutput() GetTeamMemberTypeArrayOutput {
 	return o
 }
 
-func (o GetTeamMemberArrayOutput) ToGetTeamMemberArrayOutputWithContext(ctx context.Context) GetTeamMemberArrayOutput {
+func (o GetTeamMemberTypeArrayOutput) ToGetTeamMemberTypeArrayOutputWithContext(ctx context.Context) GetTeamMemberTypeArrayOutput {
 	return o
 }
 
-func (o GetTeamMemberArrayOutput) Index(i pulumi.IntInput) GetTeamMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMember {
-		return vs[0].([]GetTeamMember)[vs[1].(int)]
-	}).(GetTeamMemberOutput)
+func (o GetTeamMemberTypeArrayOutput) Index(i pulumi.IntInput) GetTeamMemberTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMemberType {
+		return vs[0].([]GetTeamMemberType)[vs[1].(int)]
+	}).(GetTeamMemberTypeOutput)
 }
 
-type GetTeamRole struct {
+type GetTeamRoleType struct {
 	Abilities []string `pulumi:"abilities"`
 	// Role is default.
 	Default bool `pulumi:"default"`
@@ -2792,18 +7097,18 @@ type GetTeamRole struct {
 	Name string `pulumi:"name"`
 }
 
-// GetTeamRoleInput is an input type that accepts GetTeamRoleArgs and GetTeamRoleOutput values.
-// You can construct a concrete instance of `GetTeamRoleInput` via:
+// GetTeamRoleTypeInput is an input type that accepts GetTeamRoleTypeArgs and GetTeamRoleTypeOutput values.
+// You can construct a concrete instance of `GetTeamRoleTypeInput` via:
 //
-//	GetTeamRoleArgs{...}
-type GetTeamRoleInput interface {
+//	GetTeamRoleTypeArgs{...}
+type GetTeamRoleTypeInput interface {
 	pulumi.Input
 
-	ToGetTeamRoleOutput() GetTeamRoleOutput
-	ToGetTeamRoleOutputWithContext(context.Context) GetTeamRoleOutput
+	ToGetTeamRoleTypeOutput() GetTeamRoleTypeOutput
+	ToGetTeamRoleTypeOutputWithContext(context.Context) GetTeamRoleTypeOutput
 }
 
-type GetTeamRoleArgs struct {
+type GetTeamRoleTypeArgs struct {
 	Abilities pulumi.StringArrayInput `pulumi:"abilities"`
 	// Role is default.
 	Default pulumi.BoolInput `pulumi:"default"`
@@ -2813,94 +7118,94 @@ type GetTeamRoleArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (GetTeamRoleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamRole)(nil)).Elem()
+func (GetTeamRoleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamRoleType)(nil)).Elem()
 }
 
-func (i GetTeamRoleArgs) ToGetTeamRoleOutput() GetTeamRoleOutput {
-	return i.ToGetTeamRoleOutputWithContext(context.Background())
+func (i GetTeamRoleTypeArgs) ToGetTeamRoleTypeOutput() GetTeamRoleTypeOutput {
+	return i.ToGetTeamRoleTypeOutputWithContext(context.Background())
 }
 
-func (i GetTeamRoleArgs) ToGetTeamRoleOutputWithContext(ctx context.Context) GetTeamRoleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleOutput)
+func (i GetTeamRoleTypeArgs) ToGetTeamRoleTypeOutputWithContext(ctx context.Context) GetTeamRoleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleTypeOutput)
 }
 
-// GetTeamRoleArrayInput is an input type that accepts GetTeamRoleArray and GetTeamRoleArrayOutput values.
-// You can construct a concrete instance of `GetTeamRoleArrayInput` via:
+// GetTeamRoleTypeArrayInput is an input type that accepts GetTeamRoleTypeArray and GetTeamRoleTypeArrayOutput values.
+// You can construct a concrete instance of `GetTeamRoleTypeArrayInput` via:
 //
-//	GetTeamRoleArray{ GetTeamRoleArgs{...} }
-type GetTeamRoleArrayInput interface {
+//	GetTeamRoleTypeArray{ GetTeamRoleTypeArgs{...} }
+type GetTeamRoleTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetTeamRoleArrayOutput() GetTeamRoleArrayOutput
-	ToGetTeamRoleArrayOutputWithContext(context.Context) GetTeamRoleArrayOutput
+	ToGetTeamRoleTypeArrayOutput() GetTeamRoleTypeArrayOutput
+	ToGetTeamRoleTypeArrayOutputWithContext(context.Context) GetTeamRoleTypeArrayOutput
 }
 
-type GetTeamRoleArray []GetTeamRoleInput
+type GetTeamRoleTypeArray []GetTeamRoleTypeInput
 
-func (GetTeamRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamRole)(nil)).Elem()
+func (GetTeamRoleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamRoleType)(nil)).Elem()
 }
 
-func (i GetTeamRoleArray) ToGetTeamRoleArrayOutput() GetTeamRoleArrayOutput {
-	return i.ToGetTeamRoleArrayOutputWithContext(context.Background())
+func (i GetTeamRoleTypeArray) ToGetTeamRoleTypeArrayOutput() GetTeamRoleTypeArrayOutput {
+	return i.ToGetTeamRoleTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetTeamRoleArray) ToGetTeamRoleArrayOutputWithContext(ctx context.Context) GetTeamRoleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleArrayOutput)
+func (i GetTeamRoleTypeArray) ToGetTeamRoleTypeArrayOutputWithContext(ctx context.Context) GetTeamRoleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamRoleTypeArrayOutput)
 }
 
-type GetTeamRoleOutput struct{ *pulumi.OutputState }
+type GetTeamRoleTypeOutput struct{ *pulumi.OutputState }
 
-func (GetTeamRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTeamRole)(nil)).Elem()
+func (GetTeamRoleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamRoleType)(nil)).Elem()
 }
 
-func (o GetTeamRoleOutput) ToGetTeamRoleOutput() GetTeamRoleOutput {
+func (o GetTeamRoleTypeOutput) ToGetTeamRoleTypeOutput() GetTeamRoleTypeOutput {
 	return o
 }
 
-func (o GetTeamRoleOutput) ToGetTeamRoleOutputWithContext(ctx context.Context) GetTeamRoleOutput {
+func (o GetTeamRoleTypeOutput) ToGetTeamRoleTypeOutputWithContext(ctx context.Context) GetTeamRoleTypeOutput {
 	return o
 }
 
-func (o GetTeamRoleOutput) Abilities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTeamRole) []string { return v.Abilities }).(pulumi.StringArrayOutput)
+func (o GetTeamRoleTypeOutput) Abilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTeamRoleType) []string { return v.Abilities }).(pulumi.StringArrayOutput)
 }
 
 // Role is default.
-func (o GetTeamRoleOutput) Default() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTeamRole) bool { return v.Default }).(pulumi.BoolOutput)
+func (o GetTeamRoleTypeOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTeamRoleType) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
 // Role id.
-func (o GetTeamRoleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamRole) string { return v.Id }).(pulumi.StringOutput)
+func (o GetTeamRoleTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamRoleType) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Role name.
-func (o GetTeamRoleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamRole) string { return v.Name }).(pulumi.StringOutput)
+func (o GetTeamRoleTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamRoleType) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetTeamRoleArrayOutput struct{ *pulumi.OutputState }
+type GetTeamRoleTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetTeamRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTeamRole)(nil)).Elem()
+func (GetTeamRoleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamRoleType)(nil)).Elem()
 }
 
-func (o GetTeamRoleArrayOutput) ToGetTeamRoleArrayOutput() GetTeamRoleArrayOutput {
+func (o GetTeamRoleTypeArrayOutput) ToGetTeamRoleTypeArrayOutput() GetTeamRoleTypeArrayOutput {
 	return o
 }
 
-func (o GetTeamRoleArrayOutput) ToGetTeamRoleArrayOutputWithContext(ctx context.Context) GetTeamRoleArrayOutput {
+func (o GetTeamRoleTypeArrayOutput) ToGetTeamRoleTypeArrayOutputWithContext(ctx context.Context) GetTeamRoleTypeArrayOutput {
 	return o
 }
 
-func (o GetTeamRoleArrayOutput) Index(i pulumi.IntInput) GetTeamRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamRole {
-		return vs[0].([]GetTeamRole)[vs[1].(int)]
-	}).(GetTeamRoleOutput)
+func (o GetTeamRoleTypeArrayOutput) Index(i pulumi.IntInput) GetTeamRoleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamRoleType {
+		return vs[0].([]GetTeamRoleType)[vs[1].(int)]
+	}).(GetTeamRoleTypeOutput)
 }
 
 type GetUserNotificationRule struct {
@@ -3558,14 +7863,44 @@ func (o GetWebformSeverityArrayOutput) Index(i pulumi.IntInput) GetWebformSeveri
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeduplicationRuleV2BasicExpressionInput)(nil)).Elem(), DeduplicationRuleV2BasicExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeduplicationRuleV2BasicExpressionArrayInput)(nil)).Elem(), DeduplicationRuleV2BasicExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyEntityOwnerInput)(nil)).Elem(), EscalationPolicyEntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyEntityOwnerPtrInput)(nil)).Elem(), EscalationPolicyEntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRepeatInput)(nil)).Elem(), EscalationPolicyRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRepeatPtrInput)(nil)).Elem(), EscalationPolicyRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleInput)(nil)).Elem(), EscalationPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleArrayInput)(nil)).Elem(), EscalationPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRepeatInput)(nil)).Elem(), EscalationPolicyRuleRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRepeatPtrInput)(nil)).Elem(), EscalationPolicyRuleRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRoundRobinInput)(nil)).Elem(), EscalationPolicyRuleRoundRobinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRoundRobinPtrInput)(nil)).Elem(), EscalationPolicyRuleRoundRobinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRoundRobinRotationInput)(nil)).Elem(), EscalationPolicyRuleRoundRobinRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleRoundRobinRotationPtrInput)(nil)).Elem(), EscalationPolicyRuleRoundRobinRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleTargetInput)(nil)).Elem(), EscalationPolicyRuleTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyRuleTargetArrayInput)(nil)).Elem(), EscalationPolicyRuleTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GerEntityOwnerInput)(nil)).Elem(), GerEntityOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GerEntityOwnerPtrInput)(nil)).Elem(), GerEntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleV2BasicExpressionInput)(nil)).Elem(), RoutingRuleV2BasicExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutingRuleV2BasicExpressionArrayInput)(nil)).Elem(), RoutingRuleV2BasicExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunbookEntityOwnerInput)(nil)).Elem(), RunbookEntityOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunbookEntityOwnerPtrInput)(nil)).Elem(), RunbookEntityOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunbookStepInput)(nil)).Elem(), RunbookStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunbookStepArrayInput)(nil)).Elem(), RunbookStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ParticipantGroupInput)(nil)).Elem(), ScheduleRotationV2ParticipantGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ParticipantGroupArrayInput)(nil)).Elem(), ScheduleRotationV2ParticipantGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ParticipantGroupParticipantInput)(nil)).Elem(), ScheduleRotationV2ParticipantGroupParticipantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ParticipantGroupParticipantArrayInput)(nil)).Elem(), ScheduleRotationV2ParticipantGroupParticipantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ShiftTimeslotInput)(nil)).Elem(), ScheduleRotationV2ShiftTimeslotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationV2ShiftTimeslotArrayInput)(nil)).Elem(), ScheduleRotationV2ShiftTimeslotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleV2EntityOwnerInput)(nil)).Elem(), ScheduleV2EntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleV2EntityOwnerPtrInput)(nil)).Elem(), ScheduleV2EntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleV2TagInput)(nil)).Elem(), ScheduleV2TagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleV2TagArrayInput)(nil)).Elem(), ScheduleV2TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMaintainerInput)(nil)).Elem(), ServiceMaintainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMaintainerPtrInput)(nil)).Elem(), ServiceMaintainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMaintenanceWindowInput)(nil)).Elem(), ServiceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMaintenanceWindowArrayInput)(nil)).Elem(), ServiceMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTagInput)(nil)).Elem(), ServiceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTagArrayInput)(nil)).Elem(), ServiceTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloEntityOwnerInput)(nil)).Elem(), SloEntityOwnerArgs{})
@@ -3574,6 +7909,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloNotifyPtrInput)(nil)).Elem(), SloNotifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloRuleInput)(nil)).Elem(), SloRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloRuleArrayInput)(nil)).Elem(), SloRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPageOwnerInput)(nil)).Elem(), StatusPageOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPageOwnerPtrInput)(nil)).Elem(), StatusPageOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPageThemeColorInput)(nil)).Elem(), StatusPageThemeColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusPageThemeColorPtrInput)(nil)).Elem(), StatusPageThemeColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2BasicExpressionInput)(nil)).Elem(), SuppressionRuleV2BasicExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2BasicExpressionArrayInput)(nil)).Elem(), SuppressionRuleV2BasicExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2TimeslotInput)(nil)).Elem(), SuppressionRuleV2TimeslotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2TimeslotArrayInput)(nil)).Elem(), SuppressionRuleV2TimeslotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2TimeslotCustomInput)(nil)).Elem(), SuppressionRuleV2TimeslotCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SuppressionRuleV2TimeslotCustomArrayInput)(nil)).Elem(), SuppressionRuleV2TimeslotCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaggingRuleV2BasicExpressionInput)(nil)).Elem(), TaggingRuleV2BasicExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaggingRuleV2BasicExpressionArrayInput)(nil)).Elem(), TaggingRuleV2BasicExpressionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaggingRuleV2TagInput)(nil)).Elem(), TaggingRuleV2TagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaggingRuleV2TagArrayInput)(nil)).Elem(), TaggingRuleV2TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformInputFieldInput)(nil)).Elem(), WebformInputFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformInputFieldArrayInput)(nil)).Elem(), WebformInputFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformOwnerInput)(nil)).Elem(), WebformOwnerArgs{})
@@ -3582,6 +7931,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformServiceArrayInput)(nil)).Elem(), WebformServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformSeverityInput)(nil)).Elem(), WebformSeverityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebformSeverityArrayInput)(nil)).Elem(), WebformSeverityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionChannelInput)(nil)).Elem(), WorkflowActionChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionChannelArrayInput)(nil)).Elem(), WorkflowActionChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionComponentAndImpactInput)(nil)).Elem(), WorkflowActionComponentAndImpactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionComponentAndImpactArrayInput)(nil)).Elem(), WorkflowActionComponentAndImpactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionHeaderInput)(nil)).Elem(), WorkflowActionHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionHeaderArrayInput)(nil)).Elem(), WorkflowActionHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionStatusAndMessageInput)(nil)).Elem(), WorkflowActionStatusAndMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionStatusAndMessageArrayInput)(nil)).Elem(), WorkflowActionStatusAndMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowEntityOwnerInput)(nil)).Elem(), WorkflowEntityOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowEntityOwnerArrayInput)(nil)).Elem(), WorkflowEntityOwnerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowFiltersInput)(nil)).Elem(), WorkflowFiltersArgs{})
@@ -3592,18 +7949,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowFiltersFilterFilterArrayInput)(nil)).Elem(), WorkflowFiltersFilterFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTagInput)(nil)).Elem(), WorkflowTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTagArrayInput)(nil)).Elem(), WorkflowTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyEntityOwnerInput)(nil)).Elem(), GetEscalationPolicyEntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyEntityOwnerArrayInput)(nil)).Elem(), GetEscalationPolicyEntityOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRepeatInput)(nil)).Elem(), GetEscalationPolicyRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRepeatArrayInput)(nil)).Elem(), GetEscalationPolicyRepeatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleInput)(nil)).Elem(), GetEscalationPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleArrayInput)(nil)).Elem(), GetEscalationPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRepeatInput)(nil)).Elem(), GetEscalationPolicyRuleRepeatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRepeatArrayInput)(nil)).Elem(), GetEscalationPolicyRuleRepeatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinInput)(nil)).Elem(), GetEscalationPolicyRuleRoundRobinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinArrayInput)(nil)).Elem(), GetEscalationPolicyRuleRoundRobinArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinRotationInput)(nil)).Elem(), GetEscalationPolicyRuleRoundRobinRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleRoundRobinRotationArrayInput)(nil)).Elem(), GetEscalationPolicyRuleRoundRobinRotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleTargetInput)(nil)).Elem(), GetEscalationPolicyRuleTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEscalationPolicyRuleTargetArrayInput)(nil)).Elem(), GetEscalationPolicyRuleTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunbookEntityOwnerInput)(nil)).Elem(), GetRunbookEntityOwnerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunbookEntityOwnerArrayInput)(nil)).Elem(), GetRunbookEntityOwnerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunbookStepInput)(nil)).Elem(), GetRunbookStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRunbookStepArrayInput)(nil)).Elem(), GetRunbookStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleV2EntityOwnerInput)(nil)).Elem(), GetScheduleV2EntityOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleV2EntityOwnerArrayInput)(nil)).Elem(), GetScheduleV2EntityOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleV2TagInput)(nil)).Elem(), GetScheduleV2TagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduleV2TagArrayInput)(nil)).Elem(), GetScheduleV2TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMaintainerInput)(nil)).Elem(), GetServiceMaintainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMaintainerArrayInput)(nil)).Elem(), GetServiceMaintainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTagInput)(nil)).Elem(), GetServiceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTagArrayInput)(nil)).Elem(), GetServiceTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberInput)(nil)).Elem(), GetTeamMemberArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberArrayInput)(nil)).Elem(), GetTeamMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleInput)(nil)).Elem(), GetTeamRoleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleArrayInput)(nil)).Elem(), GetTeamRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberTypeInput)(nil)).Elem(), GetTeamMemberTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMemberTypeArrayInput)(nil)).Elem(), GetTeamMemberTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleTypeInput)(nil)).Elem(), GetTeamRoleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamRoleTypeArrayInput)(nil)).Elem(), GetTeamRoleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserNotificationRuleInput)(nil)).Elem(), GetUserNotificationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserNotificationRuleArrayInput)(nil)).Elem(), GetUserNotificationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOncallReminderRuleInput)(nil)).Elem(), GetUserOncallReminderRuleArgs{})
@@ -3616,14 +7991,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebformServiceArrayInput)(nil)).Elem(), GetWebformServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebformSeverityInput)(nil)).Elem(), GetWebformSeverityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebformSeverityArrayInput)(nil)).Elem(), GetWebformSeverityArray{})
+	pulumi.RegisterOutputType(DeduplicationRuleV2BasicExpressionOutput{})
+	pulumi.RegisterOutputType(DeduplicationRuleV2BasicExpressionArrayOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyEntityOwnerOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyEntityOwnerPtrOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRepeatOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRepeatPtrOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRepeatOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRepeatPtrOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRoundRobinOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRoundRobinPtrOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRoundRobinRotationOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleRoundRobinRotationPtrOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleTargetOutput{})
+	pulumi.RegisterOutputType(EscalationPolicyRuleTargetArrayOutput{})
 	pulumi.RegisterOutputType(GerEntityOwnerOutput{})
 	pulumi.RegisterOutputType(GerEntityOwnerPtrOutput{})
+	pulumi.RegisterOutputType(RoutingRuleV2BasicExpressionOutput{})
+	pulumi.RegisterOutputType(RoutingRuleV2BasicExpressionArrayOutput{})
 	pulumi.RegisterOutputType(RunbookEntityOwnerOutput{})
 	pulumi.RegisterOutputType(RunbookEntityOwnerPtrOutput{})
 	pulumi.RegisterOutputType(RunbookStepOutput{})
 	pulumi.RegisterOutputType(RunbookStepArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ParticipantGroupOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ParticipantGroupArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ParticipantGroupParticipantOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ParticipantGroupParticipantArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ShiftTimeslotOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationV2ShiftTimeslotArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleV2EntityOwnerOutput{})
+	pulumi.RegisterOutputType(ScheduleV2EntityOwnerPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleV2TagOutput{})
+	pulumi.RegisterOutputType(ScheduleV2TagArrayOutput{})
 	pulumi.RegisterOutputType(ServiceMaintainerOutput{})
 	pulumi.RegisterOutputType(ServiceMaintainerPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(ServiceMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTagOutput{})
 	pulumi.RegisterOutputType(ServiceTagArrayOutput{})
 	pulumi.RegisterOutputType(SloEntityOwnerOutput{})
@@ -3632,6 +8037,20 @@ func init() {
 	pulumi.RegisterOutputType(SloNotifyPtrOutput{})
 	pulumi.RegisterOutputType(SloRuleOutput{})
 	pulumi.RegisterOutputType(SloRuleArrayOutput{})
+	pulumi.RegisterOutputType(StatusPageOwnerOutput{})
+	pulumi.RegisterOutputType(StatusPageOwnerPtrOutput{})
+	pulumi.RegisterOutputType(StatusPageThemeColorOutput{})
+	pulumi.RegisterOutputType(StatusPageThemeColorPtrOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2BasicExpressionOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2BasicExpressionArrayOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2TimeslotOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2TimeslotArrayOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2TimeslotCustomOutput{})
+	pulumi.RegisterOutputType(SuppressionRuleV2TimeslotCustomArrayOutput{})
+	pulumi.RegisterOutputType(TaggingRuleV2BasicExpressionOutput{})
+	pulumi.RegisterOutputType(TaggingRuleV2BasicExpressionArrayOutput{})
+	pulumi.RegisterOutputType(TaggingRuleV2TagOutput{})
+	pulumi.RegisterOutputType(TaggingRuleV2TagArrayOutput{})
 	pulumi.RegisterOutputType(WebformInputFieldOutput{})
 	pulumi.RegisterOutputType(WebformInputFieldArrayOutput{})
 	pulumi.RegisterOutputType(WebformOwnerOutput{})
@@ -3640,6 +8059,14 @@ func init() {
 	pulumi.RegisterOutputType(WebformServiceArrayOutput{})
 	pulumi.RegisterOutputType(WebformSeverityOutput{})
 	pulumi.RegisterOutputType(WebformSeverityArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowActionChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowActionChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowActionComponentAndImpactOutput{})
+	pulumi.RegisterOutputType(WorkflowActionComponentAndImpactArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowActionHeaderOutput{})
+	pulumi.RegisterOutputType(WorkflowActionHeaderArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowActionStatusAndMessageOutput{})
+	pulumi.RegisterOutputType(WorkflowActionStatusAndMessageArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowEntityOwnerOutput{})
 	pulumi.RegisterOutputType(WorkflowEntityOwnerArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowFiltersOutput{})
@@ -3650,18 +8077,36 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowFiltersFilterFilterArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTagOutput{})
 	pulumi.RegisterOutputType(WorkflowTagArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyEntityOwnerOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyEntityOwnerArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRepeatOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRepeatArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRepeatOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRepeatArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRoundRobinOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRoundRobinArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRoundRobinRotationOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleRoundRobinRotationArrayOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleTargetOutput{})
+	pulumi.RegisterOutputType(GetEscalationPolicyRuleTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetRunbookEntityOwnerOutput{})
 	pulumi.RegisterOutputType(GetRunbookEntityOwnerArrayOutput{})
 	pulumi.RegisterOutputType(GetRunbookStepOutput{})
 	pulumi.RegisterOutputType(GetRunbookStepArrayOutput{})
+	pulumi.RegisterOutputType(GetScheduleV2EntityOwnerOutput{})
+	pulumi.RegisterOutputType(GetScheduleV2EntityOwnerArrayOutput{})
+	pulumi.RegisterOutputType(GetScheduleV2TagOutput{})
+	pulumi.RegisterOutputType(GetScheduleV2TagArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMaintainerOutput{})
 	pulumi.RegisterOutputType(GetServiceMaintainerArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTagOutput{})
 	pulumi.RegisterOutputType(GetServiceTagArrayOutput{})
-	pulumi.RegisterOutputType(GetTeamMemberOutput{})
-	pulumi.RegisterOutputType(GetTeamMemberArrayOutput{})
-	pulumi.RegisterOutputType(GetTeamRoleOutput{})
-	pulumi.RegisterOutputType(GetTeamRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamMemberTypeOutput{})
+	pulumi.RegisterOutputType(GetTeamMemberTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamRoleTypeOutput{})
+	pulumi.RegisterOutputType(GetTeamRoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetUserNotificationRuleOutput{})
 	pulumi.RegisterOutputType(GetUserNotificationRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetUserOncallReminderRuleOutput{})

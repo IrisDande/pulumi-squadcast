@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const exampleTeam = squadcast.getTeam({
  *     name: "example team name",
  * });
- * const exampleEscalaionPolicy = exampleTeam.then(exampleTeam => squadcast.escalation.getPolicy({
+ * const exampleEscalaionPolicy = exampleTeam.then(exampleTeam => squadcast.getEscalationPolicy({
  *     name: "example escalation policy name",
  *     teamId: exampleTeam.id,
  * }));

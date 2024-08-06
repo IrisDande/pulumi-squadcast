@@ -40,7 +40,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
     ///     });
     /// 
-    ///     var exampleEscalaionPolicy = Squadcast.Escalation.GetPolicy.Invoke(new()
+    ///     var exampleEscalaionPolicy = Squadcast.GetEscalationPolicy.Invoke(new()
     ///     {
     ///         Name = "example escalation policy name",
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
@@ -62,7 +62,7 @@ namespace IrisDanded.Pulumi.Squadcast.Routing
     ///             {
     ///                 IsBasic = false,
     ///                 Expression = "payload[\"event_id\"] == 40",
-    ///                 RouteToId = exampleEscalaionPolicy.Apply(getPolicyResult =&gt; getPolicyResult.Id),
+    ///                 RouteToId = exampleEscalaionPolicy.Apply(getEscalationPolicyResult =&gt; getEscalationPolicyResult.Id),
     ///                 RouteToType = "escalationpolicy",
     ///             },
     ///             new Squadcast.Routing.Inputs.RulesRuleArgs

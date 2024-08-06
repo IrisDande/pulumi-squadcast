@@ -244,7 +244,7 @@ class Policy(pulumi.CustomResource):
         example_user = squadcast.get_user(email="test@example.com")
         example_squad = squadcast.get_squad(name="example squad name",
             team_id=example_team.id)
-        example_schedule_v2 = squadcast.schedule.get_v2(name="example schedule name",
+        example_schedule_v2 = squadcast.Schedule.get_v2(name="example schedule name",
             team_id=example_team.id)
         example_escalaion_policy = squadcast.escalation.Policy("exampleEscalaionPolicy",
             description="It's an amazing policy",
@@ -319,7 +319,7 @@ class Policy(pulumi.CustomResource):
         Use 'Get All Teams' and 'Get All Escalation Policies' APIs to get the id of the team and escalation policy name respectively
 
         ```sh
-        $ pulumi import squadcast:escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
+        $ pulumi import squadcast:Escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,7 +351,7 @@ class Policy(pulumi.CustomResource):
         example_user = squadcast.get_user(email="test@example.com")
         example_squad = squadcast.get_squad(name="example squad name",
             team_id=example_team.id)
-        example_schedule_v2 = squadcast.schedule.get_v2(name="example schedule name",
+        example_schedule_v2 = squadcast.Schedule.get_v2(name="example schedule name",
             team_id=example_team.id)
         example_escalaion_policy = squadcast.escalation.Policy("exampleEscalaionPolicy",
             description="It's an amazing policy",
@@ -426,7 +426,7 @@ class Policy(pulumi.CustomResource):
         Use 'Get All Teams' and 'Get All Escalation Policies' APIs to get the id of the team and escalation policy name respectively
 
         ```sh
-        $ pulumi import squadcast:escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
+        $ pulumi import squadcast:Escalation/policy:Policy test "62d2fe23a57381088224d726:Example Escalation Policy"
         ```
 
         :param str resource_name: The name of the resource.
@@ -472,7 +472,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'team_id'")
             __props__.__dict__["team_id"] = team_id
         super(Policy, __self__).__init__(
-            'squadcast:escalation/policy:Policy',
+            'squadcast:Escalation/policy:Policy',
             resource_name,
             __props__,
             opts)

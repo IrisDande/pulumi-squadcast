@@ -56,15 +56,22 @@ func convertName(tfname string) (module string, name string) {
 		module = mainMod
 		name = tfNameItems[1]
 	} else {
+		// Flat resource 
+		module = mainMod
+		name = strings.Join(tfNameItems[1:], "_")
+
+		// Structured resource
 		// module = strings.Join(tfNameItems[1:len(tfNameItems)-1], "/")
 		// name = tfNameItems[len(tfNameItems)-1]
-		module = strcase.ToPascal(strings.Join(tfNameItems[1:len(tfNameItems)-1], "_"))
-		nameParts := tfNameItems[2:]
-		// Convert `name` parts to PascalCase
-		for i, part := range nameParts {
-			nameParts[i] = strings.Title(part)
-		}
-		name = strings.Join(nameParts, "") // Join and capitalize
+
+		// Singlelevel resource
+		// module = strcase.ToPascal(strings.Join(tfNameItems[1:len(tfNameItems)-1], "_"))
+		// nameParts := tfNameItems[2:]
+		// // Convert `name` parts to PascalCase
+		// for i, part := range nameParts {
+		// 	nameParts[i] = strings.Title(part)
+		// }
+		// name = strings.Join(nameParts, "") // Join and capitalize
 
 		if v, ok := module_overrides[module]; ok {
 			module = v

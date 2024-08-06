@@ -527,7 +527,7 @@ class Page(pulumi.CustomResource):
         statusPageID
 
         ```sh
-        $ pulumi import squadcast:status/page:Page test_status_page 285
+        $ pulumi import squadcast:Status/page:Page test_status_page 285
         ```
 
         :param str resource_name: The name of the resource.
@@ -590,7 +590,7 @@ class Page(pulumi.CustomResource):
         statusPageID
 
         ```sh
-        $ pulumi import squadcast:status/page:Page test_status_page 285
+        $ pulumi import squadcast:Status/page:Page test_status_page 285
         ```
 
         :param str resource_name: The name of the resource.
@@ -660,7 +660,7 @@ class Page(pulumi.CustomResource):
                 raise TypeError("Missing required property 'timezone'")
             __props__.__dict__["timezone"] = timezone
         super(Page, __self__).__init__(
-            'squadcast:status/page:Page',
+            'squadcast:Status/page:Page',
             resource_name,
             __props__,
             opts)

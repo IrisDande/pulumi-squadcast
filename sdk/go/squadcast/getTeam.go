@@ -61,11 +61,11 @@ type LookupTeamResult struct {
 	// Detailed description about the Team.
 	Description string `pulumi:"description"`
 	// Team id.
-	Id      string          `pulumi:"id"`
-	Members []GetTeamMember `pulumi:"members"`
+	Id      string              `pulumi:"id"`
+	Members []GetTeamMemberType `pulumi:"members"`
 	// Name of the Team.
-	Name  string        `pulumi:"name"`
-	Roles []GetTeamRole `pulumi:"roles"`
+	Name  string            `pulumi:"name"`
+	Roles []GetTeamRoleType `pulumi:"roles"`
 }
 
 func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pulumi.InvokeOption) LookupTeamResultOutput {
@@ -121,8 +121,8 @@ func (o LookupTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupTeamResultOutput) Members() GetTeamMemberArrayOutput {
-	return o.ApplyT(func(v LookupTeamResult) []GetTeamMember { return v.Members }).(GetTeamMemberArrayOutput)
+func (o LookupTeamResultOutput) Members() GetTeamMemberTypeArrayOutput {
+	return o.ApplyT(func(v LookupTeamResult) []GetTeamMemberType { return v.Members }).(GetTeamMemberTypeArrayOutput)
 }
 
 // Name of the Team.
@@ -130,8 +130,8 @@ func (o LookupTeamResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupTeamResultOutput) Roles() GetTeamRoleArrayOutput {
-	return o.ApplyT(func(v LookupTeamResult) []GetTeamRole { return v.Roles }).(GetTeamRoleArrayOutput)
+func (o LookupTeamResultOutput) Roles() GetTeamRoleTypeArrayOutput {
+	return o.ApplyT(func(v LookupTeamResult) []GetTeamRoleType { return v.Roles }).(GetTeamRoleTypeArrayOutput)
 }
 
 func init() {

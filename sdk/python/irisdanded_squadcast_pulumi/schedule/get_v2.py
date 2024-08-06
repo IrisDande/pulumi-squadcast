@@ -129,7 +129,7 @@ def get_v2(name: Optional[str] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.schedule.get_v2(name=squadcast_schedule_v2["test"]["name"],
+    test = squadcast.Schedule.get_v2(name=squadcast_schedule_v2["test"]["name"],
         team_id="team_id")
     ```
 
@@ -141,7 +141,7 @@ def get_v2(name: Optional[str] = None,
     __args__['name'] = name
     __args__['teamId'] = team_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('squadcast:schedule/getV2:getV2', __args__, opts=opts, typ=GetV2Result).value
+    __ret__ = pulumi.runtime.invoke('squadcast:Schedule/getV2:getV2', __args__, opts=opts, typ=GetV2Result).value
 
     return AwaitableGetV2Result(
         description=pulumi.get(__ret__, 'description'),
@@ -166,7 +166,7 @@ def get_v2_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.schedule.get_v2(name=squadcast_schedule_v2["test"]["name"],
+    test = squadcast.Schedule.get_v2(name=squadcast_schedule_v2["test"]["name"],
         team_id="team_id")
     ```
 

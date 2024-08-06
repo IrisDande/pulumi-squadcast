@@ -11,25 +11,60 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'DeduplicationRuleV2BasicExpression',
+    'EscalationPolicyEntityOwner',
+    'EscalationPolicyRepeat',
+    'EscalationPolicyRule',
+    'EscalationPolicyRuleRepeat',
+    'EscalationPolicyRuleRoundRobin',
+    'EscalationPolicyRuleRoundRobinRotation',
+    'EscalationPolicyRuleTarget',
     'GerEntityOwner',
+    'RoutingRuleV2BasicExpression',
     'RunbookEntityOwner',
     'RunbookStep',
+    'ScheduleRotationV2ParticipantGroup',
+    'ScheduleRotationV2ParticipantGroupParticipant',
+    'ScheduleRotationV2ShiftTimeslot',
+    'ScheduleV2EntityOwner',
+    'ScheduleV2Tag',
     'ServiceMaintainer',
+    'ServiceMaintenanceWindow',
     'ServiceTag',
     'SloEntityOwner',
     'SloNotify',
     'SloRule',
+    'StatusPageOwner',
+    'StatusPageThemeColor',
+    'SuppressionRuleV2BasicExpression',
+    'SuppressionRuleV2Timeslot',
+    'SuppressionRuleV2TimeslotCustom',
+    'TaggingRuleV2BasicExpression',
+    'TaggingRuleV2Tag',
     'WebformInputField',
     'WebformOwner',
     'WebformService',
     'WebformSeverity',
+    'WorkflowActionChannel',
+    'WorkflowActionComponentAndImpact',
+    'WorkflowActionHeader',
+    'WorkflowActionStatusAndMessage',
     'WorkflowEntityOwner',
     'WorkflowFilters',
     'WorkflowFiltersFilter',
     'WorkflowFiltersFilterFilter',
     'WorkflowTag',
+    'GetEscalationPolicyEntityOwnerResult',
+    'GetEscalationPolicyRepeatResult',
+    'GetEscalationPolicyRuleResult',
+    'GetEscalationPolicyRuleRepeatResult',
+    'GetEscalationPolicyRuleRoundRobinResult',
+    'GetEscalationPolicyRuleRoundRobinRotationResult',
+    'GetEscalationPolicyRuleTargetResult',
     'GetRunbookEntityOwnerResult',
     'GetRunbookStepResult',
+    'GetScheduleV2EntityOwnerResult',
+    'GetScheduleV2TagResult',
     'GetServiceMaintainerResult',
     'GetServiceTagResult',
     'GetTeamMemberResult',
@@ -41,6 +76,344 @@ __all__ = [
     'GetWebformServiceResult',
     'GetWebformSeverityResult',
 ]
+
+@pulumi.output_type
+class DeduplicationRuleV2BasicExpression(dict):
+    def __init__(__self__, *,
+                 lhs: str,
+                 op: str,
+                 rhs: str):
+        """
+        :param str lhs: left hand side dropdown value
+        :param str op: operator (is, is*not, matches, not*contains)
+        :param str rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> str:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> str:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class EscalationPolicyEntityOwner(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Escalation policy owner id.
+        :param str type: Escalation policy owner type. Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Escalation policy owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Escalation policy owner type. Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class EscalationPolicyRepeat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delayMinutes":
+            suggest = "delay_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EscalationPolicyRepeat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EscalationPolicyRepeat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EscalationPolicyRepeat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 times: int):
+        """
+        :param int delay_minutes: The number of minutes to wait before repeating the escalation policy
+        :param int times: The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        """
+        The number of minutes to wait before repeating the escalation policy
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def times(self) -> int:
+        """
+        The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class EscalationPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delayMinutes":
+            suggest = "delay_minutes"
+        elif key == "notificationChannels":
+            suggest = "notification_channels"
+        elif key == "roundRobin":
+            suggest = "round_robin"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EscalationPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EscalationPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EscalationPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 targets: Sequence['outputs.EscalationPolicyRuleTarget'],
+                 notification_channels: Optional[Sequence[str]] = None,
+                 repeat: Optional['outputs.EscalationPolicyRuleRepeat'] = None,
+                 round_robin: Optional['outputs.EscalationPolicyRuleRoundRobin'] = None):
+        """
+        :param Sequence[str] notification_channels: Notification channels to notify the targets. (SMS, Phone, Email, Push)
+        :param 'EscalationPolicyRuleRepeatArgs' repeat: repeat this rule
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "targets", targets)
+        if notification_channels is not None:
+            pulumi.set(__self__, "notification_channels", notification_channels)
+        if repeat is not None:
+            pulumi.set(__self__, "repeat", repeat)
+        if round_robin is not None:
+            pulumi.set(__self__, "round_robin", round_robin)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.EscalationPolicyRuleTarget']:
+        return pulumi.get(self, "targets")
+
+    @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Optional[Sequence[str]]:
+        """
+        Notification channels to notify the targets. (SMS, Phone, Email, Push)
+        """
+        return pulumi.get(self, "notification_channels")
+
+    @property
+    @pulumi.getter
+    def repeat(self) -> Optional['outputs.EscalationPolicyRuleRepeat']:
+        """
+        repeat this rule
+        """
+        return pulumi.get(self, "repeat")
+
+    @property
+    @pulumi.getter(name="roundRobin")
+    def round_robin(self) -> Optional['outputs.EscalationPolicyRuleRoundRobin']:
+        return pulumi.get(self, "round_robin")
+
+
+@pulumi.output_type
+class EscalationPolicyRuleRepeat(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delayMinutes":
+            suggest = "delay_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EscalationPolicyRuleRepeat. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EscalationPolicyRuleRepeat.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EscalationPolicyRuleRepeat.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 times: int):
+        """
+        :param int delay_minutes: repeat after minutes
+        :param int times: repeat times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def times(self) -> int:
+        """
+        repeat times
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class EscalationPolicyRuleRoundRobin(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 rotation: Optional['outputs.EscalationPolicyRuleRoundRobinRotation'] = None):
+        """
+        :param bool enabled: Enables Round Robin escalation within this layer
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if rotation is not None:
+            pulumi.set(__self__, "rotation", rotation)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables Round Robin escalation within this layer
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def rotation(self) -> Optional['outputs.EscalationPolicyRuleRoundRobinRotation']:
+        return pulumi.get(self, "rotation")
+
+
+@pulumi.output_type
+class EscalationPolicyRuleRoundRobinRotation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delayMinutes":
+            suggest = "delay_minutes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EscalationPolicyRuleRoundRobinRotation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EscalationPolicyRuleRoundRobinRotation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EscalationPolicyRuleRoundRobinRotation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay_minutes: Optional[int] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param int delay_minutes: repeat after minutes
+        :param bool enabled: enable rotation within
+        """
+        if delay_minutes is not None:
+            pulumi.set(__self__, "delay_minutes", delay_minutes)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> Optional[int]:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        enable rotation within
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class EscalationPolicyRuleTarget(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: ID of the target
+        :param str type: Type of the target. (user, squad, schedule, schedulev2)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the target
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the target. (user, squad, schedule, schedulev2)
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class GerEntityOwner(dict):
@@ -69,6 +442,35 @@ class GerEntityOwner(dict):
         GER owner type. Supported values are 'user' or 'squad'.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RoutingRuleV2BasicExpression(dict):
+    def __init__(__self__, *,
+                 lhs: str,
+                 rhs: str):
+        """
+        :param str lhs: left hand side dropdown value
+        :param str rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> str:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> str:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
 
 
 @pulumi.output_type
@@ -113,6 +515,197 @@ class RunbookStep(dict):
 
 
 @pulumi.output_type
+class ScheduleRotationV2ParticipantGroup(dict):
+    def __init__(__self__, *,
+                 participants: Optional[Sequence['outputs.ScheduleRotationV2ParticipantGroupParticipant']] = None):
+        """
+        :param Sequence['ScheduleRotationV2ParticipantGroupParticipantArgs'] participants: Group participants.
+        """
+        if participants is not None:
+            pulumi.set(__self__, "participants", participants)
+
+    @property
+    @pulumi.getter
+    def participants(self) -> Optional[Sequence['outputs.ScheduleRotationV2ParticipantGroupParticipant']]:
+        """
+        Group participants.
+        """
+        return pulumi.get(self, "participants")
+
+
+@pulumi.output_type
+class ScheduleRotationV2ParticipantGroupParticipant(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Participant id.
+        :param str type: Participant type (user, team, squad).
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Participant id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Participant type (user, team, squad).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ScheduleRotationV2ShiftTimeslot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startHour":
+            suggest = "start_hour"
+        elif key == "startMinute":
+            suggest = "start_minute"
+        elif key == "dayOfWeek":
+            suggest = "day_of_week"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleRotationV2ShiftTimeslot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleRotationV2ShiftTimeslot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleRotationV2ShiftTimeslot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: int,
+                 start_hour: int,
+                 start_minute: int,
+                 day_of_week: Optional[str] = None):
+        """
+        :param int duration: Defines the duration of each shift. (in minutes)
+        :param int start_hour: Defines the start hour of the each shift in the schedule timezone.
+        :param int start_minute: Defines the start minute of the each shift in the schedule timezone.
+        :param str day_of_week: Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "start_hour", start_hour)
+        pulumi.set(__self__, "start_minute", start_minute)
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        """
+        Defines the duration of each shift. (in minutes)
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> int:
+        """
+        Defines the start hour of the each shift in the schedule timezone.
+        """
+        return pulumi.get(self, "start_hour")
+
+    @property
+    @pulumi.getter(name="startMinute")
+    def start_minute(self) -> int:
+        """
+        Defines the start minute of the each shift in the schedule timezone.
+        """
+        return pulumi.get(self, "start_minute")
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> Optional[str]:
+        """
+        Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+        """
+        return pulumi.get(self, "day_of_week")
+
+
+@pulumi.output_type
+class ScheduleV2EntityOwner(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Schedule owner id.
+        :param str type: Schedule owner type. Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Schedule owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Schedule owner type. Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ScheduleV2Tag(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 color: Optional[str] = None):
+        """
+        :param str key: Schedule tag key.
+        :param str value: Schedule tag value.
+        :param str color: Schedule tag color.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Schedule tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Schedule tag value.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def color(self) -> Optional[str]:
+        """
+        Schedule tag color.
+        """
+        return pulumi.get(self, "color")
+
+
+@pulumi.output_type
 class ServiceMaintainer(dict):
     def __init__(__self__, *,
                  id: str,
@@ -139,6 +732,80 @@ class ServiceMaintainer(dict):
         The type of the maintainer. Supported values are 'user' or 'squad'.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ServiceMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+        elif key == "repeatFrequency":
+            suggest = "repeat_frequency"
+        elif key == "repeatTill":
+            suggest = "repeat_till"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: str,
+                 till: str,
+                 repeat_frequency: Optional[str] = None,
+                 repeat_till: Optional[str] = None):
+        """
+        :param str from_: Starting Time
+        :param str till: End Time.
+        :param str repeat_frequency: repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+        :param str repeat_till: Till when you want to repeat this Maintenance mode
+        """
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "till", till)
+        if repeat_frequency is not None:
+            pulumi.set(__self__, "repeat_frequency", repeat_frequency)
+        if repeat_till is not None:
+            pulumi.set(__self__, "repeat_till", repeat_till)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> str:
+        """
+        Starting Time
+        """
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def till(self) -> str:
+        """
+        End Time.
+        """
+        return pulumi.get(self, "till")
+
+    @property
+    @pulumi.getter(name="repeatFrequency")
+    def repeat_frequency(self) -> Optional[str]:
+        """
+        repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+        """
+        return pulumi.get(self, "repeat_frequency")
+
+    @property
+    @pulumi.getter(name="repeatTill")
+    def repeat_till(self) -> Optional[str]:
+        """
+        Till when you want to repeat this Maintenance mode
+        """
+        return pulumi.get(self, "repeat_till")
 
 
 @pulumi.output_type
@@ -375,6 +1042,398 @@ class SloRule(dict):
 
 
 @pulumi.output_type
+class StatusPageOwner(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Status page owner id.
+        :param str type: Status page owner type Supported values are 'user' or 'squad'.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Status page owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Status page owner type Supported values are 'user' or 'squad'.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class StatusPageThemeColor(dict):
+    def __init__(__self__, *,
+                 primary: str,
+                 secondary: str):
+        """
+        :param str primary: Primary color.
+        :param str secondary: Secondary color.
+        """
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter
+    def primary(self) -> str:
+        """
+        Primary color.
+        """
+        return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def secondary(self) -> str:
+        """
+        Secondary color.
+        """
+        return pulumi.get(self, "secondary")
+
+
+@pulumi.output_type
+class SuppressionRuleV2BasicExpression(dict):
+    def __init__(__self__, *,
+                 lhs: str,
+                 op: str,
+                 rhs: str):
+        """
+        :param str lhs: left hand side dropdown value
+        :param str op: operator (is, is*not, matches, not*contains)
+        :param str rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> str:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> str:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class SuppressionRuleV2Timeslot(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "endsOn":
+            suggest = "ends_on"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "endsNever":
+            suggest = "ends_never"
+        elif key == "isAllday":
+            suggest = "is_allday"
+        elif key == "isCustom":
+            suggest = "is_custom"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SuppressionRuleV2Timeslot. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SuppressionRuleV2Timeslot.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SuppressionRuleV2Timeslot.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 ends_on: str,
+                 repetition: str,
+                 start_time: str,
+                 time_zone: str,
+                 customs: Optional[Sequence['outputs.SuppressionRuleV2TimeslotCustom']] = None,
+                 ends_never: Optional[bool] = None,
+                 is_allday: Optional[bool] = None,
+                 is_custom: Optional[bool] = None):
+        """
+        :param str end_time: Defines the end date of the time slot
+        :param str ends_on: Defines the end date of the repetition
+        :param str repetition: Defines the repetition of the time slot
+        :param str start_time: Defines the start date of the time slot
+        :param str time_zone: Time zone for the time slot
+        :param Sequence['SuppressionRuleV2TimeslotCustomArgs'] customs: Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+        :param bool ends_never: Defines whether the time slot ends or not
+        :param bool is_allday: Defines if the time slot is an all day slot
+        :param bool is_custom: Defines whether repetition is custom or not
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "ends_on", ends_on)
+        pulumi.set(__self__, "repetition", repetition)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if ends_never is not None:
+            pulumi.set(__self__, "ends_never", ends_never)
+        if is_allday is not None:
+            pulumi.set(__self__, "is_allday", is_allday)
+        if is_custom is not None:
+            pulumi.set(__self__, "is_custom", is_custom)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Defines the end date of the time slot
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="endsOn")
+    def ends_on(self) -> str:
+        """
+        Defines the end date of the repetition
+        """
+        return pulumi.get(self, "ends_on")
+
+    @property
+    @pulumi.getter
+    def repetition(self) -> str:
+        """
+        Defines the repetition of the time slot
+        """
+        return pulumi.get(self, "repetition")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Defines the start date of the time slot
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        Time zone for the time slot
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter
+    def customs(self) -> Optional[Sequence['outputs.SuppressionRuleV2TimeslotCustom']]:
+        """
+        Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+        """
+        return pulumi.get(self, "customs")
+
+    @property
+    @pulumi.getter(name="endsNever")
+    def ends_never(self) -> Optional[bool]:
+        """
+        Defines whether the time slot ends or not
+        """
+        return pulumi.get(self, "ends_never")
+
+    @property
+    @pulumi.getter(name="isAllday")
+    def is_allday(self) -> Optional[bool]:
+        """
+        Defines if the time slot is an all day slot
+        """
+        return pulumi.get(self, "is_allday")
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> Optional[bool]:
+        """
+        Defines whether repetition is custom or not
+        """
+        return pulumi.get(self, "is_custom")
+
+
+@pulumi.output_type
+class SuppressionRuleV2TimeslotCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repeatsCount":
+            suggest = "repeats_count"
+        elif key == "repeatsOnMonth":
+            suggest = "repeats_on_month"
+        elif key == "repeatsOnWeekdays":
+            suggest = "repeats_on_weekdays"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SuppressionRuleV2TimeslotCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SuppressionRuleV2TimeslotCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SuppressionRuleV2TimeslotCustom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 repeats: str,
+                 repeats_count: Optional[int] = None,
+                 repeats_on_month: Optional[str] = None,
+                 repeats_on_weekdays: Optional[Sequence[int]] = None):
+        """
+        :param str repeats: Determines how often the rule repeats. Valid values are day, week, month.
+        :param int repeats_count: Number of times to repeat.
+        :param str repeats_on_month: Repeats on month.
+        :param Sequence[int] repeats_on_weekdays: List of weekdays to repeat on.
+        """
+        pulumi.set(__self__, "repeats", repeats)
+        if repeats_count is not None:
+            pulumi.set(__self__, "repeats_count", repeats_count)
+        if repeats_on_month is not None:
+            pulumi.set(__self__, "repeats_on_month", repeats_on_month)
+        if repeats_on_weekdays is not None:
+            pulumi.set(__self__, "repeats_on_weekdays", repeats_on_weekdays)
+
+    @property
+    @pulumi.getter
+    def repeats(self) -> str:
+        """
+        Determines how often the rule repeats. Valid values are day, week, month.
+        """
+        return pulumi.get(self, "repeats")
+
+    @property
+    @pulumi.getter(name="repeatsCount")
+    def repeats_count(self) -> Optional[int]:
+        """
+        Number of times to repeat.
+        """
+        return pulumi.get(self, "repeats_count")
+
+    @property
+    @pulumi.getter(name="repeatsOnMonth")
+    def repeats_on_month(self) -> Optional[str]:
+        """
+        Repeats on month.
+        """
+        return pulumi.get(self, "repeats_on_month")
+
+    @property
+    @pulumi.getter(name="repeatsOnWeekdays")
+    def repeats_on_weekdays(self) -> Optional[Sequence[int]]:
+        """
+        List of weekdays to repeat on.
+        """
+        return pulumi.get(self, "repeats_on_weekdays")
+
+
+@pulumi.output_type
+class TaggingRuleV2BasicExpression(dict):
+    def __init__(__self__, *,
+                 lhs: str,
+                 op: str,
+                 rhs: str):
+        """
+        :param str lhs: left hand side dropdown value
+        :param str op: operator (is, is*not, matches, not*contains)
+        :param str rhs: right hand side value
+        """
+        pulumi.set(__self__, "lhs", lhs)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "rhs", rhs)
+
+    @property
+    @pulumi.getter
+    def lhs(self) -> str:
+        """
+        left hand side dropdown value
+        """
+        return pulumi.get(self, "lhs")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        operator (is, is*not, matches, not*contains)
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def rhs(self) -> str:
+        """
+        right hand side value
+        """
+        return pulumi.get(self, "rhs")
+
+
+@pulumi.output_type
+class TaggingRuleV2Tag(dict):
+    def __init__(__self__, *,
+                 color: str,
+                 key: str,
+                 value: str):
+        """
+        :param str color: Tag color, hex values
+        :param str key: key
+        :param str value: value
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        """
+        Tag color, hex values
+        """
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        key
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class WebformInputField(dict):
     def __init__(__self__, *,
                  label: Optional[str] = None,
@@ -536,6 +1595,187 @@ class WebformSeverity(dict):
 
 
 @pulumi.output_type
+class WorkflowActionChannel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowActionChannel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowActionChannel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowActionChannel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_text: str,
+                 link: str,
+                 type: str):
+        """
+        :param str display_text: The display text of the communication channel
+        :param str link: The link of the communication channel
+        :param str type: The type of the communication channel
+        """
+        pulumi.set(__self__, "display_text", display_text)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> str:
+        """
+        The display text of the communication channel
+        """
+        return pulumi.get(self, "display_text")
+
+    @property
+    @pulumi.getter
+    def link(self) -> str:
+        """
+        The link of the communication channel
+        """
+        return pulumi.get(self, "link")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the communication channel
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WorkflowActionComponentAndImpact(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentId":
+            suggest = "component_id"
+        elif key == "impactStatusId":
+            suggest = "impact_status_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowActionComponentAndImpact. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowActionComponentAndImpact.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowActionComponentAndImpact.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_id: int,
+                 impact_status_id: int):
+        """
+        :param int component_id: The ID of the component
+        :param int impact_status_id: The ID of the impact status
+        """
+        pulumi.set(__self__, "component_id", component_id)
+        pulumi.set(__self__, "impact_status_id", impact_status_id)
+
+    @property
+    @pulumi.getter(name="componentId")
+    def component_id(self) -> int:
+        """
+        The ID of the component
+        """
+        return pulumi.get(self, "component_id")
+
+    @property
+    @pulumi.getter(name="impactStatusId")
+    def impact_status_id(self) -> int:
+        """
+        The ID of the impact status
+        """
+        return pulumi.get(self, "impact_status_id")
+
+
+@pulumi.output_type
+class WorkflowActionHeader(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key of the header
+        :param str value: The value of the header
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of the header
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the header
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class WorkflowActionStatusAndMessage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusId":
+            suggest = "status_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowActionStatusAndMessage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowActionStatusAndMessage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowActionStatusAndMessage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 status_id: int,
+                 messages: Optional[Sequence[str]] = None):
+        """
+        :param int status_id: The ID of the status
+        :param Sequence[str] messages: The messages to be set for the issue
+        """
+        pulumi.set(__self__, "status_id", status_id)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+
+    @property
+    @pulumi.getter(name="statusId")
+    def status_id(self) -> int:
+        """
+        The ID of the status
+        """
+        return pulumi.get(self, "status_id")
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[Sequence[str]]:
+        """
+        The messages to be set for the issue
+        """
+        return pulumi.get(self, "messages")
+
+
+@pulumi.output_type
 class WorkflowEntityOwner(dict):
     def __init__(__self__, *,
                  id: str,
@@ -685,6 +1925,212 @@ class WorkflowTag(dict):
 
 
 @pulumi.output_type
+class GetEscalationPolicyEntityOwnerResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Escalation policy owner id.
+        :param str type: Escalation policy owner type. (user or squad or team)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Escalation policy owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Escalation policy owner type. (user or squad or team)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRepeatResult(dict):
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 times: int):
+        """
+        :param int delay_minutes: The number of minutes to wait before repeating the escalation policy
+        :param int times: The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        """
+        The number of minutes to wait before repeating the escalation policy
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def times(self) -> int:
+        """
+        The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 notification_channels: Sequence[str],
+                 repeats: Sequence['outputs.GetEscalationPolicyRuleRepeatResult'],
+                 round_robins: Sequence['outputs.GetEscalationPolicyRuleRoundRobinResult'],
+                 targets: Sequence['outputs.GetEscalationPolicyRuleTargetResult']):
+        """
+        :param Sequence['GetEscalationPolicyRuleRepeatArgs'] repeats: repeat this rule
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "notification_channels", notification_channels)
+        pulumi.set(__self__, "repeats", repeats)
+        pulumi.set(__self__, "round_robins", round_robins)
+        pulumi.set(__self__, "targets", targets)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Sequence[str]:
+        return pulumi.get(self, "notification_channels")
+
+    @property
+    @pulumi.getter
+    def repeats(self) -> Sequence['outputs.GetEscalationPolicyRuleRepeatResult']:
+        """
+        repeat this rule
+        """
+        return pulumi.get(self, "repeats")
+
+    @property
+    @pulumi.getter(name="roundRobins")
+    def round_robins(self) -> Sequence['outputs.GetEscalationPolicyRuleRoundRobinResult']:
+        return pulumi.get(self, "round_robins")
+
+    @property
+    @pulumi.getter
+    def targets(self) -> Sequence['outputs.GetEscalationPolicyRuleTargetResult']:
+        return pulumi.get(self, "targets")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRuleRepeatResult(dict):
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 times: int):
+        """
+        :param int delay_minutes: repeat after minutes
+        :param int times: repeat times
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "times", times)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def times(self) -> int:
+        """
+        repeat times
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRuleRoundRobinResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 rotations: Sequence['outputs.GetEscalationPolicyRuleRoundRobinRotationResult']):
+        """
+        :param bool enabled: Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rotations", rotations)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Round Robin Escalation is an incident assignment strategy where users are placed in a ring and assigned to incidents sequentially. This strategy can help ensure that incidents are equitably distributed. It can also lower incident response time if a service experiences concurrent incidents, since the incidents will not all be assigned to the same responder.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def rotations(self) -> Sequence['outputs.GetEscalationPolicyRuleRoundRobinRotationResult']:
+        return pulumi.get(self, "rotations")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRuleRoundRobinRotationResult(dict):
+    def __init__(__self__, *,
+                 delay_minutes: int,
+                 enabled: bool):
+        """
+        :param int delay_minutes: repeat after minutes
+        :param bool enabled: enable rotation within
+        """
+        pulumi.set(__self__, "delay_minutes", delay_minutes)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="delayMinutes")
+    def delay_minutes(self) -> int:
+        """
+        repeat after minutes
+        """
+        return pulumi.get(self, "delay_minutes")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        enable rotation within
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetEscalationPolicyRuleTargetResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetRunbookEntityOwnerResult(dict):
     def __init__(__self__, *,
                  id: str,
@@ -723,6 +2169,75 @@ class GetRunbookStepResult(dict):
     @pulumi.getter
     def content(self) -> str:
         return pulumi.get(self, "content")
+
+
+@pulumi.output_type
+class GetScheduleV2EntityOwnerResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str):
+        """
+        :param str id: Schedule owner id.
+        :param str type: Schedule owner type (user, team, squad).
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Schedule owner id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Schedule owner type (user, team, squad).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetScheduleV2TagResult(dict):
+    def __init__(__self__, *,
+                 color: str,
+                 key: str,
+                 value: str):
+        """
+        :param str color: Schedule tag color.
+        :param str key: Schedule tag key.
+        :param str value: Schedule tag value.
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        """
+        Schedule tag color.
+        """
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Schedule tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Schedule tag value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

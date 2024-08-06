@@ -129,7 +129,7 @@ def get_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.escalation.get_policy(name=squadcast_escalation_policy["test"]["name"],
+    test = squadcast.Escalation.get_policy(name=squadcast_escalation_policy["test"]["name"],
         team_id="team id")
     ```
 
@@ -141,7 +141,7 @@ def get_policy(name: Optional[str] = None,
     __args__['name'] = name
     __args__['teamId'] = team_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('squadcast:escalation/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult).value
+    __ret__ = pulumi.runtime.invoke('squadcast:Escalation/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult).value
 
     return AwaitableGetPolicyResult(
         description=pulumi.get(__ret__, 'description'),
@@ -166,7 +166,7 @@ def get_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_squadcast as squadcast
 
-    test = squadcast.escalation.get_policy(name=squadcast_escalation_policy["test"]["name"],
+    test = squadcast.Escalation.get_policy(name=squadcast_escalation_policy["test"]["name"],
         team_id="team id")
     ```
 

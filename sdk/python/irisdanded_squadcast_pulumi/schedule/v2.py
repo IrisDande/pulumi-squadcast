@@ -269,7 +269,7 @@ class V2(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
+        $ pulumi import squadcast:Schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
         ```
 
         :param str resource_name: The name of the resource.
@@ -326,7 +326,7 @@ class V2(pulumi.CustomResource):
         Use 'Get All Teams' API to get the id of the team
 
         ```sh
-        $ pulumi import squadcast:schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
+        $ pulumi import squadcast:Schedule/v2:V2 schedule_test "62d2fe23a57381088224d726:Example Schedule"
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +372,7 @@ class V2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'timezone'")
             __props__.__dict__["timezone"] = timezone
         super(V2, __self__).__init__(
-            'squadcast:schedule/v2:V2',
+            'squadcast:Schedule/v2:V2',
             resource_name,
             __props__,
             opts)

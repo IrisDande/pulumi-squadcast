@@ -21,26 +21,62 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "squadcast:index/deduplicationRuleV2:DeduplicationRuleV2":
+		r = &DeduplicationRuleV2{}
+	case "squadcast:index/escalationPolicy:EscalationPolicy":
+		r = &EscalationPolicy{}
 	case "squadcast:index/ger:Ger":
 		r = &Ger{}
+	case "squadcast:index/gerRuleset:GerRuleset":
+		r = &GerRuleset{}
+	case "squadcast:index/gerRulesetRule:GerRulesetRule":
+		r = &GerRulesetRule{}
+	case "squadcast:index/gerRulesetRulesOrdering:GerRulesetRulesOrdering":
+		r = &GerRulesetRulesOrdering{}
+	case "squadcast:index/routingRuleV2:RoutingRuleV2":
+		r = &RoutingRuleV2{}
 	case "squadcast:index/runbook:Runbook":
 		r = &Runbook{}
 	case "squadcast:index/schedule:Schedule":
 		r = &Schedule{}
+	case "squadcast:index/scheduleRotationV2:ScheduleRotationV2":
+		r = &ScheduleRotationV2{}
+	case "squadcast:index/scheduleV2:ScheduleV2":
+		r = &ScheduleV2{}
 	case "squadcast:index/service:Service":
 		r = &Service{}
+	case "squadcast:index/serviceMaintenance:ServiceMaintenance":
+		r = &ServiceMaintenance{}
 	case "squadcast:index/slo:Slo":
 		r = &Slo{}
 	case "squadcast:index/squad:Squad":
 		r = &Squad{}
+	case "squadcast:index/statusPage:StatusPage":
+		r = &StatusPage{}
+	case "squadcast:index/statusPageComponent:StatusPageComponent":
+		r = &StatusPageComponent{}
+	case "squadcast:index/statusPageGroup:StatusPageGroup":
+		r = &StatusPageGroup{}
+	case "squadcast:index/suppressionRuleV2:SuppressionRuleV2":
+		r = &SuppressionRuleV2{}
+	case "squadcast:index/taggingRuleV2:TaggingRuleV2":
+		r = &TaggingRuleV2{}
 	case "squadcast:index/team:Team":
 		r = &Team{}
+	case "squadcast:index/teamMember:TeamMember":
+		r = &TeamMember{}
+	case "squadcast:index/teamRole:TeamRole":
+		r = &TeamRole{}
 	case "squadcast:index/user:User":
 		r = &User{}
 	case "squadcast:index/webform:Webform":
 		r = &Webform{}
 	case "squadcast:index/workflow:Workflow":
 		r = &Workflow{}
+	case "squadcast:index/workflowAction:WorkflowAction":
+		r = &WorkflowAction{}
+	case "squadcast:index/workflowActionOrdering:WorkflowActionOrdering":
+		r = &WorkflowActionOrdering{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,7 +110,37 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"squadcast",
+		"index/deduplicationRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/escalationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
 		"index/ger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/gerRuleset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/gerRulesetRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/gerRulesetRulesOrdering",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/routingRuleV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -89,7 +155,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"squadcast",
+		"index/scheduleRotationV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/scheduleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
 		"index/service",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/serviceMaintenance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -104,7 +185,42 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"squadcast",
+		"index/statusPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/statusPageComponent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/statusPageGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/suppressionRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/taggingRuleV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
 		"index/team",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/teamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/teamRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -120,6 +236,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"squadcast",
 		"index/workflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/workflowAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"squadcast",
+		"index/workflowActionOrdering",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

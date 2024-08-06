@@ -34,7 +34,7 @@ namespace IrisDanded.Pulumi.Squadcast
     ///         Name = "example team name",
     ///     });
     /// 
-    ///     var exampleEscalaionPolicy = Squadcast.Escalation.GetPolicy.Invoke(new()
+    ///     var exampleEscalaionPolicy = Squadcast.GetEscalationPolicy.Invoke(new()
     ///     {
     ///         Name = "example escalation policy name",
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
@@ -43,7 +43,7 @@ namespace IrisDanded.Pulumi.Squadcast
     ///     var exampleService = new Squadcast.Service("exampleService", new()
     ///     {
     ///         TeamId = exampleTeam.Apply(getTeamResult =&gt; getTeamResult.Id),
-    ///         EscalationPolicyId = exampleEscalaionPolicy.Apply(getPolicyResult =&gt; getPolicyResult.Id),
+    ///         EscalationPolicyId = exampleEscalaionPolicy.Apply(getEscalationPolicyResult =&gt; getEscalationPolicyResult.Id),
     ///         EmailPrefix = "example-service-email",
     ///         Maintainer = new Squadcast.Inputs.ServiceMaintainerArgs
     ///         {

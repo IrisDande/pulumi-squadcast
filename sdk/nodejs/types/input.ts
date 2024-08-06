@@ -5,6 +5,98 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DeduplicationRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: pulumi.Input<string>;
+    /**
+     * right hand side value
+     */
+    rhs: pulumi.Input<string>;
+}
+
+export interface EscalationPolicyEntityOwner {
+    /**
+     * Escalation policy owner id.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Escalation policy owner type. Supported values are 'user' or 'squad'.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface EscalationPolicyRepeat {
+    /**
+     * The number of minutes to wait before repeating the escalation policy
+     */
+    delayMinutes: pulumi.Input<number>;
+    /**
+     * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
+     */
+    times: pulumi.Input<number>;
+}
+
+export interface EscalationPolicyRule {
+    delayMinutes: pulumi.Input<number>;
+    /**
+     * Notification channels to notify the targets. (SMS, Phone, Email, Push)
+     */
+    notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * repeat this rule
+     */
+    repeat?: pulumi.Input<inputs.EscalationPolicyRuleRepeat>;
+    roundRobin?: pulumi.Input<inputs.EscalationPolicyRuleRoundRobin>;
+    targets: pulumi.Input<pulumi.Input<inputs.EscalationPolicyRuleTarget>[]>;
+}
+
+export interface EscalationPolicyRuleRepeat {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes: pulumi.Input<number>;
+    /**
+     * repeat times
+     */
+    times: pulumi.Input<number>;
+}
+
+export interface EscalationPolicyRuleRoundRobin {
+    /**
+     * Enables Round Robin escalation within this layer
+     */
+    enabled: pulumi.Input<boolean>;
+    rotation?: pulumi.Input<inputs.EscalationPolicyRuleRoundRobinRotation>;
+}
+
+export interface EscalationPolicyRuleRoundRobinRotation {
+    /**
+     * repeat after minutes
+     */
+    delayMinutes?: pulumi.Input<number>;
+    /**
+     * enable rotation within
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface EscalationPolicyRuleTarget {
+    /**
+     * ID of the target
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Type of the target. (user, squad, schedule, schedulev2)
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface GerEntityOwner {
     /**
      * GER owner id.
@@ -14,6 +106,17 @@ export interface GerEntityOwner {
      * GER owner type. Supported values are 'user' or 'squad'.
      */
     type: pulumi.Input<string>;
+}
+
+export interface RoutingRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * right hand side value
+     */
+    rhs: pulumi.Input<string>;
 }
 
 export interface RunbookEntityOwner {
@@ -31,6 +134,69 @@ export interface RunbookStep {
     content: pulumi.Input<string>;
 }
 
+export interface ScheduleRotationV2ParticipantGroup {
+    /**
+     * Group participants.
+     */
+    participants?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationV2ParticipantGroupParticipant>[]>;
+}
+
+export interface ScheduleRotationV2ParticipantGroupParticipant {
+    /**
+     * Participant id.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Participant type (user, team, squad).
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface ScheduleRotationV2ShiftTimeslot {
+    /**
+     * Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * Defines the duration of each shift. (in minutes)
+     */
+    duration: pulumi.Input<number>;
+    /**
+     * Defines the start hour of the each shift in the schedule timezone.
+     */
+    startHour: pulumi.Input<number>;
+    /**
+     * Defines the start minute of the each shift in the schedule timezone.
+     */
+    startMinute: pulumi.Input<number>;
+}
+
+export interface ScheduleV2EntityOwner {
+    /**
+     * Schedule owner id.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Schedule owner type. Supported values are 'user' or 'squad'.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface ScheduleV2Tag {
+    /**
+     * Schedule tag color.
+     */
+    color?: pulumi.Input<string>;
+    /**
+     * Schedule tag key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Schedule tag value.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ServiceMaintainer {
     /**
      * The id of the maintainer.
@@ -40,6 +206,25 @@ export interface ServiceMaintainer {
      * The type of the maintainer. Supported values are 'user' or 'squad'.
      */
     type: pulumi.Input<string>;
+}
+
+export interface ServiceMaintenanceWindow {
+    /**
+     * Starting Time
+     */
+    from: pulumi.Input<string>;
+    /**
+     * repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
+     */
+    repeatFrequency?: pulumi.Input<string>;
+    /**
+     * Till when you want to repeat this Maintenance mode
+     */
+    repeatTill?: pulumi.Input<string>;
+    /**
+     * End Time.
+     */
+    till: pulumi.Input<string>;
 }
 
 export interface ServiceTag {
@@ -110,6 +295,131 @@ export interface SloRule {
     threshold?: pulumi.Input<number>;
 }
 
+export interface StatusPageOwner {
+    /**
+     * Status page owner id.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Status page owner type Supported values are 'user' or 'squad'.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface StatusPageThemeColor {
+    /**
+     * Primary color.
+     */
+    primary: pulumi.Input<string>;
+    /**
+     * Secondary color.
+     */
+    secondary: pulumi.Input<string>;
+}
+
+export interface SuppressionRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: pulumi.Input<string>;
+    /**
+     * right hand side value
+     */
+    rhs: pulumi.Input<string>;
+}
+
+export interface SuppressionRuleV2Timeslot {
+    /**
+     * Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
+     */
+    customs?: pulumi.Input<pulumi.Input<inputs.SuppressionRuleV2TimeslotCustom>[]>;
+    /**
+     * Defines the end date of the time slot
+     */
+    endTime: pulumi.Input<string>;
+    /**
+     * Defines whether the time slot ends or not
+     */
+    endsNever?: pulumi.Input<boolean>;
+    /**
+     * Defines the end date of the repetition
+     */
+    endsOn: pulumi.Input<string>;
+    /**
+     * Defines if the time slot is an all day slot
+     */
+    isAllday?: pulumi.Input<boolean>;
+    /**
+     * Defines whether repetition is custom or not
+     */
+    isCustom?: pulumi.Input<boolean>;
+    /**
+     * Defines the repetition of the time slot
+     */
+    repetition: pulumi.Input<string>;
+    /**
+     * Defines the start date of the time slot
+     */
+    startTime: pulumi.Input<string>;
+    /**
+     * Time zone for the time slot
+     */
+    timeZone: pulumi.Input<string>;
+}
+
+export interface SuppressionRuleV2TimeslotCustom {
+    /**
+     * Determines how often the rule repeats. Valid values are day, week, month.
+     */
+    repeats: pulumi.Input<string>;
+    /**
+     * Number of times to repeat.
+     */
+    repeatsCount?: pulumi.Input<number>;
+    /**
+     * Repeats on month.
+     */
+    repeatsOnMonth?: pulumi.Input<string>;
+    /**
+     * List of weekdays to repeat on.
+     */
+    repeatsOnWeekdays?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface TaggingRuleV2BasicExpression {
+    /**
+     * left hand side dropdown value
+     */
+    lhs: pulumi.Input<string>;
+    /**
+     * operator (is, is*not, matches, not*contains)
+     */
+    op: pulumi.Input<string>;
+    /**
+     * right hand side value
+     */
+    rhs: pulumi.Input<string>;
+}
+
+export interface TaggingRuleV2Tag {
+    /**
+     * Tag color, hex values
+     */
+    color: pulumi.Input<string>;
+    /**
+     * key
+     */
+    key: pulumi.Input<string>;
+    /**
+     * value
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface WebformInputField {
     /**
      * Input field Label.
@@ -160,6 +470,54 @@ export interface WebformSeverity {
      * Severity type.
      */
     type: pulumi.Input<string>;
+}
+
+export interface WorkflowActionChannel {
+    /**
+     * The display text of the communication channel
+     */
+    displayText: pulumi.Input<string>;
+    /**
+     * The link of the communication channel
+     */
+    link: pulumi.Input<string>;
+    /**
+     * The type of the communication channel
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface WorkflowActionComponentAndImpact {
+    /**
+     * The ID of the component
+     */
+    componentId: pulumi.Input<number>;
+    /**
+     * The ID of the impact status
+     */
+    impactStatusId: pulumi.Input<number>;
+}
+
+export interface WorkflowActionHeader {
+    /**
+     * The key of the header
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value of the header
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface WorkflowActionStatusAndMessage {
+    /**
+     * The messages to be set for the issue
+     */
+    messages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the status
+     */
+    statusId: pulumi.Input<number>;
 }
 
 export interface WorkflowEntityOwner {
@@ -245,101 +603,6 @@ export namespace deduplication {
          */
         rhs: pulumi.Input<string>;
     }
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: pulumi.Input<string>;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: pulumi.Input<string>;
-            /**
-             * right hand side value
-             */
-            rhs: pulumi.Input<string>;
-        }
-    }
-}
-
-export namespace escalation {
-    export interface PolicyEntityOwner {
-        /**
-         * Escalation policy owner id.
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Escalation policy owner type. Supported values are 'user' or 'squad'.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface PolicyRepeat {
-        /**
-         * The number of minutes to wait before repeating the escalation policy
-         */
-        delayMinutes: pulumi.Input<number>;
-        /**
-         * The number of times you want this escalation policy to be repeated, maximum allowed to repeat 3 times
-         */
-        times: pulumi.Input<number>;
-    }
-
-    export interface PolicyRule {
-        delayMinutes: pulumi.Input<number>;
-        /**
-         * Notification channels to notify the targets. (SMS, Phone, Email, Push)
-         */
-        notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * repeat this rule
-         */
-        repeat?: pulumi.Input<inputs.escalation.PolicyRuleRepeat>;
-        roundRobin?: pulumi.Input<inputs.escalation.PolicyRuleRoundRobin>;
-        targets: pulumi.Input<pulumi.Input<inputs.escalation.PolicyRuleTarget>[]>;
-    }
-
-    export interface PolicyRuleRepeat {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes: pulumi.Input<number>;
-        /**
-         * repeat times
-         */
-        times: pulumi.Input<number>;
-    }
-
-    export interface PolicyRuleRoundRobin {
-        /**
-         * Enables Round Robin escalation within this layer
-         */
-        enabled: pulumi.Input<boolean>;
-        rotation?: pulumi.Input<inputs.escalation.PolicyRuleRoundRobinRotation>;
-    }
-
-    export interface PolicyRuleRoundRobinRotation {
-        /**
-         * repeat after minutes
-         */
-        delayMinutes?: pulumi.Input<number>;
-        /**
-         * enable rotation within
-         */
-        enabled?: pulumi.Input<boolean>;
-    }
-
-    export interface PolicyRuleTarget {
-        /**
-         * ID of the target
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Type of the target. (user, squad, schedule, schedulev2)
-         */
-        type: pulumi.Input<string>;
-    }
 }
 
 export namespace routing {
@@ -375,129 +638,6 @@ export namespace routing {
          * right hand side value
          */
         rhs: pulumi.Input<string>;
-    }
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: pulumi.Input<string>;
-            /**
-             * right hand side value
-             */
-            rhs: pulumi.Input<string>;
-        }
-    }
-}
-
-export namespace schedule {
-    export interface V2EntityOwner {
-        /**
-         * Schedule owner id.
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Schedule owner type. Supported values are 'user' or 'squad'.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface V2Tag {
-        /**
-         * Schedule tag color.
-         */
-        color?: pulumi.Input<string>;
-        /**
-         * Schedule tag key.
-         */
-        key: pulumi.Input<string>;
-        /**
-         * Schedule tag value.
-         */
-        value: pulumi.Input<string>;
-    }
-    export namespace rotation {
-        export interface V2ParticipantGroup {
-            /**
-             * Group participants.
-             */
-            participants?: pulumi.Input<pulumi.Input<inputs.schedule.rotation.V2ParticipantGroupParticipant>[]>;
-        }
-
-        export interface V2ParticipantGroupParticipant {
-            /**
-             * Participant id.
-             */
-            id: pulumi.Input<string>;
-            /**
-             * Participant type (user, team, squad).
-             */
-            type: pulumi.Input<string>;
-        }
-
-        export interface V2ShiftTimeslot {
-            /**
-             * Defines the day of the week for the shift. If not specified, the timeslot is active on all days of the week.
-             */
-            dayOfWeek?: pulumi.Input<string>;
-            /**
-             * Defines the duration of each shift. (in minutes)
-             */
-            duration: pulumi.Input<number>;
-            /**
-             * Defines the start hour of the each shift in the schedule timezone.
-             */
-            startHour: pulumi.Input<number>;
-            /**
-             * Defines the start minute of the each shift in the schedule timezone.
-             */
-            startMinute: pulumi.Input<number>;
-        }
-    }
-}
-
-export namespace service {
-    export interface MaintenanceWindow {
-        /**
-         * Starting Time
-         */
-        from: pulumi.Input<string>;
-        /**
-         * repeat frequency. ('day', 'week', '2 weeks', '3 weeks', 'month')
-         */
-        repeatFrequency?: pulumi.Input<string>;
-        /**
-         * Till when you want to repeat this Maintenance mode
-         */
-        repeatTill?: pulumi.Input<string>;
-        /**
-         * End Time.
-         */
-        till: pulumi.Input<string>;
-    }
-}
-
-export namespace status {
-    export interface PageOwner {
-        /**
-         * Status page owner id.
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Status page owner type Supported values are 'user' or 'squad'.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface PageThemeColor {
-        /**
-         * Primary color.
-         */
-        primary: pulumi.Input<string>;
-        /**
-         * Secondary color.
-         */
-        secondary: pulumi.Input<string>;
     }
 }
 
@@ -601,80 +741,6 @@ export namespace suppression {
          */
         repeatsOnWeekdays?: pulumi.Input<pulumi.Input<number>[]>;
     }
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: pulumi.Input<string>;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: pulumi.Input<string>;
-            /**
-             * right hand side value
-             */
-            rhs: pulumi.Input<string>;
-        }
-
-        export interface V2Timeslot {
-            /**
-             * Use this field to specify the custom time slots for which this rule should be applied. This field is only applicable when the repetition field is set to custom.
-             */
-            customs?: pulumi.Input<pulumi.Input<inputs.suppression.rule.V2TimeslotCustom>[]>;
-            /**
-             * Defines the end date of the time slot
-             */
-            endTime: pulumi.Input<string>;
-            /**
-             * Defines whether the time slot ends or not
-             */
-            endsNever?: pulumi.Input<boolean>;
-            /**
-             * Defines the end date of the repetition
-             */
-            endsOn: pulumi.Input<string>;
-            /**
-             * Defines if the time slot is an all day slot
-             */
-            isAllday?: pulumi.Input<boolean>;
-            /**
-             * Defines whether repetition is custom or not
-             */
-            isCustom?: pulumi.Input<boolean>;
-            /**
-             * Defines the repetition of the time slot
-             */
-            repetition: pulumi.Input<string>;
-            /**
-             * Defines the start date of the time slot
-             */
-            startTime: pulumi.Input<string>;
-            /**
-             * Time zone for the time slot
-             */
-            timeZone: pulumi.Input<string>;
-        }
-
-        export interface V2TimeslotCustom {
-            /**
-             * Determines how often the rule repeats. Valid values are day, week, month.
-             */
-            repeats: pulumi.Input<string>;
-            /**
-             * Number of times to repeat.
-             */
-            repeatsCount?: pulumi.Input<number>;
-            /**
-             * Repeats on month.
-             */
-            repeatsOnMonth?: pulumi.Input<string>;
-            /**
-             * List of weekdays to repeat on.
-             */
-            repeatsOnWeekdays?: pulumi.Input<pulumi.Input<number>[]>;
-        }
-    }
 }
 
 export namespace tagging {
@@ -725,86 +791,5 @@ export namespace tagging {
          * value
          */
         value: pulumi.Input<string>;
-    }
-    export namespace rule {
-        export interface V2BasicExpression {
-            /**
-             * left hand side dropdown value
-             */
-            lhs: pulumi.Input<string>;
-            /**
-             * operator (is, is*not, matches, not*contains)
-             */
-            op: pulumi.Input<string>;
-            /**
-             * right hand side value
-             */
-            rhs: pulumi.Input<string>;
-        }
-
-        export interface V2Tag {
-            /**
-             * Tag color, hex values
-             */
-            color: pulumi.Input<string>;
-            /**
-             * key
-             */
-            key: pulumi.Input<string>;
-            /**
-             * value
-             */
-            value: pulumi.Input<string>;
-        }
-    }
-}
-
-export namespace workflow {
-    export interface ActionChannel {
-        /**
-         * The display text of the communication channel
-         */
-        displayText: pulumi.Input<string>;
-        /**
-         * The link of the communication channel
-         */
-        link: pulumi.Input<string>;
-        /**
-         * The type of the communication channel
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface ActionComponentAndImpact {
-        /**
-         * The ID of the component
-         */
-        componentId: pulumi.Input<number>;
-        /**
-         * The ID of the impact status
-         */
-        impactStatusId: pulumi.Input<number>;
-    }
-
-    export interface ActionHeader {
-        /**
-         * The key of the header
-         */
-        key: pulumi.Input<string>;
-        /**
-         * The value of the header
-         */
-        value: pulumi.Input<string>;
-    }
-
-    export interface ActionStatusAndMessage {
-        /**
-         * The messages to be set for the issue
-         */
-        messages?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The ID of the status
-         */
-        statusId: pulumi.Input<number>;
     }
 }

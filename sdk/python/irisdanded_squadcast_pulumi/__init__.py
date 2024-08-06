@@ -5,24 +5,45 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .deduplication_rule_v2 import *
+from .escalation_policy import *
 from .ger import *
+from .ger_ruleset import *
+from .ger_ruleset_rule import *
+from .ger_ruleset_rules_ordering import *
+from .get_escalation_policy import *
 from .get_runbook import *
 from .get_schedule import *
+from .get_schedule_v2 import *
 from .get_service import *
 from .get_squad import *
 from .get_team import *
+from .get_team_role import *
 from .get_user import *
 from .get_webform import *
 from .provider import *
+from .routing_rule_v2 import *
 from .runbook import *
 from .schedule import *
+from .schedule_rotation_v2 import *
+from .schedule_v2 import *
 from .service import *
+from .service_maintenance import *
 from .slo import *
 from .squad import *
+from .status_page import *
+from .status_page_component import *
+from .status_page_group import *
+from .suppression_rule_v2 import *
+from .tagging_rule_v2 import *
 from .team import *
+from .team_member import *
+from .team_role import *
 from .user import *
 from .webform import *
 from .workflow import *
+from .workflow_action import *
+from .workflow_action_ordering import *
 from ._inputs import *
 from . import outputs
 
@@ -32,51 +53,22 @@ if typing.TYPE_CHECKING:
     config = __config
     import irisdanded_squadcast_pulumi.deduplication as __deduplication
     deduplication = __deduplication
-    import irisdanded_squadcast_pulumi.escalation as __escalation
-    escalation = __escalation
-    import irisdanded_squadcast_pulumi.ger as __ger
-    ger = __ger
     import irisdanded_squadcast_pulumi.routing as __routing
     routing = __routing
-    import irisdanded_squadcast_pulumi.schedule as __schedule
-    schedule = __schedule
-    import irisdanded_squadcast_pulumi.service as __service
-    service = __service
-    import irisdanded_squadcast_pulumi.status as __status
-    status = __status
     import irisdanded_squadcast_pulumi.suppression as __suppression
     suppression = __suppression
     import irisdanded_squadcast_pulumi.tagging as __tagging
     tagging = __tagging
-    import irisdanded_squadcast_pulumi.team as __team
-    team = __team
-    import irisdanded_squadcast_pulumi.workflow as __workflow
-    workflow = __workflow
 else:
     config = _utilities.lazy_import('irisdanded_squadcast_pulumi.config')
     deduplication = _utilities.lazy_import('irisdanded_squadcast_pulumi.deduplication')
-    escalation = _utilities.lazy_import('irisdanded_squadcast_pulumi.escalation')
-    ger = _utilities.lazy_import('irisdanded_squadcast_pulumi.ger')
     routing = _utilities.lazy_import('irisdanded_squadcast_pulumi.routing')
-    schedule = _utilities.lazy_import('irisdanded_squadcast_pulumi.schedule')
-    service = _utilities.lazy_import('irisdanded_squadcast_pulumi.service')
-    status = _utilities.lazy_import('irisdanded_squadcast_pulumi.status')
     suppression = _utilities.lazy_import('irisdanded_squadcast_pulumi.suppression')
     tagging = _utilities.lazy_import('irisdanded_squadcast_pulumi.tagging')
-    team = _utilities.lazy_import('irisdanded_squadcast_pulumi.team')
-    workflow = _utilities.lazy_import('irisdanded_squadcast_pulumi.workflow')
 
 _utilities.register(
     resource_modules="""
 [
- {
-  "pkg": "squadcast",
-  "mod": "deduplication/rule/v2",
-  "fqn": "irisdanded_squadcast_pulumi.deduplication.rule",
-  "classes": {
-   "squadcast:deduplication/rule/v2:V2": "V2"
-  }
- },
  {
   "pkg": "squadcast",
   "mod": "deduplication/rules",
@@ -87,34 +79,18 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
-  "mod": "escalation/policy",
-  "fqn": "irisdanded_squadcast_pulumi.escalation",
+  "mod": "index/deduplicationRuleV2",
+  "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
-   "squadcast:escalation/policy:Policy": "Policy"
+   "squadcast:index/deduplicationRuleV2:DeduplicationRuleV2": "DeduplicationRuleV2"
   }
  },
  {
   "pkg": "squadcast",
-  "mod": "ger/ruleset",
-  "fqn": "irisdanded_squadcast_pulumi.ger",
+  "mod": "index/escalationPolicy",
+  "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
-   "squadcast:ger/ruleset:Ruleset": "Ruleset"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "ger/ruleset/rule",
-  "fqn": "irisdanded_squadcast_pulumi.ger.ruleset",
-  "classes": {
-   "squadcast:ger/ruleset/rule:Rule": "Rule"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "ger/ruleset/rules/ordering",
-  "fqn": "irisdanded_squadcast_pulumi.ger.ruleset.rules",
-  "classes": {
-   "squadcast:ger/ruleset/rules/ordering:Ordering": "Ordering"
+   "squadcast:index/escalationPolicy:EscalationPolicy": "EscalationPolicy"
   }
  },
  {
@@ -123,6 +99,38 @@ _utilities.register(
   "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
    "squadcast:index/ger:Ger": "Ger"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/gerRuleset",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/gerRuleset:GerRuleset": "GerRuleset"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/gerRulesetRule",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/gerRulesetRule:GerRulesetRule": "GerRulesetRule"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/gerRulesetRulesOrdering",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/gerRulesetRulesOrdering:GerRulesetRulesOrdering": "GerRulesetRulesOrdering"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/routingRuleV2",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/routingRuleV2:RoutingRuleV2": "RoutingRuleV2"
   }
  },
  {
@@ -143,10 +151,34 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
+  "mod": "index/scheduleRotationV2",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/scheduleRotationV2:ScheduleRotationV2": "ScheduleRotationV2"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/scheduleV2",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/scheduleV2:ScheduleV2": "ScheduleV2"
+  }
+ },
+ {
+  "pkg": "squadcast",
   "mod": "index/service",
   "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
    "squadcast:index/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/serviceMaintenance",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/serviceMaintenance:ServiceMaintenance": "ServiceMaintenance"
   }
  },
  {
@@ -167,10 +199,66 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
+  "mod": "index/statusPage",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/statusPage:StatusPage": "StatusPage"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/statusPageComponent",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/statusPageComponent:StatusPageComponent": "StatusPageComponent"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/statusPageGroup",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/statusPageGroup:StatusPageGroup": "StatusPageGroup"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/suppressionRuleV2",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/suppressionRuleV2:SuppressionRuleV2": "SuppressionRuleV2"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/taggingRuleV2",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/taggingRuleV2:TaggingRuleV2": "TaggingRuleV2"
+  }
+ },
+ {
+  "pkg": "squadcast",
   "mod": "index/team",
   "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
    "squadcast:index/team:Team": "Team"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/teamMember",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/teamMember:TeamMember": "TeamMember"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/teamRole",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/teamRole:TeamRole": "TeamRole"
   }
  },
  {
@@ -199,10 +287,18 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
-  "mod": "routing/rule/v2",
-  "fqn": "irisdanded_squadcast_pulumi.routing.rule",
+  "mod": "index/workflowAction",
+  "fqn": "irisdanded_squadcast_pulumi",
   "classes": {
-   "squadcast:routing/rule/v2:V2": "V2"
+   "squadcast:index/workflowAction:WorkflowAction": "WorkflowAction"
+  }
+ },
+ {
+  "pkg": "squadcast",
+  "mod": "index/workflowActionOrdering",
+  "fqn": "irisdanded_squadcast_pulumi",
+  "classes": {
+   "squadcast:index/workflowActionOrdering:WorkflowActionOrdering": "WorkflowActionOrdering"
   }
  },
  {
@@ -215,62 +311,6 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
-  "mod": "schedule/rotation/v2",
-  "fqn": "irisdanded_squadcast_pulumi.schedule.rotation",
-  "classes": {
-   "squadcast:schedule/rotation/v2:V2": "V2"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "schedule/v2",
-  "fqn": "irisdanded_squadcast_pulumi.schedule",
-  "classes": {
-   "squadcast:schedule/v2:V2": "V2"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "service/maintenance",
-  "fqn": "irisdanded_squadcast_pulumi.service",
-  "classes": {
-   "squadcast:service/maintenance:Maintenance": "Maintenance"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "status/page",
-  "fqn": "irisdanded_squadcast_pulumi.status",
-  "classes": {
-   "squadcast:status/page:Page": "Page"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "status/page/component",
-  "fqn": "irisdanded_squadcast_pulumi.status.page",
-  "classes": {
-   "squadcast:status/page/component:Component": "Component"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "status/page/group",
-  "fqn": "irisdanded_squadcast_pulumi.status.page",
-  "classes": {
-   "squadcast:status/page/group:Group": "Group"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "suppression/rule/v2",
-  "fqn": "irisdanded_squadcast_pulumi.suppression.rule",
-  "classes": {
-   "squadcast:suppression/rule/v2:V2": "V2"
-  }
- },
- {
-  "pkg": "squadcast",
   "mod": "suppression/rules",
   "fqn": "irisdanded_squadcast_pulumi.suppression",
   "classes": {
@@ -279,50 +319,10 @@ _utilities.register(
  },
  {
   "pkg": "squadcast",
-  "mod": "tagging/rule/v2",
-  "fqn": "irisdanded_squadcast_pulumi.tagging.rule",
-  "classes": {
-   "squadcast:tagging/rule/v2:V2": "V2"
-  }
- },
- {
-  "pkg": "squadcast",
   "mod": "tagging/rules",
   "fqn": "irisdanded_squadcast_pulumi.tagging",
   "classes": {
    "squadcast:tagging/rules:Rules": "Rules"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "team/member",
-  "fqn": "irisdanded_squadcast_pulumi.team",
-  "classes": {
-   "squadcast:team/member:Member": "Member"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "team/role",
-  "fqn": "irisdanded_squadcast_pulumi.team",
-  "classes": {
-   "squadcast:team/role:Role": "Role"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "workflow/action",
-  "fqn": "irisdanded_squadcast_pulumi.workflow",
-  "classes": {
-   "squadcast:workflow/action:Action": "Action"
-  }
- },
- {
-  "pkg": "squadcast",
-  "mod": "workflow/action/ordering",
-  "fqn": "irisdanded_squadcast_pulumi.workflow.action",
-  "classes": {
-   "squadcast:workflow/action/ordering:Ordering": "Ordering"
   }
  }
 ]

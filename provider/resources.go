@@ -38,6 +38,7 @@ var bridgeMetadata []byte
 var namespaceMap = map[string]string{
 	"squadcast": "Squadcast",
 }
+
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
@@ -56,7 +57,7 @@ func convertName(tfname string) (module string, name string) {
 		module = mainMod
 		name = tfNameItems[1]
 	} else {
-		// Flat resource 
+		// Flat resource
 		module = mainMod
 		name = strings.Join(tfNameItems[1:], "_")
 
@@ -92,10 +93,7 @@ func makeDataSource(ds string) tokens.ModuleMember {
 }
 
 func makeResource(res string) tokens.Type {
-	fmt.Printf("The res is %s\n", res)
 	mod, name := convertName(res)
-	fmt.Printf("The Resource module %s\n", mod)
-	fmt.Printf("The Resource name %s\n", name)
 	return tfbridge.MakeResource("squadcast", mod, name)
 }
 
@@ -181,7 +179,7 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type.
 			//
 			// "aws_iam_role": {
@@ -245,8 +243,7 @@ func Provider() tfbridge.ProviderInfo {
 			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "irisdanded_squadcast_pulumi",
-
+			PackageName:          "irisdanded_squadcast_pulumi",
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
@@ -262,8 +259,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "IrisDanded.Pulumi",
-
+			RootNamespace:        "IrisDanded.Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},

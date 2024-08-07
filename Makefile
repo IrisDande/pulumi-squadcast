@@ -4,7 +4,7 @@ PROJECT          := github.com/IrisDande/pulumi-squadcast
 NODE_MODULE_NAME := @irisdanded/pulumi-squadcast
 TF_NAME          := squadcast
 PROVIDER_PATH    := provider
-PROVIDER_VERSION := 1.8.0
+PROVIDER_VERSION := 2.1.3
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 JAVA_GEN         := pulumi-java-gen

@@ -162,7 +162,6 @@ jobs:
       matrix:
         dotnetversion:
           - 6.0.x
-          - 8.0.x
         goversion:
           - 1.22.x
         nodeversion:
